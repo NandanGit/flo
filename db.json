@@ -1,0 +1,68 @@
+{
+	"transactions": [
+		{
+			"id": "d4a3e8c2-7b6f-4e9e-9e9d-6e8b7a5d4c3b",
+			"title": "Salary",
+			"description": "Monthly salary",
+			"amount": 5000,
+			"type": "income",
+			"date": "2022-09-01T12:34:56Z"
+		},
+		{
+			"id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+			"title": "Rent",
+			"description": "Monthly rent payment",
+			"amount": 1000,
+			"type": "expense",
+			"date": "2022-09-05T09:15:30Z"
+		},
+		{
+			"id": "q1w2e3r4-t5y6u7i8-o9p0a1s2d3f4g",
+			"title": "Groceries",
+			"description": "Weekly grocery shopping",
+			"amount": 200,
+			"type": "expense",
+			"date": "2022-09-07T18:45:00Z"
+		}
+	],
+	"people": [
+		{
+			"id": "d4a3e8c2-7b6f-4e9e-9e9d-6e8b7a5d4c3b",
+			"name": "Jay"
+		},
+		{
+			"id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+			"name": "Navadeep"
+		},
+		{
+			"id": "q1w2e3r4-t5y6u7i8-o9p0a1s2d3f4g",
+			"name": "Sreeram"
+		},
+		{
+			"id": "r1t2y3u4-i5o6p7a8-s9d0f1g2h3j4k",
+			"name": "Abdul"
+		},
+		{
+			"id": "l1m2n3o4-p5a6s7d8-f9g0h1j2k3l4",
+			"name": "Keerthi"
+		},
+		{
+			"id": "m1n2b3v4-c5x6z7a8-s9d0f1g2h3j4",
+			"name": "Ramya"
+		}
+	],
+	"merchants": [
+		{
+			"id": "m1n2b3v4-c5x6z7a8-s9d0f1g2h3j4",
+			"name": "Amazon"
+		},
+		{
+			"id": "z1x2c3v4-b5n6m7a8-s9d0f1g2h3j4k",
+			"name": "Raja Rani Ruchulu"
+		},
+		{
+			"id": "p1o2i3u4-y5t6r7e8-w9q0a1s2d3f4g",
+			"name": "Swiggy"
+		}
+	]
+}
