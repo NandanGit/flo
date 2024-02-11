@@ -11,10 +11,9 @@ export const glassThemeDark = createTheme({
 		mode: 'dark',
 		primary: {
 			// Purple primary color
-			main: '#b39ddb',
+			main: '#AF7AC5',
 		},
 		secondary: {
-			// main: '#81c784',
 			main: '#ccc',
 		},
 		background: {
@@ -22,7 +21,7 @@ export const glassThemeDark = createTheme({
 		},
 	},
 	shape: {
-		borderRadius: 8,
+		borderRadius: 12,
 	},
 	components: {
 		// Paper with glassmorphism effect
@@ -40,7 +39,7 @@ export const glassThemeDark = createTheme({
 		MuiButton: {
 			styleOverrides: {
 				root: {
-					backgroundColor: 'rgba(80, 80, 80, 0.5)',
+					backgroundColor: 'rgba(80, 80, 80, 0.6)',
 					backdropFilter: 'blur(10px)',
 					border: '1px solid rgba(128, 128, 128, 0.1)',
 					boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
