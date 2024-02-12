@@ -8,9 +8,10 @@ import {
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { AppConstants } from '../constants/AppConstants';
 import MenuIcon from '@mui/icons-material/Menu';
-import { AccountCircle } from '@mui/icons-material';
+import { AccountCircle, ChevronLeft } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import AppDrawer from '../common/navigation/AppDrawer';
+import { useNavigate } from 'react-router-dom';
 
 export interface AppPageProps {
 	children: React.ReactNode;
@@ -29,6 +30,14 @@ export const AppPage: React.FC<AppPageProps> = ({
 	);
 	const [mobileOpen, setMobileOpen] = useState(false);
 
+	const navigate = useNavigate();
+
+	useLayoutEffect(() => {
+		if (appBarRef.current) {
+			setContainerHeight(window.innerHeight - appBarRef.current.offsetHeight);
+		}
+	}, [appBarRef.current?.offsetHeight]);
+
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
 	};
@@ -41,11 +50,9 @@ export const AppPage: React.FC<AppPageProps> = ({
 		setUserMenuAnchorEl(null);
 	};
 
-	useLayoutEffect(() => {
-		if (appBarRef.current) {
-			setContainerHeight(window.innerHeight - appBarRef.current.offsetHeight);
-		}
-	}, [appBarRef.current?.offsetHeight]);
+	const canGoBack = () => {
+		return true; // TODO: Fix this
+	};
 
 	return (
 		<React.Fragment>
@@ -57,13 +64,31 @@ export const AppPage: React.FC<AppPageProps> = ({
 					}}
 				>
 					<Toolbar>
+						{canGoBack() ? (
+							// Back button
+							<IconButton
+								size='medium'
+								edge='start'
+								color='inherit'
+								aria-label='back-button'
+								sx={{ mr: 2 }}
+								onClick={() => navigate(-1)}
+							>
+								<ChevronLeft />
+							</IconButton>
+						) : null}
 						{/* Hamburger menu */}
 						<IconButton
-							size='large'
+							size='medium'
 							edge='start'
 							color='inherit'
 							aria-label='menu'
-							sx={{ mr: 2, display: { sm: 'none' } }}
+							sx={{
+								mr: 2,
+								display: {
+									// sm: 'none'
+								},
+							}}
 							onClick={handleDrawerToggle}
 						>
 							<MenuIcon />

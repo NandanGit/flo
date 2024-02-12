@@ -11,6 +11,8 @@ import { AppConstants } from '../../constants/AppConstants';
 import { MenuData } from '../../shared/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
+import { MenuItemModel } from '../../shared/models/MenuItemModel';
+import { AppActions } from '../actions/AppActions';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -19,6 +21,21 @@ interface AppDrawerProps {
 
 const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 	const navigate = useNavigate();
+
+	const handleDrawerItemSelect = (item: MenuItemModel) => {
+		// Close the drawer
+		onDrawerToggle();
+		if (item.route) {
+			console.log('Navigating to:', item.route);
+			navigate(item.route);
+		} else if (item.action) {
+			// TODO: Run the action here
+			navigate(-1);
+		} else {
+			console.error('No route or action provided for menu item:', item);
+		}
+	};
+
 	return (
 		<nav>
 			<Drawer
@@ -64,19 +81,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 									sx={{
 										textAlign: 'center',
 									}}
-									onClick={() => {
-										if (item.route) {
-											console.log('Navigating to:', item.route);
-											navigate(item.route);
-										} else if (item.action) {
-											// TODO: Run the action here
-										} else {
-											console.error(
-												'No route or action provided for menu item:',
-												item
-											);
-										}
-									}}
+									onClick={() => handleDrawerItemSelect(item)}
 								>
 									<ListItemText primary={item.label} />
 								</ListItemButton>
@@ -89,6 +94,12 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 								sx={{
 									textAlign: 'center',
 								}}
+								onClick={() =>
+									handleDrawerItemSelect({
+										label: 'Logout',
+										action: AppActions.LOGOUT,
+									})
+								}
 							>
 								<ListItemText primary='Logout' />
 							</ListItemButton>
