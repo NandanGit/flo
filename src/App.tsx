@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { AppBar, Toolbar } from '@mui/material';
+import AppRouter from './common/navigation/AppRouter';
 
 function App() {
-	const [count, setCount] = useState(0);
-
+	return <AppRouter />;
 	return (
-		<div>
-			<h1>Counter</h1>
-			<p>{count}</p>
-			<button onClick={() => setCount(count + 1)}>Increment</button>
-			<button onClick={() => setCount(count - 1)}>Decrement</button>
-		</div>
+		<AppBar
+			position='static'
+			style={
+				{
+					// backgroundImage: 'none',
+					// backgroundImage:
+					// 	'linear-gradient(rgba(30, 30, 30, 0.09), rgba(30, 30, 30, 0.09))',
+				}
+			}
+		>
+			<Toolbar>
+				<h2>Flo</h2>
+			</Toolbar>
+		</AppBar>
 	);
 }
 
