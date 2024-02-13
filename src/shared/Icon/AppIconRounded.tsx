@@ -25,42 +25,43 @@ const defaultOptions: AppIconOptions = {
 
 const AppIconRounded = (icon: AppIcons, options: AppIconOptions = {}) => {
 	options = { ...defaultOptions, ...options };
-	const MuiIcon = (() => {
-		switch (icon) {
-			case AppIcons.accountCircle:
-				return AccountCircleRounded;
-			case AppIcons.menu:
-				return MenuRounded;
-			case AppIcons.home:
-				return HomeRounded;
-			case AppIcons.dashboard:
-				return DashboardRounded;
-			case AppIcons.info:
-				return InfoRounded;
-			case AppIcons.call:
-				return CallRounded;
-			case AppIcons.logout:
-				return LogoutRounded;
-			case AppIcons.settings:
-				return SettingsRounded;
-
-			// Util Icons
-			case AppIcons.close:
-				return CloseRounded;
-			case AppIcons.chevronLeft:
-				return ChevronLeftRounded;
-			case AppIcons.chevronRight:
-				return ChevronRightRounded;
-			case AppIcons.search:
-				return SearchRounded;
-			default: {
-				console.error('No icon found for:', icon);
-				return QuestionMarkRounded;
-			}
-		}
-	})();
-
+	const MuiIcon = resolveMuiIcon(icon);
 	return <MuiIcon {...options} />;
 };
+
+function resolveMuiIcon(icon: AppIcons) {
+	switch (icon) {
+		case AppIcons.accountCircle:
+			return AccountCircleRounded;
+		case AppIcons.menu:
+			return MenuRounded;
+		case AppIcons.home:
+			return HomeRounded;
+		case AppIcons.dashboard:
+			return DashboardRounded;
+		case AppIcons.info:
+			return InfoRounded;
+		case AppIcons.call:
+			return CallRounded;
+		case AppIcons.logout:
+			return LogoutRounded;
+		case AppIcons.settings:
+			return SettingsRounded;
+
+		// Util Icons
+		case AppIcons.close:
+			return CloseRounded;
+		case AppIcons.chevronLeft:
+			return ChevronLeftRounded;
+		case AppIcons.chevronRight:
+			return ChevronRightRounded;
+		case AppIcons.search:
+			return SearchRounded;
+		default: {
+			console.error('No icon found for:', icon);
+			return QuestionMarkRounded;
+		}
+	}
+}
 
 export default AppIconRounded;
