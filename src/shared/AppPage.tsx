@@ -7,11 +7,12 @@ import {
 	Typography,
 } from '@mui/material';
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { AppConstants } from './AppConstants';
+import { AppConstants } from './constants/AppConstants';
 import UserMenu from './UserMenu';
 import AppDrawer from '../common/navigation/AppDrawer';
 import { useNavigate } from 'react-router-dom';
 import { AppIcon, AppIcons } from './Icon';
+import { useUserMocker } from '../mockers/userMocker';
 
 export interface AppPageProps {
 	children: React.ReactNode;
@@ -37,6 +38,8 @@ export const AppPage: React.FC<AppPageProps> = ({
 			setContainerHeight(window.innerHeight - appBarRef.current.offsetHeight);
 		}
 	}, [appBarRef.current?.offsetHeight]);
+
+	const user = useUserMocker();
 
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
@@ -113,7 +116,11 @@ export const AppPage: React.FC<AppPageProps> = ({
 								onClick={handleOpenUserMenu}
 								color='inherit'
 							>
-								<Avatar alt='Nandan Reddy' src='#' />
+								{user ? (
+									<Avatar alt={user.name} src={user.avatar} />
+								) : (
+									<Avatar alt='User' src='' />
+								)}
 							</IconButton>
 							<UserMenu
 								anchorEl={userMenuAnchorEl}
