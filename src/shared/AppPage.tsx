@@ -7,7 +7,7 @@ import {
 	Typography,
 } from '@mui/material';
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { AppConstants } from '../constants/AppConstants';
+import { AppConstants } from './AppConstants';
 import UserMenu from './UserMenu';
 import AppDrawer from '../common/navigation/AppDrawer';
 import { useNavigate } from 'react-router-dom';

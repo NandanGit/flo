@@ -7,7 +7,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material';
-import { AppConstants } from '../../constants/AppConstants';
+import { AppConstants } from '../../shared/AppConstants';
 import { MenuData } from '../../shared/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';

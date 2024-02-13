@@ -66,10 +66,13 @@
 		}
 	],
 	"user": {
+		"id": "u1i2d3-u4s5e6r7-i8d9",
 		"name": "Nandan Reddy",
 		"email": "nandan.reddy@flo.com",
 		"phone": "+91 9876543210",
 		"currency": "INR",
-		"avatar": "https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png"
+		"avatar": "https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png",
+		"createdAt": "2022-09-01T12:34:56Z",
+		"updatedAt": "2022-09-07T12:35:00Z"
 	}
 }
