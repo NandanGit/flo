@@ -47,7 +47,10 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 					keepMounted: true, // Better open performance on mobile.
 				}}
 				sx={{
-					display: { xs: 'block', sm: 'none' },
+					display: {
+						xs: 'block',
+						// sm: 'none'
+					},
 					'& .MuiDrawer-paper': { boxSizing: 'border-box', width: '15rem' },
 				}}
 			>
@@ -65,8 +68,14 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 						component='div'
 						style={{
 							padding: '2rem',
+							cursor: 'pointer',
 						}}
-						onClick={() => navigate(Routes.HOME)}
+						onClick={() =>
+							handleDrawerItemSelect({
+								label: 'Home',
+								route: Routes.HOME,
+							})
+						}
 					>
 						{AppConstants.name}
 					</Typography>

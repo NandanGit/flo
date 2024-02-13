@@ -1,5 +1,6 @@
 import {
 	AppBar,
+	Avatar,
 	Container,
 	IconButton,
 	Toolbar,
@@ -7,11 +8,10 @@ import {
 } from '@mui/material';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { AppConstants } from '../constants/AppConstants';
-import MenuIcon from '@mui/icons-material/Menu';
-import { AccountCircle, ChevronLeft } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import AppDrawer from '../common/navigation/AppDrawer';
 import { useNavigate } from 'react-router-dom';
+import { AppIcon, AppIcons } from './Icon';
 
 export interface AppPageProps {
 	children: React.ReactNode;
@@ -51,7 +51,7 @@ export const AppPage: React.FC<AppPageProps> = ({
 	};
 
 	const canGoBack = () => {
-		return true; // TODO: Fix this
+		return false; // TODO: Fix this
 	};
 
 	return (
@@ -67,19 +67,19 @@ export const AppPage: React.FC<AppPageProps> = ({
 						{canGoBack() ? (
 							// Back button
 							<IconButton
-								size='medium'
+								size='large'
 								edge='start'
 								color='inherit'
 								aria-label='back-button'
 								sx={{ mr: 2 }}
 								onClick={() => navigate(-1)}
 							>
-								<ChevronLeft />
+								{AppIcon(AppIcons.chevronLeft)}
 							</IconButton>
 						) : null}
 						{/* Hamburger menu */}
 						<IconButton
-							size='medium'
+							size='large'
 							edge='start'
 							color='inherit'
 							aria-label='menu'
@@ -91,7 +91,7 @@ export const AppPage: React.FC<AppPageProps> = ({
 							}}
 							onClick={handleDrawerToggle}
 						>
-							<MenuIcon />
+							{AppIcon(AppIcons.menu)}
 						</IconButton>
 
 						{/* Title */}
@@ -106,14 +106,14 @@ export const AppPage: React.FC<AppPageProps> = ({
 						{/* Profile & Account */}
 						<div>
 							<IconButton
-								size='large'
+								size='small'
 								aria-label='account of current user'
 								aria-controls='menu-appbar'
 								aria-haspopup='true'
 								onClick={handleOpenUserMenu}
 								color='inherit'
 							>
-								<AccountCircle />
+								<Avatar alt='Nandan Reddy' src='#' />
 							</IconButton>
 							<UserMenu
 								anchorEl={userMenuAnchorEl}

@@ -80,7 +80,7 @@ export const glassThemeDark = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: '0.5rem',
-					margin: '0.5rem 0',
+					margin: '0.25rem 0',
 					// '&:hover': {
 					// 	backgroundColor: 'rgba(255, 255, 255, 0.1)',
 					// },

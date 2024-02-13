@@ -64,5 +64,12 @@
 			"id": "p1o2i3u4-y5t6r7e8-w9q0a1s2d3f4g",
 			"name": "Swiggy"
 		}
-	]
+	],
+	"user": {
+		"name": "Nandan Reddy",
+		"email": "nandan.reddy@flo.com",
+		"phone": "+91 9876543210",
+		"currency": "INR",
+		"avatar": "https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png"
+	}
 }
