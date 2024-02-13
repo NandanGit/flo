@@ -1,4 +1,2 @@
-import AppIconRounded from './AppIconRounded';
-
-export { AppIconRounded as AppIcon };
+export { AppIcon } from './AppIcon';
 export { AppIcons } from './AppIcons';

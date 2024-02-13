@@ -16,20 +16,8 @@ import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
-import { AppIconOptions } from './AppIconOptions';
 
-const defaultOptions: AppIconOptions = {
-	fontSize: 'large',
-	color: 'inherit',
-};
-
-const AppIconRounded = (icon: AppIcons, options: AppIconOptions = {}) => {
-	options = { ...defaultOptions, ...options };
-	const MuiIcon = resolveMuiIcon(icon);
-	return <MuiIcon {...options} />;
-};
-
-function resolveMuiIcon(icon: AppIcons) {
+const resolveRoundedMuiIcon = (icon: AppIcons) => {
 	switch (icon) {
 		case AppIcons.accountCircle:
 			return AccountCircleRounded;
@@ -62,6 +50,6 @@ function resolveMuiIcon(icon: AppIcons) {
 			return QuestionMarkRounded;
 		}
 	}
-}
+};
 
-export default AppIconRounded;
+export default resolveRoundedMuiIcon;
