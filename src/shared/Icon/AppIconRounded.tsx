@@ -25,38 +25,42 @@ const defaultOptions: AppIconOptions = {
 
 const AppIconRounded = (icon: AppIcons, options: AppIconOptions = {}) => {
 	options = { ...defaultOptions, ...options };
-	switch (icon) {
-		case AppIcons.accountCircle:
-			return <AccountCircleRounded {...options} />;
-		case AppIcons.menu:
-			return <MenuRounded {...options} />;
-		case AppIcons.home:
-			return <HomeRounded {...options} />;
-		case AppIcons.dashboard:
-			return <DashboardRounded {...options} />;
-		case AppIcons.info:
-			return <InfoRounded {...options} />;
-		case AppIcons.call:
-			return <CallRounded {...options} />;
-		case AppIcons.logout:
-			return <LogoutRounded {...options} />;
-		case AppIcons.settings:
-			return <SettingsRounded {...options} />;
+	const MuiIcon = (() => {
+		switch (icon) {
+			case AppIcons.accountCircle:
+				return AccountCircleRounded;
+			case AppIcons.menu:
+				return MenuRounded;
+			case AppIcons.home:
+				return HomeRounded;
+			case AppIcons.dashboard:
+				return DashboardRounded;
+			case AppIcons.info:
+				return InfoRounded;
+			case AppIcons.call:
+				return CallRounded;
+			case AppIcons.logout:
+				return LogoutRounded;
+			case AppIcons.settings:
+				return SettingsRounded;
 
-		// Util Icons
-		case AppIcons.close:
-			return <CloseRounded {...options} />;
-		case AppIcons.chevronLeft:
-			return <ChevronLeftRounded {...options} />;
-		case AppIcons.chevronRight:
-			return <ChevronRightRounded {...options} />;
-		case AppIcons.search:
-			return <SearchRounded {...options} />;
-		default: {
-			console.error('No icon found for:', icon);
-			return <QuestionMarkRounded {...options} />;
+			// Util Icons
+			case AppIcons.close:
+				return CloseRounded;
+			case AppIcons.chevronLeft:
+				return ChevronLeftRounded;
+			case AppIcons.chevronRight:
+				return ChevronRightRounded;
+			case AppIcons.search:
+				return SearchRounded;
+			default: {
+				console.error('No icon found for:', icon);
+				return QuestionMarkRounded;
+			}
 		}
-	}
+	})();
+
+	return <MuiIcon {...options} />;
 };
 
 export default AppIconRounded;
