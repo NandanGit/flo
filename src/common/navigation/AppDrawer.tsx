@@ -12,8 +12,7 @@ import { MenuData } from '../../shared/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
 import { MenuItemModel } from '../../shared/models/MenuItemModel';
-import { AppActions } from '../actions/AppActions';
-import { AppIcon, AppIcons } from '../../shared/Icon';
+import { AppIcon } from '../../shared/Icon';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -36,6 +35,42 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 			console.error('No route or action provided for menu item:', item);
 		}
 	};
+
+	const createMenuItem = (item: MenuItemModel) => {
+		return (
+			<ListItem key={item.label} disablePadding>
+				<ListItemButton
+					sx={{
+						textAlign: 'center',
+					}}
+					onClick={() => handleDrawerItemSelect(item)}
+				>
+					{AppIcon(item.icon, {
+						style: {
+							marginRight: '0.5rem',
+							// fontSize: '2rem',
+						},
+						fontSize: 'medium',
+					})}
+					<ListItemText
+						style={{
+							textAlign: 'left',
+						}}
+					>
+						<span
+							style={{
+								fontSize: '0.85rem',
+							}}
+						>
+							{item.label}
+						</span>
+					</ListItemText>
+				</ListItemButton>
+			</ListItem>
+		);
+	};
+
+	const logoutMenuItem = MenuData.logoutMenuItem;
 
 	return (
 		<nav>
@@ -85,7 +120,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 							flex: 1,
 						}}
 					>
-						{MenuData.drawerMenuItems.map((item) => (
+						{/* {MenuData.drawerMenuItems.map((item) => (
 							<ListItem key={item.label} disablePadding>
 								<ListItemButton
 									sx={{
@@ -96,40 +131,10 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 									<ListItemText primary={item.label} />
 								</ListItemButton>
 							</ListItem>
-						))}
+						))} */}
+						{MenuData.drawerMenuItems.map(createMenuItem)}
 					</List>
-					<List>
-						<ListItem disablePadding>
-							<ListItemButton
-								sx={{
-									textAlign: 'center',
-								}}
-								onClick={() =>
-									handleDrawerItemSelect({
-										label: 'Logout',
-										action: AppActions.LOGOUT,
-									})
-								}
-							>
-								{/* <ListItemText primary='Logout' /> */}
-								{AppIcon(AppIcons.logout, {
-									style: {
-										marginRight: '0.5rem',
-									},
-									fontSize: 'small',
-								})}
-								<ListItemText>
-									<span
-										style={{
-											fontSize: '0.8rem',
-										}}
-									>
-										Logout
-									</span>
-								</ListItemText>
-							</ListItemButton>
-						</ListItem>
-					</List>
+					<List>{createMenuItem(logoutMenuItem)}</List>
 				</Box>
 			</Drawer>
 		</nav>

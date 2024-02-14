@@ -15,25 +15,29 @@ export class MenuData {
 			icon: AppIcons.settings,
 			route: Routes.SETTINGS,
 		},
-		{
-			label: 'Logout',
-			icon: AppIcons.logout,
-			action: AppActions.LOGOUT,
-		},
+		// {
+		// 	label: 'Logout',
+		// 	icon: AppIcons.logout,
+		// 	action: AppActions.LOGOUT,
+		// },
 	];
 
 	public static readonly drawerMenuItems: MenuItemModel[] = [
 		{
 			label: 'Dashboard',
+			icon: AppIcons.dashboard,
 			route: Routes.DASHBOARD,
 		},
 		{
-			label: 'About',
-			route: Routes.ABOUT,
-		},
-		{
-			label: 'Contact',
-			route: Routes.CONTACT,
+			label: 'Transactions',
+			icon: AppIcons.currencyExchange,
+			route: Routes.TRANSACTIONS,
 		},
 	];
+
+	public static readonly logoutMenuItem: MenuItemModel = {
+		label: 'Logout',
+		icon: AppIcons.logout,
+		action: AppActions.LOGOUT,
+	};
 }

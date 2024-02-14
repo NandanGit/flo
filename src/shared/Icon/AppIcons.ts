@@ -8,6 +8,9 @@ export enum AppIcons {
 	logout = 'logout',
 	settings = 'settings',
 
+	// Money
+	currencyExchange = 'currency_exchange',
+
 	// Utils
 	close = 'close',
 	chevronLeft = 'chevron_left',

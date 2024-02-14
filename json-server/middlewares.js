@@ -5,7 +5,7 @@
 export const restrictRouteMethods = (route, methods) => {
 	methods = methods.map((method) => method.toUpperCase());
 	return (req, res, next) => {
-		if (req.path.startsWith(route) && !methods.includes(req.method)) {
+		if (req.path.startsWith(route) && methods.includes(req.method)) {
 			res.status(405).send('Method Not Allowed');
 		} else {
 			next();
@@ -20,10 +20,10 @@ export const restrictRouteMethods = (route, methods) => {
 export const allowRouteMethods = (route, methods) => {
 	methods = methods.map((method) => method.toUpperCase());
 	return (req, res, next) => {
-		if (req.path.startsWith(route) && methods.includes(req.method)) {
-			next();
-		} else {
+		if (req.path.startsWith(route) && !methods.includes(req.method)) {
 			res.status(405).send('Method Not Allowed');
+		} else {
+			next();
 		}
 	};
 };

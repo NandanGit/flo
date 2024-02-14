@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Routes } from './AppRoutes';
 import DashboardPage from '../../features/user/dashboard/ui/DashboardPage';
 import HomePage from '../home/ui/HomePage';
+import ProfilePage from '../../features/user/profile/ui/ProfilePage';
+import SettingsPage from '../../features/user/settings/ui/SettingsPage';
 
 const browserRouter = createBrowserRouter(
 	[
@@ -12,6 +14,14 @@ const browserRouter = createBrowserRouter(
 		{
 			path: Routes.DASHBOARD,
 			element: <DashboardPage />,
+		},
+		{
+			path: Routes.PROFILE,
+			element: <ProfilePage />,
+		},
+		{
+			path: Routes.SETTINGS,
+			element: <SettingsPage />,
 		},
 		{
 			path: '*',
