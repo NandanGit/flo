@@ -9,7 +9,7 @@ server.use(middlewares);
 server.use((req, res, next) => {
 	// Log the request summary in a single line
 	console.log(`${req.method} ${req.path}`);
-	next();
+	setTimeout(next, 2000); // Add a 2-second delay
 });
 
 server.use(allowRouteMethods('/user', ['GET']));

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
 import { MenuItemModel } from '../../shared/models/MenuItemModel';
 import { AppActions } from '../actions/AppActions';
+import { AppIcon, AppIcons } from '../../shared/Icon';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -110,7 +111,22 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 									})
 								}
 							>
-								<ListItemText primary='Logout' />
+								{/* <ListItemText primary='Logout' /> */}
+								{AppIcon(AppIcons.logout, {
+									style: {
+										marginRight: '0.5rem',
+									},
+									fontSize: 'small',
+								})}
+								<ListItemText>
+									<span
+										style={{
+											fontSize: '0.8rem',
+										}}
+									>
+										Logout
+									</span>
+								</ListItemText>
 							</ListItemButton>
 						</ListItem>
 					</List>

@@ -1,6 +1,7 @@
 import { Menu, MenuItem } from '@mui/material';
 import { MenuData } from './MenuData';
 import { useNavigate } from 'react-router-dom';
+import { AppIcon } from './Icon';
 
 interface UserMenuProps {
 	anchorEl: HTMLElement | null;
@@ -17,7 +18,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 			id='menu-appbar'
 			anchorEl={userMenuAnchorEl}
 			anchorOrigin={{
-				vertical: 'top',
+				vertical: 'bottom',
 				horizontal: 'right',
 			}}
 			keepMounted
@@ -40,7 +41,20 @@ const UserMenu: React.FC<UserMenuProps> = ({
 						}
 					}}
 				>
-					{item.label}
+					{AppIcon(item.icon, {
+						style: {
+							marginRight: '0.6rem',
+						},
+						fontSize: 'medium',
+					})}
+					<span
+						style={{
+							fontSize: '0.8rem',
+						}}
+					>
+						{item.label}
+					</span>
+					{/* </div> */}
 				</MenuItem>
 			))}
 			{/* <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>

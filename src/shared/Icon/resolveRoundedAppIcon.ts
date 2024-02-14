@@ -17,7 +17,7 @@ import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
 
-const resolveRoundedMuiIcon = (icon: AppIcons) => {
+const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
 		case AppIcons.accountCircle:
 			return AccountCircleRounded;

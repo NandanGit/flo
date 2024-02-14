@@ -13,6 +13,7 @@ import AppDrawer from '../common/navigation/AppDrawer';
 import { useNavigate } from 'react-router-dom';
 import { AppIcon, AppIcons } from './Icon';
 import { useUserMocker } from '../mockers/userMocker';
+import { Placeholder } from './Placeholder';
 
 export interface AppPageProps {
 	children: React.ReactNode;
@@ -116,11 +117,13 @@ export const AppPage: React.FC<AppPageProps> = ({
 								onClick={handleOpenUserMenu}
 								color='inherit'
 							>
-								{user ? (
-									<Avatar alt={user.name} src={user.avatar} />
-								) : (
-									<Avatar alt='User' src='' />
-								)}
+								<Placeholder loading={!user} variant='circular'>
+									<Avatar
+										alt='User'
+										// src='#'
+										src={user?.avatar}
+									/>
+								</Placeholder>
 							</IconButton>
 							<UserMenu
 								anchorEl={userMenuAnchorEl}
