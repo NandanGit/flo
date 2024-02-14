@@ -13,7 +13,7 @@ const defaultOptions: AppIconOptions = {
 	color: 'inherit',
 };
 
-export const AppIcon = (icon: AppIcons, options: AppIconOptions = {}) => {
+export const AppIcon = (icon?: AppIcons, options: AppIconOptions = {}) => {
 	const MuiIcon = resolveMuiIcon(icon);
 	return <MuiIcon {...defaultOptions} {...options} />;
 };

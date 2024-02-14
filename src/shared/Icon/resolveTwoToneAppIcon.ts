@@ -17,7 +17,7 @@ import SearchTwoTone from '@mui/icons-material/SearchTwoTone';
 
 import { AppIcons } from './AppIcons';
 
-const resolveTwoToneMuiIcon = (icon: AppIcons) => {
+const resolveTwoToneMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
 		case AppIcons.accountCircle:
 			return AccountCircleTwoTone;
