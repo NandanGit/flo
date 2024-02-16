@@ -10,6 +10,5 @@ export enum Routes {
 	MERCHANTS_DETAIL = '/merchants/:id',
 	PEOPLE = '/people',
 	PEOPLE_DETAIL = '/people/:id',
-	HISTORY = '/history',
-	NOTIFICATIONS = '/notifications',
+	Activity = '/activity',
 }

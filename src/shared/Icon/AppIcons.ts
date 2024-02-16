@@ -7,6 +7,10 @@ export enum AppIcons {
 	call = 'call',
 	logout = 'logout',
 	settings = 'settings',
+	shoppingBag = 'shopping_bag',
+	people = 'people',
+	receiptLong = 'receipt_long',
+	notifications = 'notifications',
 
 	// Money
 	currencyExchange = 'currency_exchange',

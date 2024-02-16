@@ -16,7 +16,13 @@ import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
-import { CurrencyExchangeRounded } from '@mui/icons-material';
+import {
+	CurrencyExchangeRounded,
+	NotificationsRounded,
+	PeopleRounded,
+	ReceiptLongRounded,
+	ShoppingBagRounded,
+} from '@mui/icons-material';
 
 const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
@@ -36,6 +42,14 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return LogoutRounded;
 		case AppIcons.settings:
 			return SettingsRounded;
+		case AppIcons.shoppingBag:
+			return ShoppingBagRounded;
+		case AppIcons.people:
+			return PeopleRounded;
+		case AppIcons.receiptLong:
+			return ReceiptLongRounded;
+		case AppIcons.notifications:
+			return NotificationsRounded;
 
 		// Money
 		case AppIcons.currencyExchange:

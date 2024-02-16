@@ -4,29 +4,22 @@ import DashboardPage from '../../features/user/dashboard/ui/DashboardPage';
 import HomePage from '../home/ui/HomePage';
 import ProfilePage from '../../features/user/profile/ui/ProfilePage';
 import SettingsPage from '../../features/user/settings/ui/SettingsPage';
+import MerchantsPage from '../../features/merchants/ui/MerchantsPage';
+import PeoplePage from '../../features/people/ui/PeoplePage';
+import TransactionsPage from '../../features/transactions/ui/TransactionsPage';
+import ActivityPage from '../../features/activity/ui/ActivityPage';
 
 const browserRouter = createBrowserRouter(
 	[
-		{
-			path: Routes.HOME,
-			element: <HomePage />,
-		},
-		{
-			path: Routes.DASHBOARD,
-			element: <DashboardPage />,
-		},
-		{
-			path: Routes.PROFILE,
-			element: <ProfilePage />,
-		},
-		{
-			path: Routes.SETTINGS,
-			element: <SettingsPage />,
-		},
-		{
-			path: '*',
-			element: <h1>404! Page not found</h1>,
-		},
+		{ path: Routes.HOME, element: <HomePage /> },
+		{ path: Routes.DASHBOARD, element: <DashboardPage /> },
+		{ path: Routes.PROFILE, element: <ProfilePage /> },
+		{ path: Routes.SETTINGS, element: <SettingsPage /> },
+		{ path: Routes.TRANSACTIONS, element: <TransactionsPage /> },
+		{ path: Routes.MERCHANTS, element: <MerchantsPage /> },
+		{ path: Routes.PEOPLE, element: <PeoplePage /> },
+		{ path: Routes.Activity, element: <ActivityPage /> },
+		{ path: '*', element: <h1>404! Page not found</h1> },
 	],
 	{ basename: '/' }
 );

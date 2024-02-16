@@ -15,11 +15,6 @@ export class MenuData {
 			icon: AppIcons.settings,
 			route: Routes.SETTINGS,
 		},
-		// {
-		// 	label: 'Logout',
-		// 	icon: AppIcons.logout,
-		// 	action: AppActions.LOGOUT,
-		// },
 	];
 
 	public static readonly drawerMenuItems: MenuItemModel[] = [
@@ -32,6 +27,21 @@ export class MenuData {
 			label: 'Transactions',
 			icon: AppIcons.currencyExchange,
 			route: Routes.TRANSACTIONS,
+		},
+		{
+			label: 'Merchants',
+			icon: AppIcons.shoppingBag,
+			route: Routes.MERCHANTS,
+		},
+		{
+			label: 'People',
+			icon: AppIcons.people,
+			route: Routes.PEOPLE,
+		},
+		{
+			label: 'Activity',
+			icon: AppIcons.receiptLong,
+			route: Routes.Activity,
 		},
 	];
 
