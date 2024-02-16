@@ -7,4 +7,6 @@ export type MenuItemModel = {
 	icon?: AppIcons;
 	route?: Routes;
 	action?: AppActions;
+	unseen?: boolean;
+	unseenCount?: number;
 };

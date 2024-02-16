@@ -8,6 +8,11 @@ import InfoTwoTone from '@mui/icons-material/InfoTwoTone';
 import CallTwoTone from '@mui/icons-material/CallTwoTone';
 import LogoutTwoTone from '@mui/icons-material/LogoutTwoTone';
 import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone';
+import CurrencyExchangeTwoTone from '@mui/icons-material/CurrencyExchangeTwoTone';
+import NotificationsTwoTone from '@mui/icons-material/NotificationsTwoTone';
+import PeopleTwoTone from '@mui/icons-material/PeopleTwoTone';
+import ReceiptLongTwoTone from '@mui/icons-material/ReceiptLongTwoTone';
+import StoreTwoTone from '@mui/icons-material/StoreTwoTone';
 
 // Util Imports
 import CloseTwoTone from '@mui/icons-material/CloseTwoTone';
@@ -35,6 +40,18 @@ const resolveTwoToneMuiIcon = (icon?: AppIcons) => {
 			return LogoutTwoTone;
 		case AppIcons.settings:
 			return SettingsTwoTone;
+		case AppIcons.store:
+			return StoreTwoTone;
+		case AppIcons.people:
+			return PeopleTwoTone;
+		case AppIcons.receiptLong:
+			return ReceiptLongTwoTone;
+		case AppIcons.notifications:
+			return NotificationsTwoTone;
+
+		// Money
+		case AppIcons.currencyExchange:
+			return CurrencyExchangeTwoTone;
 
 		// Util Icons
 		case AppIcons.close:

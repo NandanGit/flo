@@ -8,11 +8,14 @@ import {
 	Typography,
 } from '@mui/material';
 import { AppConstants } from '../../shared/constants/AppConstants';
-import { MenuData } from '../../shared/MenuData';
+import { MenuData } from '../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
 import { MenuItemModel } from '../../shared/models/MenuItemModel';
 import { AppIcon } from '../../shared/Icon';
+import { UnseenIndicator } from '../../shared/components/UnseenIndicator';
+import { sleep } from '../../utils/time';
+import { AppActions } from '../actions/AppActions';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -22,21 +25,24 @@ interface AppDrawerProps {
 const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 	const navigate = useNavigate();
 
-	const handleDrawerItemSelect = (item: MenuItemModel) => {
+	const handleDrawerItemSelect = async (item: MenuItemModel) => {
 		// Close the drawer
 		onDrawerToggle();
+		await sleep(200); // For the drawer to close
 		if (item.route) {
 			console.log('Navigating to:', item.route);
 			navigate(item.route);
 		} else if (item.action) {
 			// TODO: Run the action here
-			navigate(-1);
+			if (item.action === AppActions.LOGOUT) {
+				console.log('Logging out...(fake logout)');
+			}
 		} else {
 			console.error('No route or action provided for menu item:', item);
 		}
 	};
 
-	const createMenuItem = (item: MenuItemModel) => {
+	const createMenuItem = (item: MenuItemModel, showUnseen: boolean) => {
 		return (
 			<ListItem key={item.label} disablePadding>
 				<ListItemButton
@@ -45,6 +51,14 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 					}}
 					onClick={() => handleDrawerItemSelect(item)}
 				>
+					{showUnseen && (
+						<UnseenIndicator
+							unseen={item.unseen}
+							unseenCount={item.unseenCount}
+							// location='app-drawer'
+							space='large'
+						/>
+					)}
 					{AppIcon(item.icon, {
 						style: {
 							marginRight: '0.5rem',
@@ -132,9 +146,9 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 								</ListItemButton>
 							</ListItem>
 						))} */}
-						{MenuData.drawerMenuItems.map(createMenuItem)}
+						{MenuData.drawerMenuItems.map((item) => createMenuItem(item, true))}
 					</List>
-					<List>{createMenuItem(logoutMenuItem)}</List>
+					<List>{createMenuItem(logoutMenuItem, false)}</List>
 				</Box>
 			</Drawer>
 		</nav>

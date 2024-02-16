@@ -1,4 +1,4 @@
-import { AppPage } from '../../../../shared/AppPage';
+import { AppPage } from '../../../../shared/pages/AppPage';
 
 const ProfilePage: React.FC = () => {
 	return (

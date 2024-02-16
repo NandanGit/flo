@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { User } from '../shared/schemas/userSchema';
-import UserRepository from '../features/user/user/data/UserRepository';
+import UserRepository from '../features/user/data/UserRepository';
 
 const userRepo = new UserRepository();
 
