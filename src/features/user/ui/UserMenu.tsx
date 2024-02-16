@@ -1,8 +1,9 @@
 import { Divider, Menu, MenuItem } from '@mui/material';
-import { MenuData } from './MenuData';
+import { MenuData } from '../../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
-import { AppIcon } from './Icon';
-import { MenuItemModel } from './models/MenuItemModel';
+import { AppIcon } from '../../../shared/Icon';
+import { MenuItemModel } from '../../../shared/models/MenuItemModel';
+import { UnseenIndicator } from '../../../shared/components/UnseenIndicator';
 
 interface UserMenuProps {
 	anchorEl: HTMLElement | null;
@@ -27,9 +28,21 @@ const UserMenu: React.FC<UserMenuProps> = ({
 
 	const logoutMenuItem = MenuData.logoutMenuItem;
 
-	const createMenuItem = (item: MenuItemModel) => {
+	const createMenuItem = (
+		item: MenuItemModel,
+		showUnseen: boolean,
+		showLargerUnseen: boolean
+	) => {
 		return (
 			<MenuItem onClick={() => handleMenuItemSelect(item)}>
+				{showUnseen && (
+					<UnseenIndicator
+						unseen={item.unseen}
+						unseenCount={item.unseenCount}
+						// location='user-menu'
+						space={showLargerUnseen ? 'large' : 'medium'}
+					/>
+				)}
 				{AppIcon(item.icon, {
 					style: {
 						marginRight: '0.6rem',
@@ -43,19 +56,14 @@ const UserMenu: React.FC<UserMenuProps> = ({
 				>
 					{item.label}
 				</span>
-				{/* <ListItemIcon>
-						{AppIcon(item.icon, { fontSize: 'medium' })}
-					</ListItemIcon>
-					<ListItemText
-						style={{
-							fontSize: '0.7rem',
-						}}
-					>
-						{item.label}
-					</ListItemText> */}
 			</MenuItem>
 		);
 	};
+
+	const atLeastOneUnseen = MenuData.userMenuItems.some((item) => item.unseen);
+	const atLeaseOneLargerUnseen = MenuData.userMenuItems.some(
+		(item) => item.unseenCount && item.unseenCount > 1000
+	);
 
 	return (
 		<Menu
@@ -73,9 +81,11 @@ const UserMenu: React.FC<UserMenuProps> = ({
 			open={Boolean(userMenuAnchorEl)}
 			onClose={handleCloseUserMenu}
 		>
-			{...MenuData.userMenuItems.map(createMenuItem)}
+			{...MenuData.userMenuItems.map((item) =>
+				createMenuItem(item, atLeastOneUnseen, atLeaseOneLargerUnseen)
+			)}
 			<Divider />
-			{createMenuItem(logoutMenuItem)}
+			{createMenuItem(logoutMenuItem, false, false)}
 		</Menu>
 	);
 };

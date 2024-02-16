@@ -7,13 +7,13 @@ import {
 	Typography,
 } from '@mui/material';
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { AppConstants } from './constants/AppConstants';
-import UserMenu from './UserMenu';
-import AppDrawer from '../common/navigation/AppDrawer';
+import { AppConstants } from '../constants/AppConstants';
+import UserMenu from '../../features/user/ui/UserMenu';
+import AppDrawer from '../../common/navigation/AppDrawer';
 import { useNavigate } from 'react-router-dom';
-import { AppIcon, AppIcons } from './Icon';
-import { useUserMocker } from '../mockers/userMocker';
-import { Placeholder } from './Placeholder';
+import { AppIcon, AppIcons } from '../Icon';
+import { useUserMocker } from '../../mockers/userMocker';
+import { Placeholder } from '../components/Placeholder';
 
 export interface AppPageProps {
 	children: React.ReactNode;

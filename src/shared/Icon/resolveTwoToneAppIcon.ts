@@ -8,6 +8,11 @@ import InfoTwoTone from '@mui/icons-material/InfoTwoTone';
 import CallTwoTone from '@mui/icons-material/CallTwoTone';
 import LogoutTwoTone from '@mui/icons-material/LogoutTwoTone';
 import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone';
+import CurrencyExchangeTwoTone from '@mui/icons-material/CurrencyExchangeTwoTone';
+import NotificationsTwoTone from '@mui/icons-material/NotificationsTwoTone';
+import PeopleTwoTone from '@mui/icons-material/PeopleTwoTone';
+import ReceiptLongTwoTone from '@mui/icons-material/ReceiptLongTwoTone';
+import StoreTwoTone from '@mui/icons-material/StoreTwoTone';
 
 // Util Imports
 import CloseTwoTone from '@mui/icons-material/CloseTwoTone';
@@ -16,13 +21,6 @@ import ChevronRightTwoTone from '@mui/icons-material/ChevronRightTwoTone';
 import SearchTwoTone from '@mui/icons-material/SearchTwoTone';
 
 import { AppIcons } from './AppIcons';
-import {
-	ShoppingBagTwoTone,
-	PeopleTwoTone,
-	ReceiptLongTwoTone,
-	NotificationsTwoTone,
-	CurrencyExchangeTwoTone,
-} from '@mui/icons-material';
 
 const resolveTwoToneMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
@@ -42,8 +40,8 @@ const resolveTwoToneMuiIcon = (icon?: AppIcons) => {
 			return LogoutTwoTone;
 		case AppIcons.settings:
 			return SettingsTwoTone;
-		case AppIcons.shoppingBag:
-			return ShoppingBagTwoTone;
+		case AppIcons.store:
+			return StoreTwoTone;
 		case AppIcons.people:
 			return PeopleTwoTone;
 		case AppIcons.receiptLong:

@@ -7,7 +7,7 @@ export enum AppIcons {
 	call = 'call',
 	logout = 'logout',
 	settings = 'settings',
-	shoppingBag = 'shopping_bag',
+	store = 'store',
 	people = 'people',
 	receiptLong = 'receipt_long',
 	notifications = 'notifications',

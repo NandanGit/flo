@@ -8,11 +8,12 @@ import {
 	Typography,
 } from '@mui/material';
 import { AppConstants } from '../../shared/constants/AppConstants';
-import { MenuData } from '../../shared/MenuData';
+import { MenuData } from '../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
 import { MenuItemModel } from '../../shared/models/MenuItemModel';
 import { AppIcon } from '../../shared/Icon';
+import { UnseenIndicator } from '../../shared/components/UnseenIndicator';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -45,6 +46,12 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 					}}
 					onClick={() => handleDrawerItemSelect(item)}
 				>
+					<UnseenIndicator
+						unseen={item.unseen}
+						unseenCount={item.unseenCount}
+						// location='app-drawer'
+						space='large'
+					/>
 					{AppIcon(item.icon, {
 						style: {
 							marginRight: '0.5rem',

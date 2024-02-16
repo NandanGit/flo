@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppPage } from '../../../shared/AppPage';
+import { AppPage } from '../../../shared/pages/AppPage';
 
 const HomePage: React.FC = () => {
 	// Your homepage logic here

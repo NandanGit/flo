@@ -8,6 +8,11 @@ import InfoRounded from '@mui/icons-material/InfoRounded';
 import CallRounded from '@mui/icons-material/CallRounded';
 import LogoutRounded from '@mui/icons-material/LogoutRounded';
 import SettingsRounded from '@mui/icons-material/SettingsRounded';
+import CurrencyExchangeRounded from '@mui/icons-material/CurrencyExchangeRounded';
+import NotificationsRounded from '@mui/icons-material/NotificationsRounded';
+import PeopleRounded from '@mui/icons-material/PeopleRounded';
+import ReceiptLongRounded from '@mui/icons-material/ReceiptLongRounded';
+import StoreRounded from '@mui/icons-material/StoreRounded';
 
 // Util Imports
 import CloseRounded from '@mui/icons-material/CloseRounded';
@@ -16,13 +21,6 @@ import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
-import {
-	CurrencyExchangeRounded,
-	NotificationsRounded,
-	PeopleRounded,
-	ReceiptLongRounded,
-	ShoppingBagRounded,
-} from '@mui/icons-material';
 
 const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
@@ -42,8 +40,8 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return LogoutRounded;
 		case AppIcons.settings:
 			return SettingsRounded;
-		case AppIcons.shoppingBag:
-			return ShoppingBagRounded;
+		case AppIcons.store:
+			return StoreRounded;
 		case AppIcons.people:
 			return PeopleRounded;
 		case AppIcons.receiptLong:

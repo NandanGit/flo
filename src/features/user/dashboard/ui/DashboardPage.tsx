@@ -10,7 +10,7 @@ import {
 	Card,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { AppPage } from '../../../../shared/AppPage';
+import { AppPage } from '../../../../shared/pages/AppPage';
 
 const DashboardPage: React.FC = () => {
 	const [dialogIsOpen, setDialogIsOpen] = useState(false);
