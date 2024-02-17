@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { flo } from './axios';
-import { APIGetOptions, APIPaginationOptions } from '../types/api';
-import { ZodObjectSchema } from '../types/zod';
+import { APIGetOptions, APIPaginationOptions } from '../shared/types/api';
+import { ZodObjectSchema } from '../shared/types/zod';
 
 export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 	constructor(

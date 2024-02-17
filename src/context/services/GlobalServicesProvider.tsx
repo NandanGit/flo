@@ -1,4 +1,4 @@
-import { PeopleService } from '../../shared/services/PeopleService';
+import { PeopleService } from '../../services/PeopleService';
 import { GlobalServicesContext } from './GlobalServicesContext';
 import { ServicesContext } from './ServicesContext';
 

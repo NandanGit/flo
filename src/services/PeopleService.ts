@@ -1,8 +1,8 @@
 // PeopleService class should extend ApiService class
 
-import { APIConstants } from '../constants/APIConstants';
-import personSchema, { Person } from '../schemas/personSchema';
-import { APIResponse } from '../types/api';
+import { APIConstants } from '../shared/constants/APIConstants';
+import personSchema, { Person } from '../shared/schemas/personSchema';
+import { APIResponse } from '../shared/types/api';
 import { ApiService } from './ApiService';
 
 export class PeopleService extends ApiService<typeof personSchema, Person> {
