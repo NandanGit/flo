@@ -6,7 +6,7 @@ import {
 	Toolbar,
 	Typography,
 } from '@mui/material';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AppConstants } from '../constants/AppConstants';
 import UserMenu from '../../features/user/ui/UserMenu';
 import AppDrawer from '../../common/navigation/AppDrawer';
@@ -33,6 +33,10 @@ export const AppPage: React.FC<AppPageProps> = ({
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		document.title = title + ' | ' + AppConstants.name;
+	}, [title]);
 
 	useLayoutEffect(() => {
 		if (appBarRef.current) {
