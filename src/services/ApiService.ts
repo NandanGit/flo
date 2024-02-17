@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { flo } from './axios';
+import { flo } from '../shared/third-party/axios';
 import { APIGetOptions, APIPaginationOptions } from '../shared/types/api';
 import { ZodObjectSchema } from '../shared/types/zod';
 

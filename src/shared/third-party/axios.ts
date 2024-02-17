@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { APIConstants } from '../shared/constants/APIConstants';
+import { APIConstants } from '../constants/APIConstants';
 
 // Create a custom Axios object with default configuration
 export const flo: AxiosInstance = axios.create({

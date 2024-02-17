@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 
 import userSchema, { User } from '../../../shared/schemas/userSchema';
 import { APIConstants } from '../../../shared/constants/APIConstants';
-import { flo, cancelTokenSource } from '../../../services/axios';
+import { flo, cancelTokenSource } from '../../../shared/third-party/axios';
 
 export class UserRepository {
 	private userData: User | null = null;
