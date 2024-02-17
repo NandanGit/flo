@@ -1,72 +1,75 @@
 {
 	"transactions": [
 		{
-			"id": "d4a3e8c2-7b6f-4e9e-9e9d-6e8b7a5d4c3b",
+			"id": "39456bb2-06b9-47c5-88a8-4c28eb7574f0",
 			"title": "Salary",
 			"description": "Monthly salary",
 			"amount": 5000,
 			"type": "income",
-			"date": "2022-09-01T12:34:56Z"
+			"date": "2022-09-01T12:34:56Z",
+			"currency": "INR"
 		},
 		{
-			"id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+			"id": "29496714-8f33-463e-b626-4e890b45ebfe",
 			"title": "Rent",
 			"description": "Monthly rent payment",
 			"amount": 1000,
 			"type": "expense",
-			"date": "2022-09-05T09:15:30Z"
+			"date": "2022-09-05T09:15:30Z",
+			"currency": "INR"
 		},
 		{
-			"id": "q1w2e3r4-t5y6u7i8-o9p0a1s2d3f4g",
+			"id": "24955e51-665e-4ec1-bd4d-c9e759a5d8ef",
 			"title": "Groceries",
 			"description": "Weekly grocery shopping",
 			"amount": 200,
 			"type": "expense",
-			"date": "2022-09-07T18:45:00Z"
+			"date": "2022-09-07T18:45:00Z",
+			"currency": "INR"
 		}
 	],
 	"people": [
 		{
-			"id": "d4a3e8c2-7b6f-4e9e-9e9d-6e8b7a5d4c3b",
+			"id": "8f2ca0a4-8f95-4077-8362-db20e76fc4e8",
 			"name": "Jay"
 		},
 		{
-			"id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+			"id": "caba9e17-edbd-4033-941b-be2d56e4e0e0",
 			"name": "Navadeep"
 		},
 		{
-			"id": "q1w2e3r4-t5y6u7i8-o9p0a1s2d3f4g",
+			"id": "2454b189-8046-4eea-a8b9-18ecd0a738d8",
 			"name": "Sreeram"
 		},
 		{
-			"id": "r1t2y3u4-i5o6p7a8-s9d0f1g2h3j4k",
+			"id": "e05e22b8-49f9-4ac9-abd3-c92b357cb55f",
 			"name": "Abdul"
 		},
 		{
-			"id": "l1m2n3o4-p5a6s7d8-f9g0h1j2k3l4",
+			"id": "7653a595-0f97-40c6-90ef-ff3814a59503",
 			"name": "Keerthi"
 		},
 		{
-			"id": "m1n2b3v4-c5x6z7a8-s9d0f1g2h3j4",
+			"id": "765d7ab4-871d-4cab-bf9c-508b227393a0",
 			"name": "Ramya"
 		}
 	],
 	"merchants": [
 		{
-			"id": "m1n2b3v4-c5x6z7a8-s9d0f1g2h3j4",
+			"id": "10874599-a882-42df-a58d-af732afbd51a",
 			"name": "Amazon"
 		},
 		{
-			"id": "z1x2c3v4-b5n6m7a8-s9d0f1g2h3j4k",
+			"id": "18b18b65-abdb-437a-9628-7c5b210d6aa9",
 			"name": "Raja Rani Ruchulu"
 		},
 		{
-			"id": "p1o2i3u4-y5t6r7e8-w9q0a1s2d3f4g",
+			"id": "5a6a7467-825c-4eec-a5da-821ac378b0f4",
 			"name": "Swiggy"
 		}
 	],
 	"user": {
-		"id": "u1i2d3-u4s5e6r7-i8d9",
+		"id": "74570e1b-b3d4-427a-9f8e-c55a507d1ffb",
 		"name": "Nandan Reddy",
 		"email": "nandan.reddy@flo.com",
 		"phone": "9876543210",

@@ -1,8 +1,7 @@
-// PeopleService class should extend ApiService class
-
 import { APIConstants } from '../shared/constants/APIConstants';
 import personSchema, { Person } from '../shared/schemas/personSchema';
 import { APIResponse } from '../shared/types/api';
+import { ExcludeId } from '../shared/types/common';
 import { ApiService } from './ApiService';
 
 export class PeopleService extends ApiService<typeof personSchema, Person> {
@@ -20,10 +19,11 @@ export class PeopleService extends ApiService<typeof personSchema, Person> {
 
 	search = super.search;
 
-	addPerson = async (person: Person) => super.add<APIResponse<Person>>(person);
+	addPerson = async (person: ExcludeId<Person>) =>
+		super.add<APIResponse<Person>>(person);
 
 	// // TODO: Implement this in the backend
-	// addPeople = async (people: Person[]) =>
+	// addPeople = async (people: ExcludeId<Person>[]) =>
 	// 	super.addMany<APIResponse<Person[]>>(people);
 
 	updatePerson = async (id: string, person: Partial<Person>) =>

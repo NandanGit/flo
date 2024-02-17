@@ -2,13 +2,16 @@ import { z } from 'zod';
 import { flo } from '../shared/third-party/axios';
 import { APIGetOptions, APIPaginationOptions } from '../shared/types/api';
 import { ZodObjectSchema } from '../shared/types/zod';
+import { ExcludeId } from '../shared/types/common';
 
 export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 	constructor(
 		protected baseUrl: string,
 		protected schema: S,
 		protected defaultPaginationOptions: Required<APIPaginationOptions>,
-		protected preValidationProcessor: (data: object) => object = (_) => _
+		protected preValidationProcessor: (
+			data: Record<string, string | number | boolean>
+		) => object = (_) => _
 	) {
 		this.baseUrl = baseUrl;
 		this.schema = schema;
@@ -70,14 +73,14 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 		}
 	}
 
-	protected async add<T>(data: D): Promise<T> {
-		this.schema.parse(data);
+	protected async add<T>(data: ExcludeId<D>): Promise<T> {
+		this.schema.omit({ id: true }).array().parse(data);
 		const { data: responseData } = await flo.post(this.baseUrl, data);
 		return responseData as T;
 	}
 
-	protected async addMany<T>(data: D[]): Promise<T> {
-		this.schema.array().parse(data);
+	protected async addMany<T>(data: ExcludeId<D>[]): Promise<T> {
+		this.schema.omit({ id: true }).array().parse(data);
 		const { data: responseData } = await flo.post(this.baseUrl, data);
 		return responseData as T;
 	}
@@ -99,6 +102,13 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 
 	protected async remove<T>(id: string): Promise<T> {
 		const { data: responseData } = await flo.delete(`${this.baseUrl}/${id}`);
+		return responseData as T;
+	}
+
+	protected async removeMany<T>(ids: string[]): Promise<T> {
+		const { data: responseData } = await flo.delete(this.baseUrl, {
+			data: ids,
+		});
 		return responseData as T;
 	}
 }

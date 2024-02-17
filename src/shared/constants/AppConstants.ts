@@ -19,4 +19,6 @@ export class AppConstants {
 		'AUD',
 		'CAD',
 	] as const;
+
+	public static readonly transactionTypes = ['income', 'expense'] as const;
 }

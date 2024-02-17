@@ -1,7 +1,8 @@
 import { z } from 'zod';
+import zodId from './ZodId';
 
 const personSchema = z.object({
-	id: z.string(),
+	id: zodId('Invalid person id'),
 	name: z.string(),
 });
 

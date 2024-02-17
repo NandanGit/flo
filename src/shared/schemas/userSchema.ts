@@ -1,8 +1,9 @@
 import { z } from 'zod';
 import { AppConstants } from '../constants/AppConstants';
+import zodId from './ZodId';
 
 const userSchema = z.object({
-	id: z.string(),
+	id: zodId('Invalid user id'),
 	name: z.string(),
 	email: z.string().email(),
 	phone: z.string().min(10).max(10),
