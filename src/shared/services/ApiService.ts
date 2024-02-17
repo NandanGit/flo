@@ -1,8 +1,9 @@
-import { ZodSchema, z } from 'zod';
+import { z } from 'zod';
 import { flo } from './axios';
 import { APIGetOptions, APIPaginationOptions } from '../types/api';
+import { ZodObjectSchema } from '../types/zod';
 
-export class ApiService<S extends ZodSchema, D = z.infer<S>> {
+export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 	constructor(
 		protected baseUrl: string,
 		protected schema: S,
@@ -67,5 +68,37 @@ export class ApiService<S extends ZodSchema, D = z.infer<S>> {
 			console.error('Error:', (error as Error).message);
 			return null;
 		}
+	}
+
+	protected async add<T>(data: D): Promise<T> {
+		this.schema.parse(data);
+		const { data: responseData } = await flo.post(this.baseUrl, data);
+		return responseData as T;
+	}
+
+	protected async addMany<T>(data: D[]): Promise<T> {
+		this.schema.array().parse(data);
+		const { data: responseData } = await flo.post(this.baseUrl, data);
+		return responseData as T;
+	}
+
+	protected async update<T>(id: string, data: Partial<D>): Promise<T> {
+		this.schema.partial().parse(data);
+		const { data: responseData } = await flo.patch(
+			`${this.baseUrl}/${id}`,
+			data
+		);
+		return responseData as T;
+	}
+
+	protected async addOrUpdate<T>(id: string, data: D): Promise<T> {
+		this.schema.parse(data);
+		const { data: responseData } = await flo.put(`${this.baseUrl}/${id}`, data);
+		return responseData as T;
+	}
+
+	protected async remove<T>(id: string): Promise<T> {
+		const { data: responseData } = await flo.delete(`${this.baseUrl}/${id}`);
+		return responseData as T;
 	}
 }

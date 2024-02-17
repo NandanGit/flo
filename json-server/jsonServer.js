@@ -18,6 +18,7 @@ server.use((req, res, next) => {
 server.use(allowRouteMethods('/user', ['GET']));
 
 server.use(router);
+
 const PORT = 3001;
 server.listen(PORT, () => {
 	console.log('JSON Server is running on port:', PORT);
