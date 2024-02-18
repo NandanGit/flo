@@ -15,14 +15,10 @@ export class TransactionsService extends ApiService<
 			APIConstants.transactions,
 			transactionSchema,
 			APIConstants.defaultTransactionsPaginationOptions,
-			(data) => {
-				// data.date = new Date(data.date)
-				// return data;
-				return {
-					...data,
-					date: new Date(data.date as string),
-				};
-			}
+			(data) => ({
+				...data,
+				date: new Date(data.date as string),
+			})
 		);
 	}
 
