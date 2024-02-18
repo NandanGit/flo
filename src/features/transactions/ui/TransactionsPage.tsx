@@ -11,7 +11,7 @@ const TransactionsPage: React.FC = () => {
 		transactionsService.getTransactions().then((transaction) => {
 			if (cancelled) return;
 			console.log(
-				'People:',
+				'Transactions:',
 				transaction?.map((t) => t.title)
 			);
 		});
