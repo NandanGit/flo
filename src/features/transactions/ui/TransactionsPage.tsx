@@ -8,13 +8,24 @@ const TransactionsPage: React.FC = () => {
 	useEffect(() => {
 		let cancelled = false;
 		console.clear();
-		transactionsService.getTransactions().then((transaction) => {
-			if (cancelled) return;
-			console.log(
-				'Transactions:',
-				transaction?.map((t) => t.title)
-			);
-		});
+		transactionsService
+			.getTransactions(
+				{
+					type: 'expense',
+					q: 'food',
+				},
+				{
+					start: 0,
+					limit: 1000,
+				}
+			)
+			.then((transaction) => {
+				if (cancelled) return;
+				console.log(
+					'Transactions:',
+					transaction?.map((t) => t.title)
+				);
+			});
 
 		return () => {
 			cancelled = true;

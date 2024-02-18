@@ -12,7 +12,7 @@ const MerchantsPage: React.FC = () => {
 			if (cancelled) return;
 			console.log(
 				'Merchants:',
-				merchants?.map((m) => m.name)
+				merchants?.map((m) => m.id)
 			);
 		});
 
