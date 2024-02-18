@@ -1,4 +1,14 @@
 {
+	"user": {
+		"id": "1668aa5e-477f-496b-a17e-e07882d569b0",
+		"name": "Ernest Treutel",
+		"email": "Cortney.Bernhard44@gmail.com",
+		"phone": "8685533702",
+		"preferredCurrency": "INR",
+		"avatar": "https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png",
+		"createdAt": "2023-08-19T04:35:12.554Z",
+		"updatedAt": "2024-02-18T14:01:35.361Z"
+	},
 	"people": [
 		{
 			"id": "d2d9ffe7-eed8-43a9-9767-f125599bbc66",
@@ -4056,15 +4066,5 @@
 			"from": "self",
 			"to": "76eab12d-ab6a-4d8f-a2a3-5f3916903779"
 		}
-	],
-	"user": {
-		"id": "1668aa5e-477f-496b-a17e-e07882d569b0",
-		"name": "Ernest Treutel",
-		"email": "Cortney.Bernhard44@gmail.com",
-		"phone": "8685533702",
-		"preferredCurrency": "INR",
-		"avatar": "https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png",
-		"createdAt": "2023-08-19T04:35:12.554Z",
-		"updatedAt": "2024-02-18T14:01:35.361Z"
-	}
+	]
 }
