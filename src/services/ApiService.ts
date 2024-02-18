@@ -44,7 +44,8 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 	protected async get(
 		// options?: APIGetOptions,
 		options?: APIGetOptions<D>,
-		paginationOptions?: APIPaginationOptions
+		paginationOptions?: APIPaginationOptions,
+		isArrayResult: boolean = true
 	): Promise<D[] | null> {
 		const { start, limit } = {
 			...this.defaultPaginationOptions,
@@ -59,13 +60,16 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 			queryString += `_start=${start}&_limit=${limit}`;
 
 			const { data } = await flo.get(this.baseUrl + queryString);
+
 			// Process before validation
-			if (!Array.isArray(data)) {
+			if (!Array.isArray(data) && isArrayResult) {
 				throw new Error('Data is not an array');
 			}
-			const processedData = data.map(this.preValidationProcessor);
+			const processedData = isArrayResult
+				? data.map(this.preValidationProcessor)
+				: this.preValidationProcessor(data);
 			// Validate the data
-			this.schema.array().parse(processedData);
+			(isArrayResult ? this.schema.array() : this.schema).parse(processedData);
 
 			return processedData as D[];
 		} catch (error) {
