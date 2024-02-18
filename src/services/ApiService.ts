@@ -23,7 +23,7 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 		query: string,
 		paginationOptions?: APIPaginationOptions
 	): Promise<D[] | null> {
-		return await this.get({ q: query }, paginationOptions);
+		return await this.get({ q: query } as APIGetOptions<D>, paginationOptions);
 	}
 
 	protected async getById(id: string): Promise<D | null> {
@@ -42,7 +42,8 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 	}
 
 	protected async get(
-		options?: APIGetOptions,
+		// options?: APIGetOptions,
+		options?: APIGetOptions<D>,
 		paginationOptions?: APIPaginationOptions
 	): Promise<D[] | null> {
 		const { start, limit } = {
@@ -52,7 +53,7 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 		try {
 			let queryString = '?';
 			for (const key in options) {
-				queryString += `${key}=${options[key]}&`;
+				queryString += `${key}=${options[key as keyof APIGetOptions<D>]}&`;
 			}
 
 			queryString += `_start=${start}&_limit=${limit}`;
