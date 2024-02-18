@@ -1,0 +1,27 @@
+{
+	"name": "playground",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"faker:db": "node faker/db.js",
+		"faker:db:watch": "nodemon faker/db.js",
+		"faker:transactions": "node faker/transactions.js",
+		"faker:transactions:watch": "nodemon faker/transactions.js",
+		"faker:people": "node faker/people.ts",
+		"faker:people:watch": "nodemon faker/people.ts",
+		"faker:merchants": "node faker/merchants.ts",
+		"faker:merchants:watch": "nodemon faker/merchants.ts"
+	},
+	"keywords": [],
+	"author": "Nandan Reddy",
+	"license": "ISC",
+	"dependencies": {
+		"ts-node": "^10.9.2"
+	},
+	"devDependencies": {
+		"@types/faker": "^5.5.9",
+		"faker": "^5.5.3",
+		"nodemon": "^3.0.3"
+	}
+}
