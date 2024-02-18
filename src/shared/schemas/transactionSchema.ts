@@ -9,7 +9,13 @@ const transactionSchema = z.object({
 	amount: z.number().min(0),
 	currency: z.enum(AppConstants.availableCurrencies),
 	type: z.enum(AppConstants.transactionTypes),
+	recipientType: z.enum(AppConstants.transactionRecipientTypes),
+	status: z.enum(AppConstants.transactionStatuses),
+	mode: z.enum(AppConstants.transactionModes),
+	categories: z.array(z.enum(AppConstants.transactionCategories)),
 	date: z.date(),
+	from: z.string(),
+	to: z.string(),
 });
 
 export type Transaction = z.infer<typeof transactionSchema>;
