@@ -8,7 +8,6 @@ const merchantSchema = z.object({
 	logo: z.string().url().optional(),
 	description: z.string().optional(),
 	category: z.string().optional(),
-	tags: z.array(z.string()).optional(),
 });
 
 export type Merchant = z.infer<typeof merchantSchema>;
