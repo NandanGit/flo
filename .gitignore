@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Custom
+playground/
+fake_data/**/generated/*
+!fake_data/**/generated/.keep

@@ -19,4 +19,36 @@ export class AppConstants {
 		'AUD',
 		'CAD',
 	] as const;
+
+	public static readonly transactionTypes = ['income', 'expense'] as const;
+
+	public static readonly transactionRecipientTypes = [
+		'merchant',
+		'peer',
+		'other',
+	] as const;
+
+	public static readonly transactionStatuses = [
+		'pending',
+		'completed',
+		'failed',
+	] as const;
+
+	public static readonly transactionModes = [
+		'cash',
+		'card',
+		'upi',
+		'net_banking',
+	] as const;
+
+	public static readonly transactionCategories = [
+		'food',
+		'groceries',
+		'clothing',
+		'entertainment',
+		'health',
+		'education',
+		'gifts',
+		'other',
+	] as const;
 }
