@@ -15,6 +15,10 @@ server.use((req, res, next) => {
 	);
 });
 
+// server.use((_, res) => {
+// 	return res.status(403).send('Forbidden');
+// });
+
 server.use(allowRouteMethods('/user', ['GET']));
 
 server.use(router);
