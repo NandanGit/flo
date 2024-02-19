@@ -11,8 +11,8 @@ const generateFakeUser = () => ({
 	preferredCurrency: 'INR',
 	avatar:
 		'https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png',
-	createdAt: faker.date.past(),
-	updatedAt: faker.date.recent(),
+	createdAt: faker.date.past().getTime(),
+	updatedAt: faker.date.recent().getTime(),
 });
 
 module.exports = {

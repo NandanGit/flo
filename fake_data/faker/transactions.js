@@ -46,7 +46,7 @@ const generateFakeTransaction = (personIds, merchantIds) => {
 			AppConstants.transactionCategories,
 			gaussianRandom(1, 5)
 		),
-		date: faker.date.past(),
+		timestamp: faker.date.past().getTime(),
 		from: from,
 		to: to,
 	};
