@@ -8,11 +8,8 @@ const useUserState = () => {
 	const userProfile = useAppSelector((state) => state.user.profile);
 
 	const loadUserProfile = useCallback(() => {
-		console.debug('Loading user profile');
+		console.debug('Loading user profile...');
 		dispatch(fetchUserProfile());
-		return () => {
-			console.debug('Cleaning up user profile');
-		};
 	}, [dispatch]);
 
 	useEffect(() => {
