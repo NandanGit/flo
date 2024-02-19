@@ -1,25 +1,25 @@
-import { useEffect } from 'react';
+import useUserState from '../../../../redux/hooks/useUserState';
 import { AppPage } from '../../../../shared/pages/AppPage';
-import { useServices } from '../../../../hooks/useServices';
 
 const ProfilePage: React.FC = () => {
-	const { userService } = useServices();
+	const { userProfile, userStatus } = useUserState();
+	console.log('ProfilePage', userProfile, userStatus);
 
-	useEffect(() => {
-		let cancelled = false;
-		// console.clear();
-		userService.getProfile().then((profile) => {
-			if (cancelled) return;
-			console.log('Profile:', profile);
-		});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [userService]);
 	return (
 		<AppPage title='Profile'>
 			<h1>Profile</h1>
+			{userStatus === 'loading' && <p>Loading...</p>}
+			{userStatus === 'failed' && <p>Failed to load profile</p>}
+			{userStatus === 'succeeded' && (
+				<>
+					<p>
+						<strong>Username:</strong> {userProfile?.name}
+					</p>
+					<p>
+						<strong>Email:</strong> {userProfile?.email}
+					</p>
+				</>
+			)}
 		</AppPage>
 	);
 };
