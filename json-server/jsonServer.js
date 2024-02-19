@@ -10,8 +10,8 @@ server.use((req, res, next) => {
 	// Log the request summary in a single line
 	console.log(`${req.method} ${req.path}`);
 	setTimeout(
-		next
-		// 2000 // Add a 2-second delay
+		next,
+		1000 // Add a 1-second delay
 	);
 });
 
