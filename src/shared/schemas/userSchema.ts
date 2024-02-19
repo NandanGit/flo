@@ -9,8 +9,8 @@ const userSchema = z.object({
 	phone: z.string().min(10).max(10),
 	preferredCurrency: z.enum(AppConstants.availableCurrencies),
 	avatar: z.string().url(),
-	createdAt: z.date(),
-	updatedAt: z.date(),
+	createdAt: z.number().min(0).max(Date.now()).or(z.date()),
+	updatedAt: z.number().min(0).max(Date.now()).or(z.date()),
 });
 
 export type User = z.infer<typeof userSchema>;
