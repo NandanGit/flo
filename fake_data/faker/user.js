@@ -10,7 +10,7 @@ const generateFakeUser = () => ({
 	phone: faker.phone.phoneNumber('8#########'),
 	preferredCurrency: 'INR',
 	avatar:
-		'https://www.researchgate.net/publication/324536193/figure/fig2/AS:615902089338880@1523853909708/The-4-SR-results-compared-with-all-the-competing-methods.png',
+		'https://media.istockphoto.com/id/108177208/photo/girls.jpg?s=612x612&w=0&k=20&c=91jZtoUXwpgiiYwbqr7ceOvuE3eDeQJEc5-4npQwDtE=',
 	createdAt: faker.date.past().getTime(),
 	updatedAt: faker.date.recent().getTime(),
 });
