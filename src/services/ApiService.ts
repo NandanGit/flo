@@ -37,7 +37,7 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 			return processedData as D;
 		} catch (error) {
 			console.error('Error:', (error as Error).message);
-			return null;
+			throw error;
 		}
 	}
 
@@ -74,7 +74,7 @@ export class ApiService<S extends ZodObjectSchema, D = z.infer<S>> {
 			return processedData as D[];
 		} catch (error) {
 			console.error('Error:', (error as Error).message);
-			return null;
+			throw error;
 		}
 	}
 
