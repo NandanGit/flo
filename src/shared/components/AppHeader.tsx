@@ -1,11 +1,12 @@
 import { AppBar, Toolbar, IconButton, Typography, Avatar } from '@mui/material';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppDrawer from '../../common/navigation/AppDrawer';
 import UserMenu from '../../features/user/ui/UserMenu';
 import { AppIcon, AppIcons } from '../Icon';
 import { Placeholder } from './Placeholder';
 import { AppConstants } from '../constants/AppConstants';
+import useUserState from '../../redux/hooks/useUserState';
 
 interface AppHeaderProps {
 	title?: React.ReactNode | string;
@@ -23,7 +24,13 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
 	const navigate = useNavigate();
 
-	const user = true; //useUserMocker();
+	// const userProfile = true; //useUserMocker();
+	const { loadUserProfile, userProfile, userStatus } = useUserState();
+	console.log('userProfile:', userProfile);
+	console.log('userStatus:', userStatus);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(loadUserProfile, []);
 
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
@@ -40,6 +47,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 	const canGoBack = () => {
 		return false; // TODO: Fix this
 	};
+
 	return (
 		<React.Fragment>
 			<div ref={appBarRef as React.RefObject<HTMLDivElement>}>
@@ -99,11 +107,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 								onClick={handleOpenUserMenu}
 								color='inherit'
 							>
-								<Placeholder loading={!user} variant='circular'>
+								<Placeholder loading={!userProfile} variant='circular'>
 									<Avatar
-										alt='User'
-										src='#'
-										// src={user?.avatar}
+										alt={userProfile?.name || 'User'}
+										// src='#'
+										src={userProfile?.avatar}
 									/>
 								</Placeholder>
 							</IconButton>
