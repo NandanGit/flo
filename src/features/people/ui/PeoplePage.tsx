@@ -1,29 +1,29 @@
-import { useEffect } from 'react';
+import { List, ListItem, ListItemText } from '@mui/material';
 import { AppPage } from '../../../shared/pages/AppPage';
-import { useServices } from '../../../hooks/useServices';
+import { usePeoplePageView } from '../PeoplePageView';
+import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
 
 const PeoplePage: React.FC = () => {
-	const { peopleService } = useServices();
-
-	useEffect(() => {
-		let cancelled = false;
-		// console.clear();
-		peopleService.getPeople().then((people) => {
-			if (cancelled) return;
-			console.log(
-				'People:',
-				people?.map((p) => p.name)
-			);
-		});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [peopleService]);
-
+	const { people, peopleAreLoading, peopleStatus, loadPeople } =
+		usePeoplePageView();
 	return (
 		<AppPage title='People'>
-			<h1>People</h1>
+			<RefreshHeader
+				title='People'
+				dataStatus={peopleStatus}
+				onRefresh={loadPeople}
+			/>
+			{peopleAreLoading ? (
+				<p>Loading...</p>
+			) : (
+				<List>
+					{people.map((person) => (
+						<ListItem key={person.id}>
+							<ListItemText primary={person.name} />
+						</ListItem>
+					))}
+				</List>
+			)}
 		</AppPage>
 	);
 };

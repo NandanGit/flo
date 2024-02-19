@@ -34,7 +34,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 				<AppBar
 					position='static'
 					style={{
-						minHeight: '5rem',
+						minHeight: '4rem',
 					}}
 				>
 					<Toolbar>

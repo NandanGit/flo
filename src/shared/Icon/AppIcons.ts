@@ -22,4 +22,5 @@ export enum AppIcons {
 	// chevronDown = 'chevron_down',
 	// chevronUp = 'chevron_up',
 	search = 'search',
+	refresh = 'refresh',
 }

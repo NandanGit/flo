@@ -1,29 +1,24 @@
-import { useEffect } from 'react';
-import { useServices } from '../../../hooks/useServices';
+import { List, ListItem, ListItemText } from '@mui/material';
+import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
 import { AppPage } from '../../../shared/pages/AppPage';
+import { useMerchantsPageView } from '../MerchantsPageView';
 
 const MerchantsPage: React.FC = () => {
-	const { merchantsService } = useServices();
-
-	useEffect(() => {
-		let cancelled = false;
-		// console.clear();
-		merchantsService.getMerchants().then((merchants) => {
-			if (cancelled) return;
-			console.log(
-				'Merchants:',
-				merchants?.map((m) => m.id)
-			);
-		});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [merchantsService]);
-
+	const { merchantsStatus, merchants, loadMerchants } = useMerchantsPageView();
 	return (
 		<AppPage title='Merchants'>
-			<h1>Merchants</h1>
+			<RefreshHeader
+				title='Merchants'
+				dataStatus={merchantsStatus}
+				onRefresh={loadMerchants}
+			/>
+			<List>
+				{merchants.map((merchant) => (
+					<ListItem key={merchant.id}>
+						<ListItemText primary={merchant.name} />
+					</ListItem>
+				))}
+			</List>
 		</AppPage>
 	);
 };

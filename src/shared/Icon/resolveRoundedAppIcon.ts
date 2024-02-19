@@ -21,6 +21,7 @@ import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
+import { RefreshRounded } from '@mui/icons-material';
 
 const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
@@ -62,6 +63,8 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return ChevronRightRounded;
 		case AppIcons.search:
 			return SearchRounded;
+		case AppIcons.refresh:
+			return RefreshRounded;
 		default: {
 			console.error('No icon found for:', icon);
 			return QuestionMarkRounded;

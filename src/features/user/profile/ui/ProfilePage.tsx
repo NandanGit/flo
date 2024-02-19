@@ -3,7 +3,6 @@ import { AppPage } from '../../../../shared/pages/AppPage';
 
 const ProfilePage: React.FC = () => {
 	const { userProfile, userStatus } = useUserState();
-	console.log('ProfilePage', userProfile, userStatus);
 
 	return (
 		<AppPage title='Profile'>

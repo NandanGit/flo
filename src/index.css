@@ -12,8 +12,8 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 
-	backdrop-filter: blur(0.25rem);
-	-webkit-backdrop-filter: blur(0.25rem);
+	backdrop-filter: blur(0.1rem);
+	-webkit-backdrop-filter: blur(0.1rem);
 
 	color: rgb(220, 220, 220);
 	font-family: 'Roboto', sans-serif;
