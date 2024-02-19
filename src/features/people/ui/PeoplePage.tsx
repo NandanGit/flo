@@ -1,34 +1,18 @@
-import { Box, IconButton, List, ListItem } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import { AppPage } from '../../../shared/pages/AppPage';
 import { usePeoplePageView } from '../PeoplePageView';
-import { AppIcon, AppIcons } from '../../../shared/Icon';
-import { LoadingSpinner } from '../../../shared/components/LoadingSpinner/LoadingSpinner';
+import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
 
 const PeoplePage: React.FC = () => {
-	const { people, peopleAreLoading, loadPeople } = usePeoplePageView();
+	const { people, peopleAreLoading, peopleStatus, loadPeople } =
+		usePeoplePageView();
 	return (
 		<AppPage title='People' useStaticGlassBackground={true}>
-			<Box display='flex' justifyContent='space-between' alignItems='start'>
-				<h2>People</h2>
-				<IconButton
-					disabled={peopleAreLoading}
-					size='small'
-					onClick={loadPeople}
-					sx={{
-						width: '2rem',
-						height: '2rem',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					{peopleAreLoading ? (
-						<LoadingSpinner loading={true} />
-					) : (
-						AppIcon(AppIcons.refresh)
-					)}
-				</IconButton>
-			</Box>
+			<RefreshHeader
+				title='People'
+				dataStatus={peopleStatus}
+				onRefresh={loadPeople}
+			/>
 			{peopleAreLoading ? (
 				<p>Loading...</p>
 			) : (
