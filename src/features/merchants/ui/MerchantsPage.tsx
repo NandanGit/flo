@@ -7,7 +7,7 @@ const MerchantsPage: React.FC = () => {
 
 	useEffect(() => {
 		let cancelled = false;
-		console.clear();
+		// console.clear();
 		merchantsService.getMerchants().then((merchants) => {
 			if (cancelled) return;
 			console.log(

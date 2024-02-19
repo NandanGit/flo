@@ -7,7 +7,7 @@ const PeoplePage: React.FC = () => {
 
 	useEffect(() => {
 		let cancelled = false;
-		console.clear();
+		// console.clear();
 		peopleService.getPeople().then((people) => {
 			if (cancelled) return;
 			console.log(

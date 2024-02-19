@@ -7,7 +7,7 @@ const TransactionsPage: React.FC = () => {
 
 	useEffect(() => {
 		let cancelled = false;
-		console.clear();
+		// console.clear();
 		transactionsService
 			.getTransactions(
 				{

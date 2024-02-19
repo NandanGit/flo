@@ -7,7 +7,7 @@ const ProfilePage: React.FC = () => {
 
 	useEffect(() => {
 		let cancelled = false;
-		console.clear();
+		// console.clear();
 		userService.getProfile().then((profile) => {
 			if (cancelled) return;
 			console.log('Profile:', profile);
