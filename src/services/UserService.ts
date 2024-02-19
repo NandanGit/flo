@@ -13,8 +13,8 @@ export class UserService extends ApiService<typeof userSchema, User> {
 			},
 			(data) => ({
 				...data,
-				createdAt: new Date(data.createdAt as string),
-				updatedAt: new Date(data.updatedAt as string),
+				// createdAt: new Date(data.createdAt as string),
+				// updatedAt: new Date(data.updatedAt as string),
 			})
 		);
 	}

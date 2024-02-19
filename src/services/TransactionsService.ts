@@ -17,7 +17,7 @@ export class TransactionsService extends ApiService<
 			APIConstants.defaultTransactionsPaginationOptions,
 			(data) => ({
 				...data,
-				date: new Date(data.date as string),
+				// date: new Date(data.date as string),
 			})
 		);
 	}
