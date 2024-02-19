@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AppConstants } from '../constants/AppConstants';
-import AppHeader from '../components/AppHeader';
+import AppHeader from '../components/AppHeader/AppHeader';
 
 export interface AppPageProps {
 	children: React.ReactNode;

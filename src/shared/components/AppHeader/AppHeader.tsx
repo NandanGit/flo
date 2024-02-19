@@ -1,12 +1,11 @@
 import { AppBar, Toolbar, IconButton, Typography, Avatar } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AppDrawer from '../../common/navigation/AppDrawer';
-import UserMenu from '../../features/user/ui/UserMenu';
-import { AppIcon, AppIcons } from '../Icon';
-import { Placeholder } from './Placeholder';
-import { AppConstants } from '../constants/AppConstants';
-import useUserState from '../../redux/hooks/useUserState';
+import React, { useRef } from 'react';
+import AppDrawer from '../../../common/navigation/AppDrawer';
+import UserMenu from '../../../features/user/ui/UserMenu';
+import { AppIcon, AppIcons } from '../../Icon';
+import { Placeholder } from '../Placeholder';
+import { AppConstants } from '../../constants/AppConstants';
+import useAppHeaderView from './useAppHeaderView';
 
 interface AppHeaderProps {
 	title?: React.ReactNode | string;
@@ -17,36 +16,17 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 	title = AppConstants.name,
 	appBarRef,
 }) => {
-	const [userMenuAnchorEl, setUserMenuAnchorEl] = useState<null | HTMLElement>(
-		null
-	);
-	const [mobileOpen, setMobileOpen] = useState(false);
-
-	const navigate = useNavigate();
-
-	// const userProfile = true; //useUserMocker();
-	const { loadUserProfile, userProfile, userStatus } = useUserState();
-	console.log('userProfile:', userProfile);
-	console.log('userStatus:', userStatus);
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(loadUserProfile, []);
-
-	const handleDrawerToggle = () => {
-		setMobileOpen((prevState) => !prevState);
-	};
-
-	const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-		setUserMenuAnchorEl(event.currentTarget);
-	};
-
-	const handleCloseUserMenu = () => {
-		setUserMenuAnchorEl(null);
-	};
-
-	const canGoBack = () => {
-		return false; // TODO: Fix this
-	};
+	const {
+		userMenuAnchorEl,
+		mobileOpen,
+		userProfile,
+		userStatus,
+		navigate,
+		handleDrawerToggle,
+		handleOpenUserMenu,
+		handleCloseUserMenu,
+		canGoBack,
+	} = useAppHeaderView();
 
 	return (
 		<React.Fragment>
@@ -107,7 +87,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 								onClick={handleOpenUserMenu}
 								color='inherit'
 							>
-								<Placeholder loading={!userProfile} variant='circular'>
+								<Placeholder
+									loading={userStatus === 'loading'}
+									variant='circular'
+								>
 									<Avatar
 										alt={userProfile?.name || 'User'}
 										// src='#'
