@@ -1,40 +1,25 @@
-import { useEffect } from 'react';
-import { useServices } from '../../../hooks/useServices';
+import { List, ListItem, ListItemText } from '@mui/material';
+import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
 import { AppPage } from '../../../shared/pages/AppPage';
+import { useTransactionsPageView } from '../TransactionsPageView';
 
 const TransactionsPage: React.FC = () => {
-	const { transactionsService } = useServices();
-
-	useEffect(() => {
-		let cancelled = false;
-		// console.clear();
-		transactionsService
-			.getTransactions(
-				{
-					type: 'expense',
-					q: 'food',
-				},
-				{
-					start: 0,
-					limit: 1000,
-				}
-			)
-			.then((transaction) => {
-				if (cancelled) return;
-				console.log(
-					'Transactions:',
-					transaction?.map((t) => t.title)
-				);
-			});
-
-		return () => {
-			cancelled = true;
-		};
-	}, [transactionsService]);
-
+	const { transactionsStatus, transactions, loadTransactions } =
+		useTransactionsPageView();
 	return (
 		<AppPage title='Transactions'>
-			<h1>Transactions</h1>
+			<RefreshHeader
+				title='Transactions'
+				dataStatus={transactionsStatus}
+				onRefresh={loadTransactions}
+			/>
+			<List>
+				{transactions.map((transaction) => (
+					<ListItem key={transaction.id}>
+						<ListItemText primary={transaction.title} />
+					</ListItem>
+				))}
+			</List>
 		</AppPage>
 	);
 };
