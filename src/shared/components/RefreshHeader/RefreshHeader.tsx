@@ -29,15 +29,6 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 					alignItems: 'center',
 					justifyContent: 'center',
 					transform: 'scale(0.8)',
-					// transformOrigin: 'top right',
-					...(title
-						? {}
-						: {
-								// position: 'absolute',
-								// // top: '1rem',
-								// right: 0,
-								// marginRight: '1rem',
-						  }),
 				}}
 			>
 				{dataIsLoading ? (
@@ -64,7 +55,8 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 					? {}
 					: {
 							position: 'absolute',
-							right: '0.5rem',
+							top: 0,
+							right: '1rem',
 					  }
 			}
 			sx={{

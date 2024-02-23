@@ -36,6 +36,7 @@ export const AppPage: React.FC<AppPageProps> = ({
 				overflow: 'hidden',
 				height: containerHeight - 16,
 				padding: '1rem',
+				alignSelf: 'stretch',
 			}}
 		>
 			<Box
