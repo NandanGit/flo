@@ -1,20 +1,21 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { Box, Container, Paper } from '@mui/material';
+import { Box, Container, Paper, SxProps, Theme } from '@mui/material';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AppConstants } from '../constants/AppConstants';
 import AppHeader from '../components/AppHeader/AppHeader';
 
 export interface AppPageProps {
 	children: React.ReactNode;
-
-	title?: string | React.ReactElement;
 	useStaticGlassBackground?: boolean;
+	title?: string | React.ReactElement;
+	boxSx?: SxProps<Theme>;
 }
 
 export const AppPage: React.FC<AppPageProps> = ({
 	children,
 	title = AppConstants.name,
 	useStaticGlassBackground = false,
+	boxSx,
 }) => {
 	const appBarRef = useRef<HTMLDivElement>();
 	const [containerHeight, setContainerHeight] = useState(0);
@@ -41,6 +42,7 @@ export const AppPage: React.FC<AppPageProps> = ({
 				sx={{
 					height: '100%',
 					overflow: 'scroll',
+					...boxSx,
 				}}
 			>
 				{children}
@@ -65,7 +67,14 @@ export const AppPage: React.FC<AppPageProps> = ({
 								maxHeight: containerHeight,
 								paddingBottom: '2rem',
 						  }),
+					position: 'relative',
 					// paddingTop: '1rem',
+				}}
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'flex-start',
+					...boxSx,
 				}}
 			>
 				{content}

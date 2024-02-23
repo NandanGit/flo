@@ -37,15 +37,20 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						minHeight: '4rem',
 					}}
 				>
-					<Toolbar>
+					<Toolbar
+						style={{
+							paddingLeft: '0.5rem',
+							paddingRight: '0.5rem',
+							opacity: 0.8,
+						}}
+					>
 						{canGoBack() ? (
 							// Back button
 							<IconButton
-								size='large'
 								edge='start'
 								color='inherit'
 								aria-label='back-button'
-								sx={{ mr: 2 }}
+								sx={{ mr: 1 }}
 								onClick={() => navigate(-1)}
 							>
 								{AppIcon(AppIcons.chevronLeft)}
@@ -53,7 +58,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						) : null}
 						{/* Hamburger menu */}
 						<IconButton
-							size='large'
 							edge='start'
 							color='inherit'
 							aria-label='menu'
@@ -70,7 +74,16 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
 						{/* Title */}
 						{typeof title === 'string' ? (
-							<Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
+							<Typography
+								variant='h6'
+								component='div'
+								sx={{
+									flexGrow: 1,
+									overflow: 'hidden',
+									textOverflow: 'ellipsis',
+									whiteSpace: 'nowrap',
+								}}
+							>
 								{title}
 							</Typography>
 						) : (
@@ -80,7 +93,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						{/* Profile & Account */}
 						<div>
 							<IconButton
-								size='small'
 								aria-label='account of current user'
 								aria-controls='menu-appbar'
 								aria-haspopup='true'
@@ -94,7 +106,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 									<Avatar
 										alt={userProfile?.name || 'User'}
 										// src='#'
+										// src={undefined}
 										src={userProfile?.avatar}
+										sx={{
+											width: '1.8rem',
+											height: '1.8rem',
+										}}
 									/>
 								</Placeholder>
 							</IconButton>
@@ -112,109 +129,3 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 };
 
 export default AppHeader;
-
-// /**
-//  * Create app header component that can reused across the app
-//  */
-
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { AppIcon, AppIcons } from '../Icon';
-// import { AppConstants } from '../../common/constants/AppConstants';
-// import { useNavigate } from 'react-router-dom';
-// import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-// import { Box } from '@mui/system';
-// import { AppDrawer } from '../../common/navigation/AppDrawer';
-// import { useAppSelector } from '../../app/hooks';
-// import { selectUser } from '../../features/user/userSlice';
-// import { AppActions } from '../../common/actions/AppActions';
-// import { MenuItemModel } from '../models/MenuItemModel';
-// import { UnseenIndicator } from './UnseenIndicator';
-// import { sleep } from '../../utils/time';
-
-// export interface AppHeaderProps {
-// 	title?: string;
-// }
-
-// export const AppHeader: React.FC<AppHeaderProps> = ({
-// 	title = AppConstants.name,
-// }) => {
-// 	const navigate = useNavigate();
-// 	const user = useAppSelector(selectUser);
-
-// 	const [mobileOpen, setMobileOpen] = React.useState(false);
-// 	const handleDrawerToggle = () => {
-// 		setMobileOpen(!mobileOpen);
-// 	};
-
-// 	const handleDrawerItemSelect = async (item: MenuItemModel) => {
-// 		// Close the drawer
-// 		setMobileOpen(false);
-// 		await sleep(200); // For the drawer to close
-// 		if (item.route) {
-// 			console.log('Navigating to:', item.route);
-// 			navigate(item.route);
-// 		} else if (item.action) {
-// 			if (item.action === AppActions.LOGOUT) {
-// 				console.log('Logging out...(fake logout)');
-// 			}
-// 		}
-// 	};
-
-// 	const createMenuItem = (item: MenuItemModel, showUnseen: boolean) => {
-// 		return (
-// 			<Box key={item.label} sx={{ textAlign: 'center' }}>
-// 				<Link to={item.route || ''} style={{ textDecoration: 'none' }}>
-// 					<IconButton onClick={() => handleDrawerItemSelect(item)}>
-// 						<AppIcon icon={item.icon || AppIcons.MENU} />
-// 					</IconButton>
-// 					<Typography variant='body1'>{item.label}</Typography>
-// 				</Link>
-// 				{showUnseen && (
-// 					<UnseenIndicator
-// 						unseen={item.unseen}
-// 						unseenCount={item.unseenCount}
-// 						// location='app-drawer'
-// 						space='large'
-// 					/>
-// 				)}
-// 			</Box>
-// 		);
-// 	};
-
-// 	return (
-// 		<AppBar position='fixed'>
-// 			<Toolbar>
-// 				<IconButton
-// 					edge='start'
-// 					color='inherit'
-// 					aria-label='menu'
-// 					onClick={handleDrawerToggle}
-// 				>
-// 					<AppIcon icon={AppIcons.MENU} />
-// 				</IconButton>
-// 				<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-// 					{title}
-// 				</Typography>
-// 				<Box>
-// 					{user && user.username && (
-// 						<IconButton
-// 							edge='end'
-// 							color='inherit'
-// 							aria-label='user'
-// 							onClick={() =>
-// 								handleDrawerItemSelect({
-// 									label: user.username,
-// 									action: AppActions.PROFILE,
-// 								})
-// 							}
-// 						>
-// 							<AppIcon icon={AppIcons.USER} />
-// 						</IconButton>
-// 					)}
-// 				</Box>
-// 			</Toolbar>
-// 			<AppDrawer open={mobileOpen} onDrawerToggle={handleDrawerToggle} />
-// 		</AppBar>
-// 	);
-// };

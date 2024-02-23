@@ -1,6 +1,6 @@
 export class AppConstants {
 	// Details of the app
-	public static readonly name = 'Flo';
+	public static readonly name = 'flo';
 	public static readonly version = '1.0.0';
 	public static readonly description = 'Finance Manager';
 	public static readonly author = 'Nandan Reddy';
