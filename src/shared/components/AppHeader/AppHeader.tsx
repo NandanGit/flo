@@ -108,10 +108,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 										// src='#'
 										// src={undefined}
 										src={userProfile?.avatar}
-										sx={{
-											width: '1.8rem',
-											height: '1.8rem',
-										}}
 									/>
 								</Placeholder>
 							</IconButton>

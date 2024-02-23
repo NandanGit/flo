@@ -9,12 +9,14 @@ interface RefreshHeaderProps {
 	title?: React.ReactNode;
 	dataStatus: ReduxDataStatus;
 	onRefresh: () => void;
+	actions?: React.ReactNode[];
 }
 
 const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 	title,
 	dataStatus,
 	onRefresh,
+	actions = [],
 }) => {
 	const dataIsLoading = dataStatus === 'loading';
 	const refreshIconButton = (
@@ -28,7 +30,7 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
-					transform: 'scale(0.8)',
+					// transform: 'scale(0.8)',
 				}}
 			>
 				{dataIsLoading ? (
@@ -43,7 +45,7 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 			</IconButton>
 		</>
 	);
-	// if (!title) return refreshIconButton;
+	const actionButtons = [...actions, refreshIconButton];
 	return (
 		<Box
 			display='flex'
@@ -64,7 +66,17 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 				alignSelf: 'stretch',
 			}}
 		>
-			{refreshIconButton}
+			<Box
+				display='flex'
+				alignItems='center'
+				style={{
+					// border: '1px solid teal',
+					padding: '0.5rem',
+				}}
+			>
+				{...actionButtons}
+			</Box>
+
 			{title && (
 				<Placeholder loading={dataIsLoading}>
 					{typeof title === 'string' ? (

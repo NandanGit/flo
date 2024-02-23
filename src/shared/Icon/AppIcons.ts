@@ -23,4 +23,6 @@ export enum AppIcons {
 	// chevronUp = 'chevron_up',
 	search = 'search',
 	refresh = 'refresh',
+	tableRows = 'table_rows',
+	viewModule = 'view_module',
 }

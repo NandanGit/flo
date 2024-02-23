@@ -70,6 +70,39 @@ export const glassThemeDark = createTheme({
 		},
 		// Icon Button with glassmorphism effect
 		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					transform: 'scale(0.8)',
+				},
+			},
+			defaultProps: {
+				size: 'small',
+			},
+		},
+		// Toggle Button Group with glassmorphism effect
+		MuiToggleButtonGroup: {
+			styleOverrides: {
+				root: {
+					backgroundColor: 'rgba(80, 80, 80, 0.25)',
+					backdropFilter: 'blur(0.5rem)',
+					// border: '0.8px solid rgba(128, 128, 128, 0.05)',
+					border: 0,
+					borderRadius: '0.25rem',
+					boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+					padding: '0.25rem',
+				},
+			},
+		},
+		// Toggle Button with glassmorphism effect
+		MuiToggleButton: {
+			styleOverrides: {
+				root: {
+					// transform: 'scale(0.8)',
+					border: 0,
+					borderRadius: '0.25rem',
+					padding: '0.25rem',
+				},
+			},
 			defaultProps: {
 				size: 'small',
 			},
