@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, IconButton, Typography, Avatar } from '@mui/material';
+import {
+	AppBar,
+	Toolbar,
+	IconButton,
+	Typography,
+	Avatar,
+	Box,
+} from '@mui/material';
 import React, { useRef } from 'react';
 import AppDrawer from '../../../common/navigation/AppDrawer';
 import UserMenu from '../../../features/user/ui/UserMenu';
@@ -6,6 +13,7 @@ import { AppIcon, AppIcons } from '../../Icon';
 import { Placeholder } from '../Placeholder';
 import { AppConstants } from '../../constants/AppConstants';
 import useAppHeaderView from './useAppHeaderView';
+import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
 
 interface AppHeaderProps {
 	title?: React.ReactNode | string;
@@ -91,7 +99,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						)}
 
 						{/* Profile & Account */}
-						<div>
+
+						<Box display='flex' alignItems='center'>
+							<LanguageSelector />
 							<IconButton
 								aria-label='account of current user'
 								aria-controls='menu-appbar'
@@ -119,7 +129,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 								anchorEl={userMenuAnchorEl}
 								handleCloseMenu={handleCloseUserMenu}
 							/>
-						</div>
+						</Box>
 					</Toolbar>
 				</AppBar>
 			</div>
