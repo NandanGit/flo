@@ -1,3 +1,6 @@
+import { Locale } from '../../services/language/Locale';
+import { LocaleCode } from '../enums/Locale';
+
 export class AppConstants {
 	// Details of the app
 	public static readonly name = 'flo';
@@ -6,8 +9,28 @@ export class AppConstants {
 	public static readonly author = 'Nandan Reddy';
 	public static readonly year = '2024';
 
-	// API URL
-	// public static readonly apiUrl = 'http://localhost:3000';
+	// Data
+	public static readonly englishLocale: Locale = {
+		code: LocaleCode.EN,
+		name: 'English',
+		nativeName: 'English',
+		isDownloaded: true,
+	};
+	public static readonly locales: Locale[] = [
+		this.englishLocale,
+		{
+			code: LocaleCode.TE,
+			name: 'Telugu',
+			nativeName: 'తెలుగు',
+			isDownloaded: false,
+		},
+		{
+			code: LocaleCode.HI,
+			name: 'Hindi',
+			nativeName: 'हिंदी',
+			isDownloaded: false,
+		},
+	];
 
 	// Other constants
 	public static readonly availableCurrencies = [
