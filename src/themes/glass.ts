@@ -78,7 +78,7 @@ export const glassThemeDark = createTheme({
 		MuiMenuItem: {
 			styleOverrides: {
 				root: {
-					margin: '0 0.5rem',
+					margin: '0.1rem 0.6rem',
 					borderRadius: '0.5rem',
 				},
 			},
