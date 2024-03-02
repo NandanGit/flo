@@ -87,9 +87,9 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 					>
 						{MenuData.getDrawerMenuItems(loc).map((item) => (
 							<CustomClickableListItem
+								key={item.label}
 								item={item}
 								showUnseen
-								key={item.label}
 								onClick={() => handleDrawerItemSelect(item)}
 							/>
 						))}

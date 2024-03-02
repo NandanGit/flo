@@ -54,6 +54,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 		>
 			{...userMenuItems.map((item) => (
 				<CustomMenuItem
+					key={item.label}
 					item={item}
 					showUnseen={atLeastOneUnseen}
 					showLargerUnseen={atLeaseOneLargerUnseen}
