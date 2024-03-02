@@ -1,11 +1,13 @@
+import useLoc from '../../../../hooks/useLoc';
 import { AppPage } from '../../../../shared/pages/AppPage';
 import useSettingsPageView from '../SettingsPageView';
 
 const SettingsPage: React.FC = () => {
 	useSettingsPageView();
+	const loc = useLoc();
 	return (
-		<AppPage title='Settings'>
-			<h1>Settings</h1>
+		<AppPage title={loc.sSettings}>
+			<h1>{loc.sSettings}</h1>
 		</AppPage>
 	);
 };

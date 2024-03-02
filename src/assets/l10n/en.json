@@ -14,12 +14,12 @@
 	"sLoading": {
 		"text": "Loading {entity}...",
 		"placeholders": ["entity"],
-		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc.)"
+		"description": "This message is displayed when the app is loading a specific entity (`Profile` | `Transactions` | `Merchants` etc.)\n@example\nloc.sLoading(s.sProfile) // Loading Profile...\nloc.sLoading(s.sTransactions) // Loading Transactions...\nloc.sLoading(s.sMerchants) // Loading Merchants..."
 	},
 	"sFailedToLoad": {
 		"text": "Failed to load {entity}",
 		"placeholders": ["entity"],
-		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc.)"
+		"description": "This message is displayed when the app failed to load a specific entity (`Profile` | `Transactions` | `Merchants` etc.)\n@example\nloc.sFailedToLoad(s.sProfile) // Failed to load Profile\nloc.sFailedToLoad(s.sTransactions) // Failed to load Transactions\nloc.sFailedToLoad(s.sMerchants) // Failed to load Merchants"
 	},
 	"sProfile": "Profile",
 	"sUsername": "Username",
@@ -35,5 +35,7 @@
 	"authForgotPassword": "Forgot password?",
 	"authConfirmPassword": "Confirm password",
 	"authResetPassword": "Reset password",
-	"authRememberMe": "Remember me"
+	"authRememberMe": "Remember me",
+
+	"trRecentTransactions": "Recent Transactions"
 }

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppIcon } from '../../../shared/Icon';
 import { MenuItemModel } from '../../../shared/models/MenuItemModel';
 import { UnseenIndicator } from '../../../shared/components/UnseenIndicator';
+import useLoc from '../../../hooks/useLoc';
 
 interface UserMenuProps {
 	anchorEl: HTMLElement | null;
@@ -15,6 +16,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 	handleCloseMenu: handleCloseUserMenu,
 }) => {
 	const navigate = useNavigate();
+	const loc = useLoc();
 
 	const handleMenuItemSelect = (item: MenuItemModel) => {
 		if (item.route) {
@@ -26,7 +28,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 		}
 	};
 
-	const logoutMenuItem = MenuData.logoutMenuItem;
+	const logoutMenuItem = MenuData.getLogoutMenuItem(loc);
 
 	const createMenuItem = (
 		item: MenuItemModel,
@@ -60,8 +62,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
 		);
 	};
 
-	const atLeastOneUnseen = MenuData.userMenuItems.some((item) => item.unseen);
-	const atLeaseOneLargerUnseen = MenuData.userMenuItems.some(
+	const userMenuItems = MenuData.getUserMenuItems(loc);
+
+	const atLeastOneUnseen = userMenuItems.some((item) => item.unseen);
+	const atLeaseOneLargerUnseen = userMenuItems.some(
 		(item) => item.unseenCount && item.unseenCount > 1000
 	);
 
@@ -81,7 +85,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 			open={Boolean(userMenuAnchorEl)}
 			onClose={handleCloseUserMenu}
 		>
-			{...MenuData.userMenuItems.map((item) =>
+			{...userMenuItems.map((item) =>
 				createMenuItem(item, atLeastOneUnseen, atLeaseOneLargerUnseen)
 			)}
 			<Divider />

@@ -16,6 +16,7 @@ import { AppIcon } from '../../shared/Icon';
 import { UnseenIndicator } from '../../shared/components/UnseenIndicator';
 import { sleep } from '../../utils/time';
 import { AppActions } from '../actions/AppActions';
+import useLoc from '../../hooks/useLoc';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -24,6 +25,7 @@ interface AppDrawerProps {
 
 const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 	const navigate = useNavigate();
+	const loc = useLoc();
 
 	const handleDrawerItemSelect = async (item: MenuItemModel) => {
 		// Close the drawer
@@ -84,7 +86,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 		);
 	};
 
-	const logoutMenuItem = MenuData.logoutMenuItem;
+	const logoutMenuItem = MenuData.getLogoutMenuItem(loc);
 
 	return (
 		<nav>
@@ -134,7 +136,9 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 							flex: 1,
 						}}
 					>
-						{MenuData.drawerMenuItems.map((item) => createMenuItem(item, true))}
+						{MenuData.getDrawerMenuItems(loc).map((item) =>
+							createMenuItem(item, true)
+						)}
 					</List>
 					<List>{createMenuItem(logoutMenuItem, false)}</List>
 				</Box>

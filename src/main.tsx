@@ -7,14 +7,17 @@ import './index.css';
 import { GlobalServicesProvider } from './context/services/GlobalServicesProvider.tsx';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
+import { LocProvider } from './l10n/LocProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<GlobalServicesProvider>
-				<ThemeProvider theme={glassThemeDark}>
-					<App />
-				</ThemeProvider>
+				<LocProvider>
+					<ThemeProvider theme={glassThemeDark}>
+						<App />
+					</ThemeProvider>
+				</LocProvider>
 			</GlobalServicesProvider>
 		</Provider>
 	</React.StrictMode>

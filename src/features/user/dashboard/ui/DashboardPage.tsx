@@ -11,13 +11,16 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { AppPage } from '../../../../shared/pages/AppPage';
+import useLoc from '../../../../hooks/useLoc';
 
 const DashboardPage: React.FC = () => {
 	const [dialogIsOpen, setDialogIsOpen] = useState(false);
 	const [count, setCount] = useState(0);
 
+	const loc = useLoc();
+
 	return (
-		<AppPage title='Dashboard'>
+		<AppPage title={loc.sDashboard}>
 			<Card style={{ padding: '1rem' }}>
 				<Button onClick={() => setDialogIsOpen(true)} color='primary'>
 					Open Counter
