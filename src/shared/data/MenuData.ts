@@ -2,17 +2,18 @@ import { AppActions } from '../../common/actions/AppActions';
 import { Routes } from '../../common/navigation/AppRoutes';
 import { AppIcons } from '../Icon';
 import { MenuItemModel } from '../models/MenuItemModel';
+import { Loc } from '../types/Loc';
 
 export class MenuData {
-	public static readonly userMenuItems: MenuItemModel[] = [
+	public static getUserMenuItems = (loc: Loc): MenuItemModel[] => [
 		{
-			label: 'Profile',
+			label: loc.sProfile,
 			icon: AppIcons.accountCircle,
 			route: Routes.PROFILE,
 			unseen: true,
 		},
 		{
-			label: 'Settings',
+			label: loc.sSettings,
 			icon: AppIcons.settings,
 			route: Routes.SETTINGS,
 			unseen: true,
@@ -20,31 +21,31 @@ export class MenuData {
 		},
 	];
 
-	public static readonly drawerMenuItems: MenuItemModel[] = [
+	public static getDrawerMenuItems = (loc: Loc): MenuItemModel[] => [
 		{
-			label: 'Dashboard',
+			label: loc.sDashboard,
 			icon: AppIcons.dashboard,
 			route: Routes.DASHBOARD,
 		},
 		{
-			label: 'Transactions',
+			label: loc.sTransactions,
 			icon: AppIcons.currencyExchange,
 			route: Routes.TRANSACTIONS,
 			unseen: true,
 		},
 		{
-			label: 'Merchants',
+			label: loc.sMerchants,
 			icon: AppIcons.store,
 			route: Routes.MERCHANTS,
 			unseen: true,
 		},
 		{
-			label: 'People',
+			label: loc.sPeople,
 			icon: AppIcons.people,
 			route: Routes.PEOPLE,
 		},
 		{
-			label: 'Activity',
+			label: loc.sActivity,
 			icon: AppIcons.receiptLong,
 			route: Routes.Activity,
 			unseen: true,
@@ -52,9 +53,9 @@ export class MenuData {
 		},
 	];
 
-	public static readonly logoutMenuItem: MenuItemModel = {
-		label: 'Logout',
+	public static getLogoutMenuItem = (loc: Loc): MenuItemModel => ({
+		label: loc.authLogout,
 		icon: AppIcons.logout,
 		action: AppActions.LOGOUT,
-	};
+	});
 }
