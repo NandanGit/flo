@@ -4,7 +4,7 @@ import { LocaleCode } from '../../enums/Locale';
 import LanguageManager from '../../../services/language/LanguageManager';
 import { sleep } from '../../../utils/time';
 
-const useLanguageSelector = () => {
+const useLanguageSelectorView = () => {
 	const [appLocale, setAppLocale] = useState(AppConstants.englishLocale.code);
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -50,4 +50,4 @@ const useLanguageSelector = () => {
 	};
 };
 
-export default useLanguageSelector;
+export default useLanguageSelectorView;

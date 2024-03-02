@@ -2,7 +2,7 @@ import { FormControl, MenuItem, Select, SelectProps } from '@mui/material';
 import React from 'react';
 import { AppConstants } from '../../constants/AppConstants';
 import { LocaleCode } from '../../enums/Locale';
-import useLanguageSelector from './LanguageSelectorView';
+import useLanguageSelectorView from './LanguageSelectorView';
 import { AppIcon, AppIcons } from '../../Icon';
 import LanguageManager from '../../../services/language/LanguageManager';
 
@@ -16,7 +16,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
 	...props
 }) => {
 	const { appLocale, onLocaleChange, menuOpen, openMenu } =
-		useLanguageSelector();
+		useLanguageSelectorView();
 
 	// console.log('appLocale:', appLocale);
 
