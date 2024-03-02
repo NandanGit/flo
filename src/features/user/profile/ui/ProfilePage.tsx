@@ -1,21 +1,24 @@
+import useLoc from '../../../../hooks/useLoc';
 import useUserState from '../../../../redux/hooks/useUserState';
 import { AppPage } from '../../../../shared/pages/AppPage';
 
 const ProfilePage: React.FC = () => {
 	const { userProfile, userStatus } = useUserState();
 
+	const loc = useLoc();
+
 	return (
-		<AppPage title='Profile' useStaticGlassBackground>
-			<h1>Profile</h1>
-			{userStatus === 'loading' && <p>Loading...</p>}
-			{userStatus === 'failed' && <p>Failed to load profile</p>}
+		<AppPage title={loc.sProfile} useStaticGlassBackground>
+			<h1>{loc.sProfile}</h1>
+			{userStatus === 'loading' && <p>{loc.sLoading(loc.sProfile)}</p>}
+			{userStatus === 'failed' && <p>{loc.sFailedToLoad(loc.sProfile)}</p>}
 			{userStatus === 'succeeded' && (
 				<>
 					<p>
-						<strong>Username:</strong> {userProfile?.name}
+						<strong>{loc.sUsername}:</strong> {userProfile?.name}
 					</p>
 					<p>
-						<strong>Email:</strong> {userProfile?.email}
+						<strong>{loc.sEmail}:</strong> {userProfile?.email}
 					</p>
 				</>
 			)}
