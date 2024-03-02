@@ -18,7 +18,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
 	const { appLocale, onLocaleChange, menuOpen, openMenu } =
 		useLanguageSelector();
 
-	console.log('appLocale:', appLocale);
+	// console.log('appLocale:', appLocale);
 
 	return (
 		<FormControl>

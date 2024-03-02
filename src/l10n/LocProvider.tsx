@@ -1,0 +1,24 @@
+import { LocalizationProvider, TranslationsJSON } from '@nandn/loc';
+import React from 'react';
+import enTranslations from '../assets/l10n/en.json';
+import teTranslations from '../../hosted/l10n/te.json';
+
+export interface LocProviderProps {
+	children: React.ReactNode;
+}
+
+const en: TranslationsJSON = enTranslations;
+const te: TranslationsJSON = teTranslations;
+export const LocProvider: React.FC<LocProviderProps> = ({ children }) => {
+	return (
+		<LocalizationProvider
+			config={{
+				defaultLang: 'en', //   === === === === === === === === === ===
+				curLang: 'en', //        This should be handled by redux later
+				languages: [en, te], // === === === === === === === === === ===
+			}}
+		>
+			{children}
+		</LocalizationProvider>
+	);
+};
