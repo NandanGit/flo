@@ -1,0 +1,39 @@
+{
+	"$schema": "../../node_modules/@nandn/loc/schemas/translationsSchema.json",
+
+	"@locale": "te",
+	"sActivity": "కార్యాచరణ",
+	"sMerchant": "వ్యాపారి",
+	"sMerchants": "వ్యాపారులు",
+	"sPerson": "వ్యక్తి",
+	"sPeople": "ప్రజలు",
+	"sTransaction": "లావాదేవీ",
+	"sTransactions": "లావాదేవీలు",
+	"sUser": "వాడుకరి",
+	"sDashboard": "డాష్బోర్డ్",
+	"sLoading": {
+		"text": "{entity} లోడ్ అవుతోంది...",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc)"
+	},
+	"sFailedToLoad": {
+		"text": "{entity} లోడ్ చేయడం విఫలమైంది",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc)"
+	},
+	"sProfile": "ప్రొఫైల్",
+	"sUsername": "వాడుకరి పేరు",
+	"sPassword": "పాస్వర్డ్",
+	"sEmail": "ఇమెయిల్",
+	"sFirstName": "మొదటి పేరు",
+	"sLastName": "చివరి పేరు",
+	"sSettings": "సెట్టింగ్లు",
+
+	"authLogin": "లాగిన్ అవ్వండి",
+	"authLogout": "లాగౌట్ అవ్వండి",
+	"authRegister": "నమోదు చేయండి",
+	"authForgotPassword": "పాస్వర్డ్ మరచిపోయారా?",
+	"authConfirmPassword": "పాస్వర్డ్ నిర్ధారించండి",
+	"authResetPassword": "పాస్వర్డ్ రీసెట్ చేయండి",
+	"authRememberMe": "నన్ను గుర్తుపెట్టుకో"
+}

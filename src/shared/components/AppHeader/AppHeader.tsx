@@ -103,7 +103,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						<Box display='flex' alignItems='center'>
 							<LanguageSelector />
 							<IconButton
-								aria-label='account of current user'
+								aria-label='profile of current user'
 								aria-controls='menu-appbar'
 								aria-haspopup='true'
 								onClick={handleOpenUserMenu}
