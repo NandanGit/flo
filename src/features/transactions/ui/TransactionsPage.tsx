@@ -9,14 +9,17 @@ const TransactionsPage: React.FC = () => {
 	return (
 		<AppPage title='Transactions'>
 			<RefreshHeader
-				title='Transactions'
+				title='Recent Transactions'
 				dataStatus={transactionsStatus}
 				onRefresh={loadTransactions}
 			/>
 			<List>
 				{transactions.map((transaction) => (
 					<ListItem key={transaction.id}>
-						<ListItemText primary={transaction.title} />
+						<ListItemText
+							primary={transaction.title}
+							// style={{ border: '1px solid teal' }}
+						/>
 					</ListItem>
 				))}
 			</List>

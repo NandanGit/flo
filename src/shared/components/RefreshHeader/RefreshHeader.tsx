@@ -1,10 +1,12 @@
-import { Box, IconButton } from '@mui/material';
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { Box, IconButton, Typography } from '@mui/material';
 import { ReduxDataStatus } from '../../../redux/slices/types/common';
 import { AppIcon, AppIcons } from '../../Icon';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
+import { Placeholder } from '../Placeholder';
 
 interface RefreshHeaderProps {
-	title: React.ReactNode;
+	title?: React.ReactNode;
 	dataStatus: ReduxDataStatus;
 	onRefresh: () => void;
 }
@@ -15,12 +17,10 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 	onRefresh,
 }) => {
 	const dataIsLoading = dataStatus === 'loading';
-	return (
-		<Box display='flex' justifyContent='space-between' alignItems='start'>
-			{typeof title === 'string' ? <h2>{title}</h2> : title}
+	const refreshIconButton = (
+		<>
 			<IconButton
 				disabled={dataIsLoading}
-				size='small'
 				onClick={onRefresh}
 				sx={{
 					width: '2rem',
@@ -28,14 +28,52 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
+					transform: 'scale(0.8)',
 				}}
 			>
 				{dataIsLoading ? (
 					<LoadingSpinner loading={true} />
 				) : (
-					AppIcon(AppIcons.refresh)
+					AppIcon(AppIcons.refresh, {
+						style: {
+							// border: '1px solid teal',
+						},
+					})
 				)}
 			</IconButton>
+		</>
+	);
+	// if (!title) return refreshIconButton;
+	return (
+		<Box
+			display='flex'
+			justifyContent='space-between'
+			alignItems='center'
+			flexDirection='row-reverse'
+			style={
+				title
+					? {}
+					: {
+							position: 'absolute',
+							top: 0,
+							right: '1rem',
+					  }
+			}
+			sx={{
+				// border: '1px solid teal',
+				alignSelf: 'stretch',
+			}}
+		>
+			{refreshIconButton}
+			{title && (
+				<Placeholder loading={dataIsLoading}>
+					{typeof title === 'string' ? (
+						<Typography variant='body1'>{title}</Typography>
+					) : (
+						title
+					)}
+				</Placeholder>
+			)}
 		</Box>
 	);
 };

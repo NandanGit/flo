@@ -23,4 +23,6 @@ export enum AppIcons {
 	// chevronUp = 'chevron_up',
 	search = 'search',
 	refresh = 'refresh',
+	checkCircleOutline = 'check_circle_outline',
+	downloadForOffline = 'download_for_offline',
 }

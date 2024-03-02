@@ -1,0 +1,39 @@
+{
+	"$schema": "../../../node_modules/@nandn/loc/schemas/translationsSchema.json",
+
+	"@locale": "en",
+	"sActivity": "Activity",
+	"sMerchant": "Merchant",
+	"sMerchants": "Merchants",
+	"sPerson": "Person",
+	"sPeople": "People",
+	"sTransaction": "Transaction",
+	"sTransactions": "Transactions",
+	"sUser": "User",
+	"sDashboard": "Dashboard",
+	"sLoading": {
+		"text": "Loading {entity}...",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc.)"
+	},
+	"sFailedToLoad": {
+		"text": "Failed to load {entity}",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc.)"
+	},
+	"sProfile": "Profile",
+	"sUsername": "Username",
+	"sPassword": "Password",
+	"sEmail": "Email",
+	"sFirstName": "First name",
+	"sLastName": "Last name",
+	"sSettings": "Settings",
+
+	"authLogin": "Login",
+	"authLogout": "Logout",
+	"authRegister": "Register",
+	"authForgotPassword": "Forgot password?",
+	"authConfirmPassword": "Confirm password",
+	"authResetPassword": "Reset password",
+	"authRememberMe": "Remember me"
+}

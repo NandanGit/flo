@@ -21,7 +21,11 @@ import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
 
 import { AppIcons } from './AppIcons';
-import { RefreshRounded } from '@mui/icons-material';
+import {
+	CheckCircleOutlineRounded,
+	DownloadForOfflineRounded,
+	RefreshRounded,
+} from '@mui/icons-material';
 
 const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 	switch (icon) {
@@ -65,6 +69,10 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return SearchRounded;
 		case AppIcons.refresh:
 			return RefreshRounded;
+		case AppIcons.checkCircleOutline:
+			return CheckCircleOutlineRounded;
+		case AppIcons.downloadForOffline:
+			return DownloadForOfflineRounded;
 		default: {
 			console.error('No icon found for:', icon);
 			return QuestionMarkRounded;

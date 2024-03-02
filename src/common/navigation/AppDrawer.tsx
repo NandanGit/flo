@@ -122,7 +122,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 						}}
 						onClick={() =>
 							handleDrawerItemSelect({
-								label: 'Home',
+								label: '',
 								route: Routes.HOME,
 							})
 						}
@@ -134,18 +134,6 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 							flex: 1,
 						}}
 					>
-						{/* {MenuData.drawerMenuItems.map((item) => (
-							<ListItem key={item.label} disablePadding>
-								<ListItemButton
-									sx={{
-										textAlign: 'center',
-									}}
-									onClick={() => handleDrawerItemSelect(item)}
-								>
-									<ListItemText primary={item.label} />
-								</ListItemButton>
-							</ListItem>
-						))} */}
 						{MenuData.drawerMenuItems.map((item) => createMenuItem(item, true))}
 					</List>
 					<List>{createMenuItem(logoutMenuItem, false)}</List>

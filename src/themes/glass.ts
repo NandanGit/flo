@@ -23,6 +23,9 @@ export const glassThemeDark = createTheme({
 	shape: {
 		borderRadius: 12,
 	},
+	typography: {
+		fontFamily: '"Varela Round", "M PLUS Rounded 1c",sans-serif',
+	},
 
 	components: {
 		// AppBar with glassmorphism effect
@@ -65,11 +68,17 @@ export const glassThemeDark = createTheme({
 				},
 			},
 		},
+		// Icon Button with glassmorphism effect
+		MuiIconButton: {
+			defaultProps: {
+				size: 'small',
+			},
+		},
 		// Menu with glassmorphism effect
 		MuiMenuItem: {
 			styleOverrides: {
 				root: {
-					margin: '0 0.5rem',
+					margin: '0.1rem 0.6rem',
 					borderRadius: '0.5rem',
 				},
 			},

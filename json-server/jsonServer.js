@@ -11,7 +11,7 @@ server.use((req, res, next) => {
 	console.log(`${req.method} ${req.path}`);
 	setTimeout(
 		next,
-		1000 // Add a 1-second delay
+		2000 // Add a 1-second delay
 	);
 });
 

@@ -5,7 +5,7 @@ const ProfilePage: React.FC = () => {
 	const { userProfile, userStatus } = useUserState();
 
 	return (
-		<AppPage title='Profile'>
+		<AppPage title='Profile' useStaticGlassBackground>
 			<h1>Profile</h1>
 			{userStatus === 'loading' && <p>Loading...</p>}
 			{userStatus === 'failed' && <p>Failed to load profile</p>}

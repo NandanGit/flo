@@ -1,0 +1,39 @@
+{
+	"$schema": "../../node_modules/@nandn/loc/schemas/translationsSchema.json",
+
+	"@locale": "hi",
+	"sActivity": "गतिविधि",
+	"sMerchant": "व्यापारी",
+	"sMerchants": "व्यापारियों",
+	"sPerson": "व्यक्ति",
+	"sPeople": "लोग",
+	"sTransaction": "लेन-देन",
+	"sTransactions": "लेनदेन",
+	"sUser": "उपयोगकर्ता",
+	"sDashboard": "डैशबोर्ड",
+	"sLoading": {
+		"text": "{entity} लोड हो रहा है...",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc.)"
+	},
+	"sFailedToLoad": {
+		"text": "{entity} लोड करने में विफल",
+		"placeholders": ["entity"],
+		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc.)"
+	},
+	"sProfile": "प्रोफ़ाइल",
+	"sUsername": "उपयोगकर्ता नाम",
+	"sPassword": "पासवर्ड",
+	"sEmail": "ईमेल",
+	"sFirstName": "पहला नाम",
+	"sLastName": "अंतिम नाम",
+	"sSettings": "सेटिंग्स",
+
+	"authLogin": "लॉग इन करें",
+	"authLogout": "लॉग आउट",
+	"authRegister": "पंजीकरण करें",
+	"authForgotPassword": "पासवर्ड भूल गए?",
+	"authConfirmPassword": "पासवर्ड की पुष्टि करें",
+	"authResetPassword": "पासवर्ड रीसेट करें",
+	"authRememberMe": "मुझे याद रखें"
+}

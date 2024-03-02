@@ -1,6 +1,11 @@
 import { APIPaginationOptions } from '../types/api';
+import { LocaleCode } from '../enums/Locale';
 
 export class APIConstants {
+	private static readonly languageDownloadUrlBase =
+		'https://raw.githubusercontent.com/NandanGit/flo/main/hosted/locales';
+	public static readonly getLanguageDownloadUrl = (localeCode: LocaleCode) =>
+		`${APIConstants.languageDownloadUrlBase}/${localeCode}.json`;
 	public static readonly baseUrl = 'http://localhost:3001';
 	public static readonly user = '/user';
 	public static readonly people = '/people';
