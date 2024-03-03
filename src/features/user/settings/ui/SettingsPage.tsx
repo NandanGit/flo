@@ -4,7 +4,6 @@ import useSettingsPageView from '../SettingsPageView';
 import SectionDivider from '../../../../shared/components/Sections/SectionDivider';
 import SectionContent from '../../../../shared/components/Sections/SectionContent';
 import SettingsSectionsPanel from './SettingsSectionsPanel';
-import { Typography } from '@mui/material';
 
 const SettingsPage: React.FC = () => {
 	useSettingsPageView();
@@ -25,6 +24,7 @@ const SettingsPage: React.FC = () => {
 				selectSection={selectSection}
 				selectedSection={selectedSection}
 				sections={sections}
+				// showSectionsInCard
 			/>
 			<SectionDivider />
 			<SectionContent sectionTitle='General Settings'>Hello</SectionContent>
