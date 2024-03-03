@@ -3,28 +3,21 @@ import React from 'react';
 import SectionTabsPanel from '../../../../shared/components/Sections/SectionTabsPanel';
 import CustomClickableListItem from '../../../../shared/components/custom/CustomClickableListItem';
 import { SettingsSection } from '../model/SettingsSection';
-import { SettingsMenuItemModel } from '../../../../shared/models/menu-item/SettingsMenuItemModel';
 import { AppConstants } from '../../../../shared/constants/AppConstants';
 import { useSettingsSectionsPanelView } from './SettingsSectionsPanelView';
 import AccountSettingsTabCard from './AccountSettingsTabCard';
 
 export interface SettingsSectionsPanelProps {
-	sections: SettingsMenuItemModel[];
-	selectedSection: SettingsSection;
-	selectSection: (section: SettingsSection) => void;
 	disabledSections?: SettingsSection[];
 	showSectionsInCard?: boolean;
 }
 
 const SettingsSectionsPanel: React.FC<SettingsSectionsPanelProps> = ({
-	sections,
-	selectSection,
-	selectedSection,
 	disabledSections = AppConstants.disabledSettingsSections,
 	showSectionsInCard = false,
 }) => {
-	const { accountSection, otherSections } =
-		useSettingsSectionsPanelView(sections);
+	const { accountSection, otherSections, selectSection, selectedSection } =
+		useSettingsSectionsPanelView();
 
 	const sectionItems = otherSections.map((section) => (
 		<CustomClickableListItem
