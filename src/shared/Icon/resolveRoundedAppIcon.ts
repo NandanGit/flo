@@ -24,6 +24,10 @@ import { AppIcons } from './AppIcons';
 import {
 	CheckCircleOutlineRounded,
 	DownloadForOfflineRounded,
+	FeedbackRounded,
+	HelpRounded,
+	LockPersonRounded,
+	ManageAccountsRounded,
 	RefreshRounded,
 } from '@mui/icons-material';
 
@@ -53,6 +57,14 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return ReceiptLongRounded;
 		case AppIcons.notifications:
 			return NotificationsRounded;
+		case AppIcons.manageAccounts:
+			return ManageAccountsRounded;
+		case AppIcons.lockPerson:
+			return LockPersonRounded;
+		case AppIcons.help:
+			return HelpRounded;
+		case AppIcons.feedback:
+			return FeedbackRounded;
 
 		// Money
 		case AppIcons.currencyExchange:

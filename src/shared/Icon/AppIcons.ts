@@ -11,6 +11,10 @@ export enum AppIcons {
 	people = 'people',
 	receiptLong = 'receipt_long',
 	notifications = 'notifications',
+	manageAccounts = 'manage_accounts',
+	lockPerson = 'lock_person',
+	help = 'help',
+	feedback = 'feedback',
 
 	// Money
 	currencyExchange = 'currency_exchange',
