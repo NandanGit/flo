@@ -22,7 +22,6 @@ const AccountSettingsTabCard: React.FC<AccountSettingsTabCardProps> = ({
 }) => {
 	const { userProfile, userStatus } = useUserState();
 	const theme = useTheme();
-	console.log('Primary: ', theme.palette.primary.dark);
 	const primaryDark = new RGBA(theme.palette.primary.dark);
 
 	return (
