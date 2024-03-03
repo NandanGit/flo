@@ -30,7 +30,9 @@ const SectionContent: React.FC<SectionContentProps> = ({
 		>
 			{sectionTitle &&
 				(typeof sectionTitle === 'string' ? (
-					<Typography variant='h5'>{sectionTitle}</Typography>
+					<Typography variant='h5' style={{ marginBottom: '1rem' }}>
+						{sectionTitle}
+					</Typography>
 				) : (
 					sectionTitle
 				))}
