@@ -1,7 +1,7 @@
 import { Divider, Menu } from '@mui/material';
 import { MenuData } from '../../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
-import { MenuItemModel } from '../../../shared/models/MenuItemModel';
+import { MenuItemModel } from '../../../shared/models/menu-item/MenuItemModel';
 import useLoc from '../../../hooks/useLoc';
 import CustomMenuItem from '../../../shared/components/custom/CustomMenuItem';
 

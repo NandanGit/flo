@@ -3,7 +3,7 @@ import { AppConstants } from '../../shared/constants/AppConstants';
 import { MenuData } from '../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
-import { MenuItemModel } from '../../shared/models/MenuItemModel';
+import { MenuItemModel } from '../../shared/models/menu-item/MenuItemModel';
 import { sleep } from '../../utils/time';
 import { AppActions } from '../actions/AppActions';
 import useLoc from '../../hooks/useLoc';

@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import { AppIcon } from '../../Icon';
 import { UnseenIndicator } from '../UnseenIndicator';
-import { MenuItemModel } from '../../models/MenuItemModel';
+import { MenuItemModel } from '../../models/menu-item/MenuItemModel';
 
 export interface CustomClickableListItemProps {
 	item: MenuItemModel;

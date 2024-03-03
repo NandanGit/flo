@@ -1,7 +1,7 @@
 import { AppActions } from '../../common/actions/AppActions';
 import { Routes } from '../../common/navigation/AppRoutes';
 import { AppIcons } from '../Icon';
-import { MenuItemModel } from '../models/MenuItemModel';
+import { MenuItemModel } from '../models/menu-item/MenuItemModel';
 import { Loc } from '../types/Loc';
 
 export class MenuData {
