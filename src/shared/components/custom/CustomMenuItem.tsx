@@ -2,10 +2,10 @@ import { MenuItem } from '@mui/material';
 import React from 'react';
 import { AppIcon } from '../../Icon';
 import { UnseenIndicator } from '../UnseenIndicator';
-import { MenuItemModel } from '../../models/menu-item/MenuItemModel';
+import { BaseMenuItemModel } from '../../models/menu-item/BaseMenuItemModel';
 
 export interface CustomMenuItemProps {
-	item: MenuItemModel;
+	item: BaseMenuItemModel;
 	showUnseen?: boolean;
 	showLargerUnseen?: boolean;
 	onClick: () => void;
