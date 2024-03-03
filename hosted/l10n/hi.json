@@ -13,13 +13,11 @@
 	"sDashboard": "डैशबोर्ड",
 	"sLoading": {
 		"text": "{entity} लोड हो रहा है...",
-		"placeholders": ["entity"],
-		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc.)"
+		"placeholders": ["entity"]
 	},
 	"sFailedToLoad": {
 		"text": "{entity} लोड करने में विफल",
-		"placeholders": ["entity"],
-		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc.)"
+		"placeholders": ["entity"]
 	},
 	"sProfile": "प्रोफ़ाइल",
 	"sUsername": "उपयोगकर्ता नाम",

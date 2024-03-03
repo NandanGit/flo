@@ -13,13 +13,11 @@
 	"sDashboard": "డాష్బోర్డ్",
 	"sLoading": {
 		"text": "{entity} లోడ్ అవుతోంది...",
-		"placeholders": ["entity"],
-		"description": "This message is displayed when the app is loading a specific entity (Profile, Transactions, Merchants, etc)"
+		"placeholders": ["entity"]
 	},
 	"sFailedToLoad": {
 		"text": "{entity} లోడ్ చేయడం విఫలమైంది",
-		"placeholders": ["entity"],
-		"description": "This message is displayed when the app fails to load a specific entity (Profile, Transactions, Merchants, etc)"
+		"placeholders": ["entity"]
 	},
 	"sProfile": "ప్రొఫైల్",
 	"sUsername": "వాడుకరి పేరు",
