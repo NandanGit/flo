@@ -45,15 +45,25 @@ const CustomClickableListItem = <T extends BaseMenuItemModel>({
 						space='large'
 					/>
 				)}
-				{AppIcon(item.icon, {
-					style: {
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						alignItems: 'center',
 						marginRight: '0.5rem',
-						// fontSize: '2rem',
-						color: isSelected ? theme.palette.primary.dark : 'inherit',
-						opacity: isSelected ? 1 : 0.8,
-					},
-					fontSize: 'medium',
-				})}
+					}}
+				>
+					{item.iconElement ||
+						AppIcon(item.icon, {
+							style: {
+								// marginRight: '0.5rem',
+								// fontSize: '2rem',
+								color: isSelected ? theme.palette.primary.dark : 'inherit',
+								opacity: isSelected ? 1 : 0.8,
+							},
+							fontSize: 'medium',
+						})}
+				</div>
 				<ListItemText
 					style={{
 						textAlign: 'left',
