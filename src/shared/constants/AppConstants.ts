@@ -13,7 +13,7 @@ export class AppConstants {
 	//
 	public static readonly disabledSettingsSections: SettingsSection[] = [
 		SettingsSection.ABOUT,
-		SettingsSection.HELP,
+		// SettingsSection.HELP,
 		SettingsSection.FEEDBACK,
 	];
 
