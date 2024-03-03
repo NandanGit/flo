@@ -9,7 +9,7 @@ const useSettingsPageView = () => {
 	const sections = MenuData.getSettingsSectionItems(loc);
 	const { selectTab: selectSection, selectedTab: selectedSection } = useTabs({
 		tabs: sections.map((s) => s.section),
-		initialTab: SettingsSection.GENERAL,
+		initialTab: SettingsSection.ACCOUNT,
 	});
 
 	return {
