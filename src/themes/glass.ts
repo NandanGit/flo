@@ -58,6 +58,11 @@ export const glassThemeDark = createTheme({
 				},
 			},
 		},
+		MuiCard: {
+			defaultProps: {
+				// variant: 'outlined',
+			},
+		},
 		// Button with glassmorphism effect
 		MuiButton: {
 			styleOverrides: {
