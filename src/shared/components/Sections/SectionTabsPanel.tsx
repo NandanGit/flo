@@ -18,7 +18,7 @@ const SectionTabsPanel: React.FC<SectionTabsPanelProps> = ({
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'center',
-				overflow: 'scroll',
+				overflowY: 'scroll',
 				// border: '1px solid #0666',
 				// padding: '1rem',
 				...sx,

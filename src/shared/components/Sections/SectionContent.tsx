@@ -22,9 +22,10 @@ const SectionContent: React.FC<SectionContentProps> = ({
 				flexDirection: 'column',
 				// border: '1px solid #0666',
 				overflow: 'scroll',
-				padding: '1rem',
+				// padding: '0 0.2rem',
 				...sx,
 			}}
+			// variant='outlined'
 			{...props}
 		>
 			{sectionTitle &&
