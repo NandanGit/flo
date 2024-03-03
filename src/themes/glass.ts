@@ -18,6 +18,7 @@ export const glassThemeDark = createTheme({
 		},
 		background: {
 			default: 'rgba(30, 30, 30, 0.9)',
+			paper: 'rgba(30, 30, 30, 0.2)',
 		},
 	},
 	shape: {
@@ -93,6 +94,16 @@ export const glassThemeDark = createTheme({
 					// '&:hover': {
 					// 	backgroundColor: 'rgba(255, 255, 255, 0.1)',
 					// },
+				},
+			},
+		},
+
+		// // Utility components
+		// Divider with glassmorphism effect
+		MuiDivider: {
+			styleOverrides: {
+				root: {
+					backgroundColor: 'rgba(255, 255, 255, 0.1)',
 				},
 			},
 		},
