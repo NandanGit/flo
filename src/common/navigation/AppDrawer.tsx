@@ -3,11 +3,11 @@ import { AppConstants } from '../../shared/constants/AppConstants';
 import { MenuData } from '../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
-import { MenuItemModel } from '../../shared/models/menu-item/MenuItemModel';
 import { sleep } from '../../utils/time';
 import { AppActions } from '../actions/AppActions';
 import useLoc from '../../hooks/useLoc';
 import CustomClickableListItem from '../../shared/components/custom/CustomClickableListItem';
+import { AppDrawerMenuItemModel } from '../../shared/models/menu-item/AppDrawerMenuItemModel';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -18,7 +18,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 	const navigate = useNavigate();
 	const loc = useLoc();
 
-	const handleDrawerItemSelect = async (item: MenuItemModel) => {
+	const handleDrawerItemSelect = async (item: AppDrawerMenuItemModel) => {
 		// Close the drawer
 		onDrawerToggle();
 		await sleep(200); // For the drawer to close

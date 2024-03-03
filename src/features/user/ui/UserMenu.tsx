@@ -1,9 +1,9 @@
 import { Divider, Menu } from '@mui/material';
 import { MenuData } from '../../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
-import { MenuItemModel } from '../../../shared/models/menu-item/MenuItemModel';
 import useLoc from '../../../hooks/useLoc';
 import CustomMenuItem from '../../../shared/components/custom/CustomMenuItem';
+import { UserMenuItemModel } from '../../../shared/models/menu-item/UserMenuItemModel';
 
 interface UserMenuProps {
 	anchorEl: HTMLElement | null;
@@ -17,7 +17,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 	const navigate = useNavigate();
 	const loc = useLoc();
 
-	const handleMenuItemSelect = (item: MenuItemModel) => {
+	const handleMenuItemSelect = (item: UserMenuItemModel) => {
 		if (item.route) {
 			navigate(item.route);
 		} else if (item.action) {

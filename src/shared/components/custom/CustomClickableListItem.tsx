@@ -4,24 +4,23 @@ import {
 	ListItemText,
 	useTheme,
 } from '@mui/material';
-import React from 'react';
 import { AppIcon } from '../../Icon';
 import { UnseenIndicator } from '../UnseenIndicator';
-import { MenuItemModel } from '../../models/menu-item/MenuItemModel';
+import { BaseMenuItemModel } from '../../models/menu-item/BaseMenuItemModel';
 
-export interface CustomClickableListItemProps {
-	item: MenuItemModel;
+export interface CustomClickableListItemProps<T> {
+	item: T;
 	showUnseen?: boolean;
 	isSelected?: boolean;
 	onClick: () => void;
 }
 
-const CustomClickableListItem: React.FC<CustomClickableListItemProps> = ({
+const CustomClickableListItem = <T extends BaseMenuItemModel>({
 	item,
 	showUnseen = false,
 	isSelected = false,
 	onClick,
-}) => {
+}: CustomClickableListItemProps<T>) => {
 	const theme = useTheme();
 	return (
 		<ListItem disablePadding>
