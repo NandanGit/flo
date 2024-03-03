@@ -1,13 +1,16 @@
-import { Box, BoxProps } from '@mui/material';
+import { Box, BoxProps, Typography } from '@mui/material';
 import React from 'react';
 
 export interface SectionContentProps extends BoxProps {
 	children: React.ReactNode;
+	// title?: React.ReactNode;
+	sectionTitle?: React.ReactNode;
 }
 
 const SectionContent: React.FC<SectionContentProps> = ({
 	children,
 	sx,
+	sectionTitle,
 	...props
 }) => {
 	return (
@@ -24,6 +27,12 @@ const SectionContent: React.FC<SectionContentProps> = ({
 			}}
 			{...props}
 		>
+			{sectionTitle &&
+				(typeof sectionTitle === 'string' ? (
+					<Typography variant='h5'>{sectionTitle}</Typography>
+				) : (
+					sectionTitle
+				))}
 			{children}
 		</Box>
 	);
