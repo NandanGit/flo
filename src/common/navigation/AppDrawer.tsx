@@ -1,22 +1,13 @@
-import {
-	Box,
-	Drawer,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Typography,
-} from '@mui/material';
+import { Box, Drawer, List, Typography } from '@mui/material';
 import { AppConstants } from '../../shared/constants/AppConstants';
 import { MenuData } from '../../shared/data/MenuData';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from './AppRoutes';
-import { MenuItemModel } from '../../shared/models/MenuItemModel';
-import { AppIcon } from '../../shared/Icon';
-import { UnseenIndicator } from '../../shared/components/UnseenIndicator';
 import { sleep } from '../../utils/time';
 import { AppActions } from '../actions/AppActions';
 import useLoc from '../../hooks/useLoc';
+import CustomClickableListItem from '../../shared/components/custom/CustomClickableListItem';
+import { AppDrawerMenuItemModel } from '../../shared/models/menu-item/AppDrawerMenuItemModel';
 
 interface AppDrawerProps {
 	open: boolean;
@@ -27,7 +18,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 	const navigate = useNavigate();
 	const loc = useLoc();
 
-	const handleDrawerItemSelect = async (item: MenuItemModel) => {
+	const handleDrawerItemSelect = async (item: AppDrawerMenuItemModel) => {
 		// Close the drawer
 		onDrawerToggle();
 		await sleep(200); // For the drawer to close
@@ -42,48 +33,6 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 		} else {
 			console.error('No route or action provided for menu item:', item);
 		}
-	};
-
-	const createMenuItem = (item: MenuItemModel, showUnseen: boolean) => {
-		return (
-			<ListItem key={item.label} disablePadding>
-				<ListItemButton
-					sx={{
-						textAlign: 'center',
-					}}
-					onClick={() => handleDrawerItemSelect(item)}
-				>
-					{showUnseen && (
-						<UnseenIndicator
-							unseen={item.unseen}
-							unseenCount={item.unseenCount}
-							// location='app-drawer'
-							space='large'
-						/>
-					)}
-					{AppIcon(item.icon, {
-						style: {
-							marginRight: '0.5rem',
-							// fontSize: '2rem',
-						},
-						fontSize: 'medium',
-					})}
-					<ListItemText
-						style={{
-							textAlign: 'left',
-						}}
-					>
-						<span
-							style={{
-								fontSize: '0.85rem',
-							}}
-						>
-							{item.label}
-						</span>
-					</ListItemText>
-				</ListItemButton>
-			</ListItem>
-		);
 	};
 
 	const logoutMenuItem = MenuData.getLogoutMenuItem(loc);
@@ -136,11 +85,18 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 							flex: 1,
 						}}
 					>
-						{MenuData.getDrawerMenuItems(loc).map((item) =>
-							createMenuItem(item, true)
-						)}
+						{MenuData.getDrawerMenuItems(loc).map((item) => (
+							<CustomClickableListItem
+								key={item.label}
+								item={item}
+								showUnseen
+								onClick={() => handleDrawerItemSelect(item)}
+							/>
+						))}
 					</List>
-					<List>{createMenuItem(logoutMenuItem, false)}</List>
+					<List>
+						<CustomClickableListItem item={logoutMenuItem} onClick={() => {}} />
+					</List>
 				</Box>
 			</Drawer>
 		</nav>

@@ -1,3 +1,4 @@
+import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
 import { Locale } from '../../services/language/Locale';
 import { LocaleCode } from '../enums/Locale';
 
@@ -8,6 +9,13 @@ export class AppConstants {
 	public static readonly description = 'Finance Manager';
 	public static readonly author = 'Nandan Reddy';
 	public static readonly year = '2024';
+
+	//
+	public static readonly disabledSettingsSections: SettingsSection[] = [
+		SettingsSection.ABOUT,
+		// SettingsSection.HELP,
+		SettingsSection.FEEDBACK,
+	];
 
 	// Data
 	public static readonly englishLocale: Locale = {

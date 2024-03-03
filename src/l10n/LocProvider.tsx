@@ -16,7 +16,7 @@ export const LocProvider: React.FC<LocProviderProps> = ({ children }) => {
 		<LocalizationProvider
 			config={{
 				defaultLang: 'en', //   === === === === === === === === === ===
-				curLang: 'te', //        This should be handled by redux later
+				curLang: 'en', //        This should be handled by redux later
 				languages: [en, te, hi], // === === === === === === === === === ===
 			}}
 		>

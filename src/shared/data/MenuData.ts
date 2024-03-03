@@ -1,11 +1,14 @@
 import { AppActions } from '../../common/actions/AppActions';
 import { Routes } from '../../common/navigation/AppRoutes';
 import { AppIcons } from '../Icon';
-import { MenuItemModel } from '../models/MenuItemModel';
 import { Loc } from '../types/Loc';
+import { UserMenuItemModel } from '../models/menu-item/UserMenuItemModel';
+import { AppDrawerMenuItemModel } from '../models/menu-item/AppDrawerMenuItemModel';
+import { SettingsMenuItemModel } from '../models/menu-item/SettingsMenuItemModel';
+import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
 
 export class MenuData {
-	public static getUserMenuItems = (loc: Loc): MenuItemModel[] => [
+	public static getUserMenuItems = (loc: Loc): UserMenuItemModel[] => [
 		{
 			label: loc.sProfile,
 			icon: AppIcons.accountCircle,
@@ -21,7 +24,7 @@ export class MenuData {
 		},
 	];
 
-	public static getDrawerMenuItems = (loc: Loc): MenuItemModel[] => [
+	public static getDrawerMenuItems = (loc: Loc): AppDrawerMenuItemModel[] => [
 		{
 			label: loc.sDashboard,
 			icon: AppIcons.dashboard,
@@ -53,9 +56,49 @@ export class MenuData {
 		},
 	];
 
-	public static getLogoutMenuItem = (loc: Loc): MenuItemModel => ({
+	public static getLogoutMenuItem = (loc: Loc): AppDrawerMenuItemModel => ({
 		label: loc.authLogout,
 		icon: AppIcons.logout,
 		action: AppActions.LOGOUT,
 	});
+
+	public static getSettingsSectionItems = (
+		loc: Loc
+	): SettingsMenuItemModel[] => [
+		{
+			label: loc.sAccount,
+			icon: AppIcons.accountCircle,
+			section: SettingsSection.ACCOUNT,
+		},
+		{
+			label: loc.sGeneral,
+			icon: AppIcons.settings,
+			section: SettingsSection.GENERAL,
+		},
+		{
+			label: loc.sNotifications,
+			icon: AppIcons.notifications,
+			section: SettingsSection.NOTIFICATIONS,
+		},
+		{
+			label: loc.sPrivacy,
+			icon: AppIcons.lockPerson,
+			section: SettingsSection.PRIVACY,
+		},
+		{
+			label: loc.sAbout,
+			icon: AppIcons.info,
+			section: SettingsSection.ABOUT,
+		},
+		{
+			label: loc.sHelp,
+			icon: AppIcons.help,
+			section: SettingsSection.HELP,
+		},
+		{
+			label: loc.sFeedback,
+			icon: AppIcons.feedback,
+			section: SettingsSection.FEEDBACK,
+		},
+	];
 }

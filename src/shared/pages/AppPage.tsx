@@ -60,12 +60,13 @@ export const AppPage: React.FC<AppPageProps> = ({
 				style={{
 					// backgroundColor: 'Background',
 					overflow: 'scroll',
+					height: containerHeight,
 					...(useStaticGlassBackground
 						? {
-								height: containerHeight,
+								// height: containerHeight,
 						  }
 						: {
-								maxHeight: containerHeight,
+								// maxHeight: containerHeight,
 								paddingBottom: '2rem',
 						  }),
 					position: 'relative',

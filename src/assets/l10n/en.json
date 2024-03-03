@@ -28,6 +28,13 @@
 	"sFirstName": "First name",
 	"sLastName": "Last name",
 	"sSettings": "Settings",
+	"sGeneral": "General",
+	"sNotifications": "Notifications",
+	"sPrivacy": "Privacy",
+	"sAccount": "Account",
+	"sAbout": "About",
+	"sHelp": "Help",
+	"sFeedback": "Feedback",
 
 	"authLogin": "Login",
 	"authLogout": "Logout",

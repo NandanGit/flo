@@ -134,6 +134,55 @@ loc.sFailedToLoad(s.sMerchants) // Failed to load Merchants
   sSettings: string;
 
   /** 
+   * General
+   *
+   * No description provided
+   */
+  sGeneral: string;
+
+  /** 
+   * Notifications
+   *
+   * No description provided
+   */
+  sNotifications: string;
+
+  /** 
+   * Privacy
+   *
+   * No description provided
+   */
+  sPrivacy: string;
+
+  /** 
+   * Account
+   *
+   * No description provided
+   */
+  sAccount: string;
+
+  /** 
+   * About
+   *
+   * No description provided
+   */
+  sAbout: string;
+
+  /** 
+   * Help
+   *
+   * No description provided
+   */
+  sHelp: string;
+
+  /** 
+   * Feedback
+   *
+   * No description provided
+   */
+  sFeedback: string;
+
+  /** 
    * Login
    *
    * No description provided
