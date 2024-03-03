@@ -12,6 +12,7 @@ export interface CustomClickableListItemProps<T> {
 	item: T;
 	showUnseen?: boolean;
 	isSelected?: boolean;
+	disabled?: boolean;
 	onClick: () => void;
 }
 
@@ -19,6 +20,7 @@ const CustomClickableListItem = <T extends BaseMenuItemModel>({
 	item,
 	showUnseen = false,
 	isSelected = false,
+	disabled = false,
 	onClick,
 }: CustomClickableListItemProps<T>) => {
 	const theme = useTheme();
@@ -32,6 +34,8 @@ const CustomClickableListItem = <T extends BaseMenuItemModel>({
 						: 'transparent',
 				}}
 				onClick={onClick}
+				disabled={disabled}
+				disableRipple
 			>
 				{showUnseen && (
 					<UnseenIndicator
@@ -45,7 +49,8 @@ const CustomClickableListItem = <T extends BaseMenuItemModel>({
 					style: {
 						marginRight: '0.5rem',
 						// fontSize: '2rem',
-						color: isSelected ? theme.palette.primary.dark : 'auto',
+						color: isSelected ? theme.palette.primary.dark : 'inherit',
+						opacity: isSelected ? 1 : 0.8,
 					},
 					fontSize: 'medium',
 				})}
@@ -57,7 +62,8 @@ const CustomClickableListItem = <T extends BaseMenuItemModel>({
 					<span
 						style={{
 							fontSize: '0.85rem',
-							color: isSelected ? theme.palette.primary.dark : 'auto',
+							color: isSelected ? theme.palette.primary.dark : 'inherit',
+							opacity: isSelected ? 1 : 0.8,
 						}}
 					>
 						{item.label}

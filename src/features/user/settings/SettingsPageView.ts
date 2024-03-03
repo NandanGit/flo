@@ -1,16 +1,22 @@
-import { useEffect } from 'react';
-import LanguageManager from '../../../services/language/LanguageManager';
+import useTabs from '../../../shared/components/hooks/useTabs';
+import useLoc from '../../../hooks/useLoc';
+import { MenuData } from '../../../shared/data/MenuData';
+import { SettingsSection } from './model/SettingsSection';
 
 const useSettingsPageView = () => {
-	useEffect(() => {
-		console.log(
-			'Downloaded languages:',
-			LanguageManager.downloadedLanguages.map((l) => l.nativeName).join(', ')
-		);
-		// LanguageManager.download(LocaleCode.TE).then((translations) => {
-		// 	console.log('Downloaded translations:', translations);
-		// });
-	}, []);
+	const loc = useLoc();
+
+	const sections = MenuData.getSettingsSectionItems(loc);
+	const { selectTab: selectSection, selectedTab: selectedSection } = useTabs({
+		tabs: sections.map((s) => s.section),
+		initialTab: SettingsSection.GENERAL,
+	});
+
+	return {
+		selectSection,
+		selectedSection,
+		sections,
+	};
 };
 
 export default useSettingsPageView;
