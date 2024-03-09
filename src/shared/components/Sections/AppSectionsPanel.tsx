@@ -17,17 +17,20 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 	showSectionsInCard = false,
 }) => {
 	const { appSections } = useAppSectionsPanelView();
-	const sectionItems = appSections.map((section) => (
-		<AppLink key={section.label} to={section.route!}>
-			<CustomClickableListItem
-				item={section}
-				onClick={() => {}}
-				// isSelected={section.section === selectedSection}
-				disabled={disabledSections.includes(section.route!)}
-				// showUnseen
-			/>
-		</AppLink>
-	));
+	const sectionItems = appSections.map((section) => {
+		const disabled = disabledSections.includes(section.route!);
+		return (
+			<AppLink key={section.label} to={section.route!} disabled={disabled}>
+				<CustomClickableListItem
+					item={section}
+					onClick={() => {}}
+					// isSelected={section.section === selectedSection}
+					disabled={disabled}
+					// showUnseen
+				/>
+			</AppLink>
+		);
+	});
 
 	const sectionsList = (
 		<List
@@ -56,8 +59,8 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 					// variant='outlined'
 					style={{
 						padding: '0.5rem 0.6rem',
-						flexGrow: 1,
-						height: '5rem', // There is no reason for this to be 5rem. I don't know how, but removing this line breaks the layout. SO DON'T REMOVE IT!
+						// flexGrow: 1,
+						// height: '5rem', // There is no reason for this to be 5rem. I don't know how, but removing this line breaks the layout. SO DON'T REMOVE IT!
 						overflow: 'scroll',
 						// border: '1px solid #0666',
 					}}
@@ -77,43 +80,6 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 					{sectionsList}
 				</Box>
 			)}
-			{/* {sectionsList} */}
-			{/* <List
-				style={{
-					flex: 1,
-					padding: 0,
-					display: 'flex',
-					flexDirection: 'column',
-					width: '100%',
-					border: '1px solid #0666',
-				}}
-			>
-				{showSectionsInCard ? (
-					<Card
-						variant='outlined'
-						style={{
-							padding: '0.5rem 0.6rem',
-							border: '1px solid #0666',
-							flexGrow: 1,
-							height: '5rem', // There is no reason for this to be 5rem. I don't know how, but removing this line breaks the layout. SO DON'T REMOVE IT!
-							overflow: 'scroll',
-						}}
-					>
-						<List
-							style={{
-								padding: 0,
-								border: '1px solid #0666',
-							}}
-						>
-							{sectionItems}
-							<Divider sx={{ my: '0.5rem' }} />
-							{sectionItems}
-						</List>
-					</Card>
-				) : (
-					[...sectionItems, ...sectionItems, ...sectionItems]
-				)}
-			</List> */}
 		</SectionTabsPanel>
 	);
 };
