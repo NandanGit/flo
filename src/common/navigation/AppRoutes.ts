@@ -6,10 +6,10 @@ export enum Routes {
 	SETTINGS = '/settings',
 	SETTINGS_SECTION = '/settings/:section',
 	TRANSACTIONS = '/transactions',
-	TRANSACTIONS_DETAIL = '/transactions/:id',
+	TRANSACTIONS_DETAIL = '/transactions/:transactionId',
 	MERCHANTS = '/merchants',
-	MERCHANTS_DETAIL = '/merchants/:id',
+	MERCHANTS_DETAIL = '/merchants/:merchantId',
 	PEOPLE = '/people',
-	PEOPLE_DETAIL = '/people/:id',
+	PEOPLE_DETAIL = '/people/:personId',
 	ACTIVITY = '/activity',
 }
