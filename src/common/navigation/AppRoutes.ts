@@ -4,6 +4,7 @@ export enum Routes {
 	DASHBOARD = '/dashboard',
 	PROFILE = '/profile',
 	SETTINGS = '/settings',
+	SETTINGS_SECTION = '/settings/:section',
 	TRANSACTIONS = '/transactions',
 	TRANSACTIONS_DETAIL = '/transactions/:id',
 	MERCHANTS = '/merchants',

@@ -15,6 +15,7 @@ const browserRouter = createBrowserRouter(
 		{ path: Routes.DASHBOARD, element: <DashboardPage /> },
 		{ path: Routes.PROFILE, element: <ProfilePage /> },
 		{ path: Routes.SETTINGS, element: <SettingsPage /> },
+		{ path: Routes.SETTINGS_SECTION, element: <SettingsPage /> },
 		{ path: Routes.TRANSACTIONS, element: <TransactionsPage /> },
 		{ path: Routes.MERCHANTS, element: <MerchantsPage /> },
 		{ path: Routes.PEOPLE, element: <PeoplePage /> },
