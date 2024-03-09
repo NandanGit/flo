@@ -8,6 +8,7 @@ import MerchantsPage from '../../features/merchants/ui/MerchantsPage';
 import PeoplePage from '../../features/people/ui/PeoplePage';
 import TransactionsPage from '../../features/transactions/ui/TransactionsPage';
 import ActivityPage from '../../features/activity/ui/ActivityPage';
+import { AppConstants } from '../../shared/constants/AppConstants';
 
 const browserRouter = createBrowserRouter(
 	[
@@ -22,7 +23,7 @@ const browserRouter = createBrowserRouter(
 		{ path: Routes.ACTIVITY, element: <ActivityPage /> },
 		{ path: '*', element: <h1>404! Page not found</h1> },
 	],
-	{ basename: '/' }
+	{ basename: AppConstants.appBaseRoute }
 );
 
 const AppRouter: React.FC = () => {

@@ -11,6 +11,8 @@ export class AppConstants {
 	public static readonly author = 'Nandan Reddy';
 	public static readonly year = '2024';
 
+	// Routes
+	public static readonly appBaseRoute = '/';
 	//
 	public static readonly defaultSettingsSection = SettingsSection.GENERAL;
 
@@ -19,6 +21,8 @@ export class AppConstants {
 		// SettingsSection.HELP,
 		SettingsSection.FEEDBACK,
 	];
+
+	public static readonly defaultAppSection = Routes.DASHBOARD;
 
 	public static readonly disabledAppSections: Routes[] = [Routes.ACTIVITY];
 
