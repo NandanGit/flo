@@ -5,6 +5,7 @@ import useAppSectionsPanelView from './AppSectionsPanelView';
 import SectionTabsPanel from './SectionTabsPanel';
 import { Routes } from '../../../common/navigation/AppRoutes';
 import AccountSummaryCard from '../../../common/account/AccountSummaryCard';
+import AppLink from '../../../common/navigation/AppLink';
 
 export interface AppSectionsPanelProps {
 	disabledSections?: Routes[];
@@ -17,14 +18,16 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 }) => {
 	const { appSections } = useAppSectionsPanelView();
 	const sectionItems = appSections.map((section) => (
-		<CustomClickableListItem
-			key={section.label}
-			item={section}
-			onClick={() => {}}
-			// isSelected={section.section === selectedSection}
-			disabled={disabledSections.includes(section.route!)}
-			// showUnseen
-		/>
+		<AppLink to={section.route!}>
+			<CustomClickableListItem
+				key={section.label}
+				item={section}
+				onClick={() => {}}
+				// isSelected={section.section === selectedSection}
+				disabled={disabledSections.includes(section.route!)}
+				// showUnseen
+			/>
+		</AppLink>
 	));
 
 	const sectionsList = (
