@@ -24,8 +24,8 @@ export const AppScreen: React.FC<AppScreenProps> = ({
 		>
 			{/* <SectionTabsPanel>Hello</SectionTabsPanel> */}
 			<AppSectionsPanel
-			// showSectionsInCard
-			//
+				showSectionsInCard
+				//
 			/>
 			<SectionDivider />
 			<SectionContent>{children}</SectionContent>
