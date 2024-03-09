@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
-export interface AppLinkProps extends LinkProps {}
+export interface AppLinkProps extends LinkProps {
+	disabled?: boolean;
+}
 
-const AppLink: React.FC<AppLinkProps> = ({ style, children, ...rest }) => {
+const AppLink: React.FC<AppLinkProps> = ({
+	style,
+	children,
+	disabled = false,
+	...rest
+}) => {
+	if (disabled) {
+		return <>{children}</>;
+	}
 	return (
 		<Link
 			style={{
