@@ -1,14 +1,11 @@
 import React from 'react';
-import useCustomTabs from '../../../../shared/components/higher-order/CustomTabs/useCustomTabs';
 import { SettingsSection } from '../model/SettingsSection';
 import SectionContent from '../../../../shared/components/Sections/SectionContent';
+import useSettingsSectionContentView from './SettingsSectionContentView';
 
 export interface SettingsSectionContentProps {}
 const SettingsSectionContent: React.FC<SettingsSectionContentProps> = () => {
-	const { selected: selectedSection } = useCustomTabs<
-		unknown,
-		SettingsSection
-	>();
+	const { selected: selectedSection } = useSettingsSectionContentView();
 	const content = (() => {
 		switch (selectedSection) {
 			case SettingsSection.ACCOUNT:

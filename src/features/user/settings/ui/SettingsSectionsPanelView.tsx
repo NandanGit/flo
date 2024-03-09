@@ -1,28 +1,17 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import useCustomTabs from '../../../../shared/components/higher-order/CustomTabs/useCustomTabs';
-import { SettingsMenuItemModel } from '../../../../shared/models/menu-item/SettingsMenuItemModel';
 import { SettingsSection } from '../model/SettingsSection';
-import { useEffect } from 'react';
 import { Routes } from '../../../../common/navigation/AppRoutes';
+import { MenuData } from '../../../../shared/data/MenuData';
+import useLoc from '../../../../hooks/useLoc';
+import { resolveSettingsSection } from './utils';
 
 export const useSettingsSectionsPanelView = () => {
-	const {
-		tabs: sections,
-		selected: selectedSection,
-		select: selectSection,
-	} = useCustomTabs<SettingsMenuItemModel, SettingsSection>();
-
-	const { section: sectionUrl } = useParams();
 	const navigate = useNavigate();
+	const { section: sectionUrl } = useParams();
+	const selectedSection = resolveSettingsSection(sectionUrl);
 
-	useEffect(() => {
-		if (sectionUrl) {
-			const sectionUrls = Object.values(SettingsSection);
-			if (sectionUrls.includes(sectionUrl as SettingsSection)) {
-				selectSection(sectionUrl as SettingsSection);
-			}
-		}
-	}, [sectionUrl, selectSection]);
+	const loc = useLoc();
+	const sections = MenuData.getSettingsSectionItems(loc);
 
 	const accountSection = sections.find(
 		(s) => s.section === SettingsSection.ACCOUNT
@@ -33,8 +22,6 @@ export const useSettingsSectionsPanelView = () => {
 	);
 
 	const selectSectionAndUpdateURL = (section: SettingsSection) => {
-		// selectSection(section);
-		// ROUTES.SETTINGS_SECTION will have :section as a parameter. replace will replace the :section with the actual section
 		navigate(Routes.SETTINGS_SECTION.replace(':section', section));
 	};
 

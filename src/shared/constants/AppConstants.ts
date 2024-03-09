@@ -12,6 +12,8 @@ export class AppConstants {
 	public static readonly year = '2024';
 
 	//
+	public static readonly defaultSettingsSection = SettingsSection.GENERAL;
+
 	public static readonly disabledSettingsSections: SettingsSection[] = [
 		SettingsSection.ABOUT,
 		// SettingsSection.HELP,
