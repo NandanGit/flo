@@ -183,6 +183,48 @@ loc.sFailedToLoad(s.sMerchants) // Failed to load Merchants
   sFeedback: string;
 
   /** 
+   * Account Summary
+   *
+   * No description provided
+   */
+  sAccountSummary: string;
+
+  /** 
+   * Income
+   *
+   * No description provided
+   */
+  sIncome: string;
+
+  /** 
+   * Spending
+   *
+   * No description provided
+   */
+  sSpending: string;
+
+  /** 
+   * Balance
+   *
+   * No description provided
+   */
+  sBalance: string;
+
+  /** 
+   * Total
+   *
+   * No description provided
+   */
+  sTotal: string;
+
+  /** 
+   * Carryover
+   *
+   * No description provided
+   */
+  sCarryover: string;
+
+  /** 
    * Login
    *
    * No description provided
