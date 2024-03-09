@@ -63,6 +63,13 @@ export interface Loc {
   sDashboard: string;
 
   /** 
+   * Timeline
+   *
+   * No description provided
+   */
+  sTimeline: string;
+
+  /** 
    * Loading {entity}...
    *
    * This message is displayed when the app is loading a specific entity (`Profile` | `Transactions` | `Merchants` etc.)
@@ -181,6 +188,48 @@ loc.sFailedToLoad(s.sMerchants) // Failed to load Merchants
    * No description provided
    */
   sFeedback: string;
+
+  /** 
+   * Account Summary
+   *
+   * No description provided
+   */
+  sAccountSummary: string;
+
+  /** 
+   * Income
+   *
+   * No description provided
+   */
+  sIncome: string;
+
+  /** 
+   * Spending
+   *
+   * No description provided
+   */
+  sSpending: string;
+
+  /** 
+   * Balance
+   *
+   * No description provided
+   */
+  sBalance: string;
+
+  /** 
+   * Total
+   *
+   * No description provided
+   */
+  sTotal: string;
+
+  /** 
+   * Carryover
+   *
+   * No description provided
+   */
+  sCarryover: string;
 
   /** 
    * Login

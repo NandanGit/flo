@@ -5,6 +5,8 @@ import {
 	Typography,
 	Avatar,
 	Box,
+	Breadcrumbs,
+	Link,
 } from '@mui/material';
 import React, { useRef } from 'react';
 import AppDrawer from '../../../common/navigation/AppDrawer';
@@ -78,9 +80,8 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 						>
 							{AppIcon(AppIcons.menu)}
 						</IconButton>
-
 						{/* Title */}
-						{typeof title === 'string' ? (
+						{/* {typeof title === 'string' ? (
 							<Typography
 								variant='h6'
 								component='div'
@@ -95,10 +96,62 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 							</Typography>
 						) : (
 							title
-						)}
+						)} */}
+
+						{/* AppHeader Content */}
+						<Box
+							sx={{
+								flexGrow: 1,
+							}}
+						>
+							<Breadcrumbs
+								maxItems={2}
+								separator={AppIcon(AppIcons.chevronRight, {
+									style: {
+										fontSize: '1.5rem',
+									},
+								})}
+							>
+								<Link underline='hover' color='inherit' href='#'>
+									<Typography
+										variant='h6'
+										component='div'
+										sx={{
+											flexGrow: 1,
+											overflow: 'hidden',
+											textOverflow: 'ellipsis',
+											whiteSpace: 'nowrap',
+										}}
+									>
+										{AppConstants.name}
+									</Typography>
+								</Link>
+								{/* <Link underline='hover' color='inherit' href='#'>
+									Catalog
+								</Link>
+								<Link underline='hover' color='inherit' href='#'>
+									Accessories
+								</Link>
+								<Link underline='hover' color='inherit' href='#'>
+									New Collection
+								</Link> */}
+								<Typography
+									variant='h6'
+									component='div'
+									color={'text.primary'}
+									sx={{
+										flexGrow: 1,
+										overflow: 'hidden',
+										textOverflow: 'ellipsis',
+										whiteSpace: 'nowrap',
+									}}
+								>
+									{title}
+								</Typography>
+							</Breadcrumbs>
+						</Box>
 
 						{/* Profile & Account */}
-
 						<Box display='flex' alignItems='center'>
 							<IconButton
 								aria-label='profile of current user'

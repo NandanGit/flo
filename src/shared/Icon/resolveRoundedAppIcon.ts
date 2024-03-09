@@ -29,6 +29,7 @@ import {
 	LockPersonRounded,
 	ManageAccountsRounded,
 	RefreshRounded,
+	TimelineRounded,
 } from '@mui/icons-material';
 
 const resolveRoundedMuiIcon = (icon?: AppIcons) => {
@@ -41,6 +42,8 @@ const resolveRoundedMuiIcon = (icon?: AppIcons) => {
 			return HomeRounded;
 		case AppIcons.dashboard:
 			return DashboardRounded;
+		case AppIcons.timeline:
+			return TimelineRounded;
 		case AppIcons.info:
 			return InfoRounded;
 		case AppIcons.call:

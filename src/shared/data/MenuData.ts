@@ -6,6 +6,9 @@ import { UserMenuItemModel } from '../models/menu-item/UserMenuItemModel';
 import { AppDrawerMenuItemModel } from '../models/menu-item/AppDrawerMenuItemModel';
 import { SettingsMenuItemModel } from '../models/menu-item/SettingsMenuItemModel';
 import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
+import { AppConstants } from '../constants/AppConstants';
+import { AppSectionMenuItemModel } from '../models/menu-item/AppSectionMenuItemModel';
+import { resolveAppSection } from '../components/Sections/utils';
 
 export class MenuData {
 	public static getUserMenuItems = (loc: Loc): UserMenuItemModel[] => [
@@ -24,11 +27,27 @@ export class MenuData {
 		},
 	];
 
+	public static getAppSectionItems = (loc: Loc): AppSectionMenuItemModel[] => {
+		const allowedRoutes = AppConstants.AppSectionRoutes;
+		return this.getDrawerMenuItems(loc)
+			.filter((item) => allowedRoutes.includes(item.route!))
+			.map((item) => ({
+				...item,
+				route: item.route!,
+				section: resolveAppSection(item.route!),
+			}));
+	};
+
 	public static getDrawerMenuItems = (loc: Loc): AppDrawerMenuItemModel[] => [
 		{
 			label: loc.sDashboard,
 			icon: AppIcons.dashboard,
 			route: Routes.DASHBOARD,
+		},
+		{
+			label: loc.sTimeline,
+			icon: AppIcons.timeline,
+			route: Routes.TIMELINE,
 		},
 		{
 			label: loc.sTransactions,
@@ -50,7 +69,7 @@ export class MenuData {
 		{
 			label: loc.sActivity,
 			icon: AppIcons.receiptLong,
-			route: Routes.Activity,
+			route: Routes.ACTIVITY,
 			unseen: true,
 			unseenCount: 43,
 		},

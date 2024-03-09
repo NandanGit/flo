@@ -11,6 +11,7 @@
 	"sTransactions": "Transactions",
 	"sUser": "User",
 	"sDashboard": "Dashboard",
+	"sTimeline": "Timeline",
 	"sLoading": {
 		"text": "Loading {entity}...",
 		"placeholders": ["entity"],
@@ -35,6 +36,12 @@
 	"sAbout": "About",
 	"sHelp": "Help",
 	"sFeedback": "Feedback",
+	"sAccountSummary": "Account Summary",
+	"sIncome": "Income",
+	"sSpending": "Spending",
+	"sBalance": "Balance",
+	"sTotal": "Total",
+	"sCarryover": "Carryover",
 
 	"authLogin": "Login",
 	"authLogout": "Logout",

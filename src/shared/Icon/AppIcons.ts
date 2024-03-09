@@ -3,6 +3,7 @@ export enum AppIcons {
 	menu = 'menu',
 	home = 'home',
 	dashboard = 'dashboard',
+	timeline = 'timeline',
 	info = 'info',
 	call = 'call',
 	logout = 'logout',

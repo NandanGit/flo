@@ -1,14 +1,14 @@
 import { List, ListItem, ListItemText } from '@mui/material';
 import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
-import { AppPage } from '../../../shared/pages/AppPage';
 import { useMerchantsPageView } from '../MerchantsPageView';
 import useLoc from '../../../hooks/useLoc';
+import { AppScreen } from '../../../shared/pages/AppScreen';
 
 const MerchantsPage: React.FC = () => {
 	const { merchantsStatus, merchants, loadMerchants } = useMerchantsPageView();
 	const loc = useLoc();
 	return (
-		<AppPage title={loc.sMerchants}>
+		<AppScreen title={loc.sMerchants}>
 			<RefreshHeader
 				title={loc.sMerchants}
 				dataStatus={merchantsStatus}
@@ -21,7 +21,7 @@ const MerchantsPage: React.FC = () => {
 					</ListItem>
 				))}
 			</List>
-		</AppPage>
+		</AppScreen>
 	);
 };
 

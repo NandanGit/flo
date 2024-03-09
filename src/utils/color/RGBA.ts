@@ -29,17 +29,45 @@ export class RGBA {
 	private _blue: number;
 	private _alpha: number;
 
-	constructor(rgba: string) {
-		const rgbaRegex =
-			/rgba?\((\d{1,3}), (\d{1,3}), (\d{1,3})(?:, (\d(?:\.\d+)?))?\)/;
-		const match = rgba.match(rgbaRegex);
+	constructor(color: string) {
+		[this._red, this._green, this._blue, this._alpha] = this.parseColor(color);
+	}
+
+	private parseColor(color: string): [number, number, number, number] {
+		if (color.startsWith('#')) {
+			return this.parseHex(color);
+		} else {
+			return this.parseRGBA(color);
+		}
+	}
+
+	private parseHex(color: string): [number, number, number, number] {
+		const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
+		const match = color.match(hexRegex);
 		if (!match) {
 			throw new Error('Invalid input');
 		}
-		this._red = parseInt(match[1]);
-		this._green = parseInt(match[2]);
-		this._blue = parseInt(match[3]);
-		this._alpha = match[4] ? parseFloat(match[4]) : 1;
+		return [
+			parseInt(match[1], 16),
+			parseInt(match[2], 16),
+			parseInt(match[3], 16),
+			match[4] ? parseInt(match[4], 16) / 255 : 1,
+		];
+	}
+
+	private parseRGBA(color: string): [number, number, number, number] {
+		const rgbaRegex =
+			/rgba?\((\d{1,3}), (\d{1,3}), (\d{1,3})(?:, (\d(?:\.\d+)?))?\)/;
+		const match = color.match(rgbaRegex);
+		if (!match) {
+			throw new Error('Invalid input');
+		}
+		return [
+			parseInt(match[1]),
+			parseInt(match[2]),
+			parseInt(match[3]),
+			match[4] ? parseFloat(match[4]) : 1,
+		];
 	}
 
 	withOpacity(opacity: number): string {

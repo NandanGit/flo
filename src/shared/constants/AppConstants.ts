@@ -1,3 +1,4 @@
+import { Routes } from '../../common/navigation/AppRoutes';
 import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
 import { Locale } from '../../services/language/Locale';
 import { LocaleCode } from '../enums/Locale';
@@ -10,11 +11,28 @@ export class AppConstants {
 	public static readonly author = 'Nandan Reddy';
 	public static readonly year = '2024';
 
+	// Routes
+	public static readonly appBaseRoute = '/';
 	//
+	public static readonly defaultSettingsSection = SettingsSection.GENERAL;
+
 	public static readonly disabledSettingsSections: SettingsSection[] = [
 		SettingsSection.ABOUT,
 		// SettingsSection.HELP,
 		SettingsSection.FEEDBACK,
+	];
+
+	public static readonly defaultAppSection = Routes.DASHBOARD;
+
+	public static readonly disabledAppSections: Routes[] = [Routes.ACTIVITY];
+
+	public static readonly AppSectionRoutes: Routes[] = [
+		Routes.DASHBOARD,
+		Routes.TIMELINE,
+		Routes.TRANSACTIONS,
+		Routes.MERCHANTS,
+		Routes.PEOPLE,
+		// Routes.ACTIVITY,
 	];
 
 	// Data

@@ -68,7 +68,13 @@ const RefreshHeader: React.FC<RefreshHeaderProps> = ({
 			{title && (
 				<Placeholder loading={dataIsLoading}>
 					{typeof title === 'string' ? (
-						<Typography variant='body1'>{title}</Typography>
+						<Typography
+							variant='h5'
+							// style={{ marginBottom: '1rem' }}
+							//
+						>
+							{title}
+						</Typography>
 					) : (
 						title
 					)}
