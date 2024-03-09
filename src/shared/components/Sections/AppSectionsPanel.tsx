@@ -16,7 +16,7 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 	disabledSections = AppConstants.disabledAppSections,
 	showSectionsInCard = false,
 }) => {
-	const { appSections } = useAppSectionsPanelView();
+	const { appSections, activeSection } = useAppSectionsPanelView();
 	const sectionItems = appSections.map((section) => {
 		const disabled = disabledSections.includes(section.route!);
 		return (
@@ -24,7 +24,7 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 				<CustomClickableListItem
 					item={section}
 					onClick={() => {}}
-					// isSelected={section.section === selectedSection}
+					isSelected={section.section === activeSection}
 					disabled={disabled}
 					// showUnseen
 				/>
