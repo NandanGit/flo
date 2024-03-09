@@ -1,3 +1,4 @@
+import { Routes } from '../../common/navigation/AppRoutes';
 import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
 import { Locale } from '../../services/language/Locale';
 import { LocaleCode } from '../enums/Locale';
@@ -15,6 +16,16 @@ export class AppConstants {
 		SettingsSection.ABOUT,
 		// SettingsSection.HELP,
 		SettingsSection.FEEDBACK,
+	];
+
+	public static readonly disabledAppSections: Routes[] = [Routes.ACTIVITY];
+
+	public static readonly AppSectionRoutes: Routes[] = [
+		Routes.DASHBOARD,
+		Routes.TRANSACTIONS,
+		Routes.MERCHANTS,
+		// Routes.PEOPLE,
+		Routes.ACTIVITY,
 	];
 
 	// Data
