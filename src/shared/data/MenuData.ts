@@ -39,6 +39,11 @@ export class MenuData {
 			route: Routes.DASHBOARD,
 		},
 		{
+			label: loc.sTimeline,
+			icon: AppIcons.timeline,
+			route: Routes.TIMELINE,
+		},
+		{
 			label: loc.sTransactions,
 			icon: AppIcons.currencyExchange,
 			route: Routes.TRANSACTIONS,

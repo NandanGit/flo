@@ -24,10 +24,11 @@ export class AppConstants {
 
 	public static readonly AppSectionRoutes: Routes[] = [
 		Routes.DASHBOARD,
+		Routes.TIMELINE,
 		Routes.TRANSACTIONS,
 		Routes.MERCHANTS,
-		// Routes.PEOPLE,
-		Routes.ACTIVITY,
+		Routes.PEOPLE,
+		// Routes.ACTIVITY,
 	];
 
 	// Data

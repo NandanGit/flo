@@ -2,6 +2,7 @@ export enum Routes {
 	HOME = '/',
 	LOGIN = '/login',
 	DASHBOARD = '/dashboard',
+	TIMELINE = '/timeline',
 	PROFILE = '/profile',
 	SETTINGS = '/settings',
 	SETTINGS_SECTION = '/settings/:section',
