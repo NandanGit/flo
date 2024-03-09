@@ -6,6 +6,7 @@ import { UserMenuItemModel } from '../models/menu-item/UserMenuItemModel';
 import { AppDrawerMenuItemModel } from '../models/menu-item/AppDrawerMenuItemModel';
 import { SettingsMenuItemModel } from '../models/menu-item/SettingsMenuItemModel';
 import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
+import { AppConstants } from '../constants/AppConstants';
 
 export class MenuData {
 	public static getUserMenuItems = (loc: Loc): UserMenuItemModel[] => [
@@ -23,6 +24,13 @@ export class MenuData {
 			unseenCount: 3,
 		},
 	];
+
+	public static getAppSectionItems = (loc: Loc): AppDrawerMenuItemModel[] => {
+		const allowedRoutes = AppConstants.AppSectionRoutes;
+		return this.getDrawerMenuItems(loc).filter((item) =>
+			allowedRoutes.includes(item.route!)
+		);
+	};
 
 	public static getDrawerMenuItems = (loc: Loc): AppDrawerMenuItemModel[] => [
 		{
@@ -50,7 +58,7 @@ export class MenuData {
 		{
 			label: loc.sActivity,
 			icon: AppIcons.receiptLong,
-			route: Routes.Activity,
+			route: Routes.ACTIVITY,
 			unseen: true,
 			unseenCount: 43,
 		},
