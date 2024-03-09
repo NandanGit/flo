@@ -3,12 +3,17 @@ import { AppPage, AppPageProps } from './AppPage';
 import SectionContent from '../components/Sections/SectionContent';
 import AppSectionsPanel from '../components/Sections/AppSectionsPanel';
 
-export interface AppScreenProps extends AppPageProps {}
+export interface AppScreenProps extends AppPageProps {
+	sectionTitle?: string;
+	showSectionTitle?: boolean;
+}
 
 export const AppScreen: React.FC<AppScreenProps> = ({
 	children,
 	// AppPageProps
 	boxSx,
+	sectionTitle,
+	showSectionTitle = false,
 	...restAppPageProps
 }) => {
 	return (
@@ -28,7 +33,13 @@ export const AppScreen: React.FC<AppScreenProps> = ({
 				//
 			/>
 			<SectionDivider />
-			<SectionContent>{children}</SectionContent>
+			<SectionContent
+				sectionTitle={
+					showSectionTitle ? sectionTitle || restAppPageProps.title : undefined
+				}
+			>
+				{children}
+			</SectionContent>
 		</AppPage>
 	);
 };
