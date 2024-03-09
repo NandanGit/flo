@@ -18,9 +18,8 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 }) => {
 	const { appSections } = useAppSectionsPanelView();
 	const sectionItems = appSections.map((section) => (
-		<AppLink to={section.route!}>
+		<AppLink key={section.label} to={section.route!}>
 			<CustomClickableListItem
-				key={section.label}
 				item={section}
 				onClick={() => {}}
 				// isSelected={section.section === selectedSection}
