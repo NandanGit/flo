@@ -4,6 +4,7 @@ import { Currency } from '../../shared/types/currency';
 import { AccountSummaryType } from './models/AccountSummaryType';
 import useAccountSummaryTypeItemView from './AccountSummaryTypeItemView';
 import { RGBA } from '../../utils/color/RGBA';
+import { resolveCurrencySymbol } from '../../utils/currency';
 
 export interface AccountSummaryTypeItemProps {
 	type: AccountSummaryType;
@@ -40,34 +41,18 @@ const AccountSummaryTypeItem: React.FC<AccountSummaryTypeItemProps> = ({
 			>
 				{title}
 			</Typography>
-			<Box
-				display='flex'
-				flexDirection='row'
-				justifyContent='space-between'
-				alignItems='end'
+			<Typography
+				style={{
+					// display: 'flex',
+					// flexDirection: 'row',
+					// justifyContent: 'space-between',
+					alignItems: 'center',
+					fontSize: '0.8rem',
+					color: typeColor.withOpacity(1),
+				}}
 			>
-				<Typography
-					style={{
-						// display: 'flex',
-						// flexDirection: 'row',
-						// justifyContent: 'space-between',
-						alignItems: 'center',
-						fontSize: '0.8rem',
-						color: typeColor.withOpacity(1),
-					}}
-				>
-					{amount}
-				</Typography>
-				<Typography
-					style={{
-						fontSize: '0.5rem',
-						color: 'gray',
-						marginBottom: '0.125rem',
-					}}
-				>
-					{currency}
-				</Typography>
-			</Box>
+				{`${resolveCurrencySymbol(currency)} ${amount}`}
+			</Typography>
 		</Box>
 	);
 };
