@@ -40,26 +40,34 @@ const AccountSummaryTypeItem: React.FC<AccountSummaryTypeItemProps> = ({
 			>
 				{title}
 			</Typography>
-			<Typography
-				style={{
-					display: 'flex',
-					flexDirection: 'row',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					fontSize: '0.8rem',
-					color: typeColor.withOpacity(1),
-				}}
+			<Box
+				display='flex'
+				flexDirection='row'
+				justifyContent='space-between'
+				alignItems='end'
 			>
-				{amount}
+				<Typography
+					style={{
+						// display: 'flex',
+						// flexDirection: 'row',
+						// justifyContent: 'space-between',
+						alignItems: 'center',
+						fontSize: '0.8rem',
+						color: typeColor.withOpacity(1),
+					}}
+				>
+					{amount}
+				</Typography>
 				<Typography
 					style={{
 						fontSize: '0.5rem',
 						color: 'gray',
+						marginBottom: '0.125rem',
 					}}
 				>
 					{currency}
 				</Typography>
-			</Typography>
+			</Box>
 		</Box>
 	);
 };
