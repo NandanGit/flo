@@ -20,7 +20,7 @@ import { formatDate } from '../../../utils/time';
 
 const TimelinePage: React.FC = () => {
 	const loc = useLoc();
-	const { transactions, loading, theme } = useTimelinePageView();
+	const { transactions, theme } = useTimelinePageView();
 	return (
 		<AppScreen title={loc.sTimeline} showSectionTitle>
 			<Timeline
