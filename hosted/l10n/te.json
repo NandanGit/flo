@@ -26,6 +26,12 @@
 	"sFirstName": "మొదటి పేరు",
 	"sLastName": "చివరి పేరు",
 	"sSettings": "సెట్టింగ్లు",
+	"sAccountSummary": "ఖాతా సారాంశం",
+	"sIncome": "ఆదాయం",
+	"sSpending": "ఖర్చు",
+	"sBalance": "సంతులనం",
+	"sTotal": "మొత్తం",
+	"sCarryover": "క్యారీఓవర్",
 
 	"authLogin": "లాగిన్ అవ్వండి",
 	"authLogout": "లాగౌట్ అవ్వండి",
