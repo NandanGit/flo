@@ -7,6 +7,8 @@ import { AppDrawerMenuItemModel } from '../models/menu-item/AppDrawerMenuItemMod
 import { SettingsMenuItemModel } from '../models/menu-item/SettingsMenuItemModel';
 import { SettingsSection } from '../../features/user/settings/model/SettingsSection';
 import { AppConstants } from '../constants/AppConstants';
+import { AppSectionMenuItemModel } from '../models/menu-item/AppSectionMenuItemModel';
+import { resolveAppSection } from '../components/Sections/utils';
 
 export class MenuData {
 	public static getUserMenuItems = (loc: Loc): UserMenuItemModel[] => [
@@ -25,11 +27,15 @@ export class MenuData {
 		},
 	];
 
-	public static getAppSectionItems = (loc: Loc): AppDrawerMenuItemModel[] => {
+	public static getAppSectionItems = (loc: Loc): AppSectionMenuItemModel[] => {
 		const allowedRoutes = AppConstants.AppSectionRoutes;
-		return this.getDrawerMenuItems(loc).filter((item) =>
-			allowedRoutes.includes(item.route!)
-		);
+		return this.getDrawerMenuItems(loc)
+			.filter((item) => allowedRoutes.includes(item.route!))
+			.map((item) => ({
+				...item,
+				route: item.route!,
+				section: resolveAppSection(item.route!),
+			}));
 	};
 
 	public static getDrawerMenuItems = (loc: Loc): AppDrawerMenuItemModel[] => [
