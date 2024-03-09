@@ -7,7 +7,6 @@ import CustomTabs from '../../../../shared/components/higher-order/CustomTabs/Cu
 import SettingsSectionContent from './SettingsSectionContent';
 
 const SettingsPage: React.FC = () => {
-	useSettingsPageView();
 	const loc = useLoc();
 	const { sections } = useSettingsPageView();
 
