@@ -24,6 +24,7 @@ const SettingsPage: React.FC = () => {
 			<CustomTabs tabs={sections} keys={sections.map((s) => s.section)}>
 				<SettingsSectionsPanel
 				// showSectionsInCard
+				//
 				/>
 				<SectionDivider />
 				<SettingsSectionContent />

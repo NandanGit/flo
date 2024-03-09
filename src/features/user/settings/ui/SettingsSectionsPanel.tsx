@@ -33,7 +33,7 @@ const SettingsSectionsPanel: React.FC<SettingsSectionsPanelProps> = ({
 		<SectionTabsPanel>
 			<List
 				style={{
-					flex: 1,
+					// flex: 1,
 					padding: '0',
 					display: 'flex',
 					flexDirection: 'column',
@@ -51,12 +51,20 @@ const SettingsSectionsPanel: React.FC<SettingsSectionsPanelProps> = ({
 						style={{
 							padding: '0.5rem 0.6rem',
 							// border: '1px solid #0666',
-							// height: '100%',
+							maxHeight: '100%',
 							flex: 1,
 							overflow: 'scroll',
 						}}
 					>
-						{sectionItems}
+						<List
+							style={{
+								padding: 0,
+							}}
+						>
+							{sectionItems}
+							{/* <Divider sx={{ my: '0.5rem' }} />
+							{sectionItems} */}
+						</List>
 					</Card>
 				) : (
 					sectionItems
