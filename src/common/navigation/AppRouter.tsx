@@ -18,7 +18,7 @@ const browserRouter = createBrowserRouter(
 		{ path: Routes.TRANSACTIONS, element: <TransactionsPage /> },
 		{ path: Routes.MERCHANTS, element: <MerchantsPage /> },
 		{ path: Routes.PEOPLE, element: <PeoplePage /> },
-		{ path: Routes.Activity, element: <ActivityPage /> },
+		{ path: Routes.ACTIVITY, element: <ActivityPage /> },
 		{ path: '*', element: <h1>404! Page not found</h1> },
 	],
 	{ basename: '/' }
