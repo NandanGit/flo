@@ -11,6 +11,7 @@
 	"sTransactions": "లావాదేవీలు",
 	"sUser": "వాడుకరి",
 	"sDashboard": "డాష్బోర్డ్",
+	"sTimeline": "టైమ్లైన్",
 	"sLoading": {
 		"text": "{entity} లోడ్ అవుతోంది...",
 		"placeholders": ["entity"]

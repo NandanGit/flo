@@ -63,6 +63,13 @@ export interface Loc {
   sDashboard: string;
 
   /** 
+   * Timeline
+   *
+   * No description provided
+   */
+  sTimeline: string;
+
+  /** 
    * Loading {entity}...
    *
    * This message is displayed when the app is loading a specific entity (`Profile` | `Transactions` | `Merchants` etc.)
