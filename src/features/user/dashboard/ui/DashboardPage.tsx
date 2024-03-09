@@ -10,8 +10,8 @@ import {
 	Card,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { AppPage } from '../../../../shared/pages/AppPage';
 import useLoc from '../../../../hooks/useLoc';
+import { AppScreen } from '../../../../shared/pages/AppScreen';
 
 const DashboardPage: React.FC = () => {
 	const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const DashboardPage: React.FC = () => {
 	const loc = useLoc();
 
 	return (
-		<AppPage title={loc.sDashboard}>
+		<AppScreen title={loc.sDashboard}>
 			<Card style={{ padding: '1rem' }}>
 				<Button onClick={() => setDialogIsOpen(true)} color='primary'>
 					Open Counter
@@ -77,7 +77,7 @@ const DashboardPage: React.FC = () => {
 					<Button onClick={() => setCount(count - 1)}>Decrement</Button>
 				</DialogActions>
 			</Dialog>
-		</AppPage>
+		</AppScreen>
 	);
 };
 

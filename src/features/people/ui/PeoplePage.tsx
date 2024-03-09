@@ -1,15 +1,15 @@
 import { List, ListItem, ListItemText } from '@mui/material';
-import { AppPage } from '../../../shared/pages/AppPage';
 import { usePeoplePageView } from '../PeoplePageView';
 import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
 import useLoc from '../../../hooks/useLoc';
+import { AppScreen } from '../../../shared/pages/AppScreen';
 
 const PeoplePage: React.FC = () => {
 	const { people, peopleAreLoading, peopleStatus, loadPeople } =
 		usePeoplePageView();
 	const loc = useLoc();
 	return (
-		<AppPage title={loc.sPeople}>
+		<AppScreen title={loc.sPeople}>
 			<RefreshHeader
 				title={loc.sPeople}
 				dataStatus={peopleStatus}
@@ -26,7 +26,7 @@ const PeoplePage: React.FC = () => {
 					))}
 				</List>
 			)}
-		</AppPage>
+		</AppScreen>
 	);
 };
 
