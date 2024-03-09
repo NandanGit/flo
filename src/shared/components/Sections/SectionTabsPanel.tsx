@@ -14,10 +14,10 @@ const SectionTabsPanel: React.FC<SectionTabsPanelProps> = ({
 		<Box
 			sx={{
 				height: '100%',
-				width: '15rem',
+				width: '16rem',
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'center',
+				alignItems: 'stretch',
 				overflowY: 'scroll',
 				// border: '1px solid #0666',
 				// padding: '1rem',
