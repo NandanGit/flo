@@ -1,15 +1,15 @@
 import { List, ListItem, ListItemText } from '@mui/material';
 import RefreshHeader from '../../../shared/components/RefreshHeader/RefreshHeader';
-import { AppPage } from '../../../shared/pages/AppPage';
 import { useTransactionsPageView } from '../TransactionsPageView';
 import useLoc from '../../../hooks/useLoc';
+import { AppScreen } from '../../../shared/pages/AppScreen';
 
 const TransactionsPage: React.FC = () => {
 	const { transactionsStatus, transactions, loadTransactions } =
 		useTransactionsPageView();
 	const loc = useLoc();
 	return (
-		<AppPage title={loc.sTransactions}>
+		<AppScreen title={loc.sTransactions}>
 			<RefreshHeader
 				title={loc.trRecentTransactions}
 				dataStatus={transactionsStatus}
@@ -22,7 +22,7 @@ const TransactionsPage: React.FC = () => {
 					</ListItem>
 				))}
 			</List>
-		</AppPage>
+		</AppScreen>
 	);
 };
 
