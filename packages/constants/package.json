@@ -1,26 +1,22 @@
 {
-  "name": "@flo.app/constants",
-  "version": "0.1.0",
-  "description": "This package is used to store all the app constants teh can be used within the app or within the schemas package.",
-  "author": "Nandan Reddy <nandan.reddy1133@gmail.com>",
-  "homepage": "https://github.com/NandanGit/flo#readme",
-  "license": "ISC",
-  "main": "dist/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NandanGit/flo.git"
-  },
-  "scripts": {
-    "test": "node ./__tests__/constants.test.js"
-  },
-  "bugs": {
-    "url": "https://github.com/NandanGit/flo/issues"
-  }
+	"name": "@flo.app/constants",
+	"version": "0.1.0",
+	"description": "This package is used to store all the app constants teh can be used within the app or within the schemas package.",
+	"author": "Nandan Reddy <nandan.reddy1133@gmail.com>",
+	"homepage": "https://github.com/NandanGit/flo#readme",
+	"license": "ISC",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NandanGit/flo.git"
+	},
+	"scripts": {
+		"start": "tsc -w",
+		"build": "tsc",
+		"prepublishOnly": "npm run build"
+	},
+	"bugs": {
+		"url": "https://github.com/NandanGit/flo/issues"
+	}
 }

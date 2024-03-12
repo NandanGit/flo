@@ -22,7 +22,7 @@ interface AppHeaderProps {
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-	title = AppConstants.name,
+	title = AppConstants.appName,
 	appBarRef,
 }) => {
 	const {
@@ -123,7 +123,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 											whiteSpace: 'nowrap',
 										}}
 									>
-										{AppConstants.name}
+										{AppConstants.appName}
 									</Typography>
 								</Link>
 								{/* <Link underline='hover' color='inherit' href='#'>
