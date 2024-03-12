@@ -52,7 +52,10 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 	);
 	return (
 		<SectionTabsPanel>
-			<AccountSummaryCard />
+			<div>
+				{/* Don't ask me why wrapping the AccountSummaryCard in a div is necessary. It just is. IT JUST IS */}
+				<AccountSummaryCard />
+			</div>
 			<br />
 			{showSectionsInCard ? (
 				<Card
@@ -60,6 +63,7 @@ const AppSectionsPanel: React.FC<AppSectionsPanelProps> = ({
 					style={{
 						padding: '0.5rem 0.6rem',
 						// flexGrow: 1,
+						height: '100%',
 						// height: '5rem', // There is no reason for this to be 5rem. I don't know how, but removing this line breaks the layout. SO DON'T REMOVE IT!
 						overflow: 'scroll',
 						// border: '1px solid #0666',

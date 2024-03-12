@@ -64,24 +64,6 @@ const AccountSummaryCard: React.FC<AccountSummaryCardProps> = () => {
 					currency='INR'
 				/>
 			</Box>
-			{/* <Box display='flex' justifyContent='space-between'>
-				<Typography variant='subtitle2'>Income</Typography>
-				<Typography variant='subtitle2'>
-					72342 <Typography variant='caption'>INR</Typography>
-				</Typography>
-			</Box>
-			<Box display='flex' justifyContent='space-between'>
-				<Typography variant='subtitle2'>Spending</Typography>
-				<Typography variant='subtitle2'>
-					4321 <Typography variant='caption'>INR</Typography>
-				</Typography>
-			</Box>
-			<Box display='flex' justifyContent='space-between'>
-				<Typography variant='subtitle2'>Balance</Typography>
-				<Typography variant='subtitle2'>
-					4321 <Typography variant='caption'>INR</Typography>
-				</Typography>
-			</Box> */}
 		</Card>
 	);
 };
