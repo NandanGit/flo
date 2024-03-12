@@ -13,7 +13,7 @@ export interface AppPageProps {
 
 export const AppPage: React.FC<AppPageProps> = ({
 	children,
-	title = AppConstants.name,
+	title = AppConstants.appName,
 	useStaticGlassBackground = false,
 	boxSx,
 }) => {
@@ -21,7 +21,7 @@ export const AppPage: React.FC<AppPageProps> = ({
 	const [containerHeight, setContainerHeight] = useState(0);
 
 	useEffect(() => {
-		document.title = title + ' | ' + AppConstants.name;
+		document.title = title + ' | ' + AppConstants.appName;
 	}, [title]);
 
 	useLayoutEffect(() => {

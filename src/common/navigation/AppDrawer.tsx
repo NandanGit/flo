@@ -78,7 +78,7 @@ const AppDrawer: React.FC<AppDrawerProps> = ({ open, onDrawerToggle }) => {
 							})
 						}
 					>
-						{AppConstants.name}
+						{AppConstants.appName}
 					</Typography>
 					<List
 						style={{
