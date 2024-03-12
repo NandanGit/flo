@@ -1,7 +1,7 @@
 {
 	"name": "@flo.app/constants",
 	"version": "0.1.0",
-	"description": "This package is used to store all the app constants teh can be used within the app or within the schemas package.",
+	"description": "This package is used to store all the app constants the can be used within the app or within the schemas package.",
 	"author": "Nandan Reddy <nandan.reddy1133@gmail.com>",
 	"homepage": "https://github.com/NandanGit/flo#readme",
 	"license": "ISC",
