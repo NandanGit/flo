@@ -242,7 +242,37 @@ export const s2cTransactionSchemaRaw = z.object({
 		.optional(),
 });
 
-export const s2cTransactionSchema = s2cTransactionSchemaRaw
+export const s2cTransactionSchema = s2cTransactionSchemaRaw.transform(
+	(data) => {
+		const { split } = data;
+		const isSettled = split?.splits.every(
+			(split) => split.debtStatus === 'PAID'
+		);
+
+		return {
+			...data,
+			senderType: resolveAccountType(data.from),
+			receiverType: resolveAccountType(data.to),
+			split:
+				split === undefined
+					? undefined
+					: {
+							...split,
+							isSettled,
+					  },
+		};
+	}
+);
+
+// export type IncTransaction = z.input<typeof s2cTransactionSchema>;
+// export type Transaction = z.output<typeof s2cTransactionSchema>;
+
+export const c2sTransactionSchema = s2cTransactionSchemaRaw
+	.omit({
+		id: true,
+		createdAt: true,
+		updatedAt: true,
+	})
 	.refine(
 		(data) => {
 			// If recurring is present, the recurring.until should be greater than the startDate
@@ -286,46 +316,6 @@ export const s2cTransactionSchema = s2cTransactionSchemaRaw
 		},
 		{
 			message: TR.errors.others.INVALID_TRANSFER,
-		}
-	)
-	.transform((data) => {
-		const { split } = data;
-		const isSettled = split?.splits.every(
-			(split) => split.debtStatus === 'PAID'
-		);
-
-		return {
-			...data,
-			senderType: resolveAccountType(data.from),
-			receiverType: resolveAccountType(data.to),
-			split:
-				split === undefined
-					? undefined
-					: {
-							...split,
-							isSettled,
-					  },
-		};
-	});
-
-// export type IncTransaction = z.input<typeof s2cTransactionSchema>;
-// export type Transaction = z.output<typeof s2cTransactionSchema>;
-
-export const c2sTransactionSchema = s2cTransactionSchemaRaw
-	.omit({
-		id: true,
-		createdAt: true,
-		updatedAt: true,
-	})
-	.refine(
-		(data) => {
-			// If recurring is present, the recurring.until should be greater than the startDate
-			if (data.recurring?.until) {
-				return data.startDate < data.recurring.until;
-			}
-		},
-		{
-			message: TR.errors.others.END_DATE_BEFORE_START_DATE,
 		}
 	);
 
