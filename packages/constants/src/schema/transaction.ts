@@ -1,4 +1,20 @@
 export class TransactionSchemaConstants {
+	// Limits
+	public static readonly title = {
+		MIN_LENGTH: 3,
+		MAX_LENGTH: 50,
+	} as const;
+
+	public static readonly description = {
+		MAX_LENGTH: 500,
+	} as const;
+
+	public static readonly amount = {
+		MIN: 0,
+		MAX: 99_00_000,
+	} as const;
+
+	// Types
 	public static readonly TYPES = ['INCOME', 'EXPENSE', 'TRANSFER'] as const;
 
 	// public static readonly transactionRecipientTypes = [
@@ -18,7 +34,85 @@ export class TransactionSchemaConstants {
 	] as const;
 
 	public static readonly split = {
+		amount: {
+			MIN: this.amount.MIN,
+			MAX: this.amount.MAX,
+		},
 		DEBT_STATUSES: ['PAID', 'PAID_IN_CASH', 'PENDING'] as const,
+	} as const;
+
+	public static readonly merchant = {
+		benefits: {
+			TYPES: ['CASHBACK', 'DISCOUNT', 'OTHERS'] as const,
+			amount: {
+				MIN: this.amount.MIN,
+				MAX: this.amount.MAX,
+			},
+		},
+		breakup: {
+			list: {
+				name: {
+					MIN_LENGTH: this.title.MIN_LENGTH,
+					MAX_LENGTH: this.title.MAX_LENGTH,
+				},
+				quantity: {
+					MIN: 0,
+				},
+				unit: {
+					TYPES: [
+						'kg',
+						'g',
+						'l',
+						'ml',
+						'dozen',
+						'pack',
+						'bottle',
+						'box',
+						'bag',
+						'sachet',
+						'packet',
+						'piece',
+						'slice',
+						'pair',
+						'set',
+						'bundle',
+						'roll',
+						'unit', // Default
+					] as const,
+					DEFAULT: 'unit',
+				},
+				amountPerUnit: {
+					MIN: this.amount.MIN,
+					MAX: this.amount.MAX / 9_999,
+				},
+				discount: {
+					MIN: 0,
+					MAX: 100,
+				},
+			},
+			additionalCharges: {
+				TYPES: [
+					'GST',
+					'CGST',
+					'SGST',
+					'IGST',
+					'CESS',
+					'TIP',
+					'SERVICE_CHARGE',
+					'OTHERS',
+				] as const,
+
+				name: {
+					MIN_LENGTH: 3,
+					MAX_LENGTH: 10,
+				},
+
+				amount: {
+					MIN: 0,
+					MAX: this.amount.MAX / 9_999,
+				},
+			},
+		},
 	} as const;
 
 	public static readonly recurring = {
@@ -28,21 +122,6 @@ export class TransactionSchemaConstants {
 			MAX: 30,
 		},
 	} as const; // as const is crucial. without this the type of frequencies will be string[] and everything else in the object will be broadened. So dont remove this
-
-	// Limits
-	public static readonly title = {
-		MIN_LENGTH: 3,
-		MAX_LENGTH: 50,
-	} as const;
-
-	public static readonly description = {
-		MAX_LENGTH: 500,
-	} as const;
-
-	public static readonly amount = {
-		MIN: 0,
-		MAX: 99_00_000,
-	} as const;
 
 	// Errors
 	public static readonly errors = {
@@ -63,13 +142,59 @@ export class TransactionSchemaConstants {
 		split: {
 			amount: {
 				MIN: 'Split amount should be a positive number',
-				MAX: `Split amount should be at most ${this.amount.MAX}`,
+				MAX: `Split amount should be at most ${this.split.amount.MAX}`,
 			},
 			debtStatus: `Debt status should be one of ${this.split.DEBT_STATUSES.join(
 				', '
 			)}`,
 			invalid: 'Split details are not valid',
 			validForTransfer: 'Only transactions of type TRANSFER can be split',
+		},
+		merchant: {
+			benefits: {
+				TYPE: `Benefit type should be one of ${this.merchant.benefits.TYPES.join(
+					', '
+				)}` as const,
+				amount: {
+					MIN: 'Benefit amount should be a positive number',
+					MAX: `Benefit amount should be at most ${this.merchant.benefits.amount.MAX}`,
+				},
+			},
+			breakup: {
+				list: {
+					name: {
+						MIN_LENGTH: `Breakup name should be at least ${this.merchant.breakup.list.name.MIN_LENGTH} characters long`,
+						MAX_LENGTH: `Breakup name should be at most ${this.merchant.breakup.list.name.MAX_LENGTH} characters long`,
+					},
+					quantity: {
+						MIN: 'Quantity should be a positive number',
+					},
+					unit: `Unit should be one of ${this.merchant.breakup.list.unit.TYPES.join(
+						', '
+					)}`,
+					amountPerUnit: {
+						MIN: 'Amount per unit should be a positive number',
+						MAX: `Amount per unit should be at most ${this.merchant.breakup.list.amountPerUnit.MAX}`,
+					},
+					discount: {
+						MIN: 'Discount should be a positive number',
+						MAX: 'Discount should be at most 100',
+					},
+				},
+				additionalCharges: {
+					TYPE: `Additional charge type should be one of ${this.merchant.breakup.additionalCharges.TYPES.join(
+						', '
+					)}`,
+					name: {
+						MIN_LENGTH: `Additional charge name should be at least ${this.merchant.breakup.additionalCharges.name.MIN_LENGTH} characters long`,
+						MAX_LENGTH: `Additional charge name should be at most ${this.merchant.breakup.additionalCharges.name.MAX_LENGTH} characters long`,
+					},
+					amount: {
+						MIN: 'Additional charge amount should be a positive number',
+						MAX: `Additional charge amount should be at most ${this.merchant.breakup.additionalCharges.amount.MAX}`,
+					},
+				},
+			},
 		},
 		recurring: {
 			frequency: `Recurring frequency should be one of ${this.recurring.FREQUENCIES.join(

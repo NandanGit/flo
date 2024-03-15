@@ -78,8 +78,6 @@ export const s2cTransactionSchemaRaw = z.object({
 	// Split details (split amounts, debt status like paid | paid_in_cash | pending, persons involved in the split, etc.)
 	split: z
 		.object({
-			// Some meta data about the split
-
 			// Splits in detail
 			splits: z.array(
 				z.object({
@@ -88,10 +86,10 @@ export const s2cTransactionSchemaRaw = z.object({
 					// Amount
 					amount: z
 						.number()
-						.min(TR.amount.MIN, {
+						.min(TR.split.amount.MIN, {
 							message: TR.errors.split.amount.MIN,
 						})
-						.max(TR.amount.MAX, {
+						.max(TR.split.amount.MAX, {
 							message: TR.errors.split.amount.MAX,
 						}),
 					// Debt status
@@ -102,6 +100,113 @@ export const s2cTransactionSchemaRaw = z.object({
 			),
 		})
 		.optional(),
+
+	// Merchant Specific Fields
+	merchant: z.object({
+		// Benefits
+		benefits: z
+			.array(
+				z.object({
+					type: z.enum(TR.merchant.benefits.TYPES, {
+						invalid_type_error: TR.errors.merchant.benefits.TYPE,
+					}),
+					amount: z
+						.number()
+						.min(TR.merchant.benefits.amount.MIN, {
+							message: TR.errors.merchant.benefits.amount.MIN,
+						})
+						.max(TR.merchant.benefits.amount.MAX, {
+							message: TR.errors.merchant.benefits.amount.MAX,
+						}),
+				})
+			)
+			.optional(),
+
+		// Breakup
+		breakup: z
+			.object({
+				list: z.array(
+					z.object({
+						// Name
+						name: z
+							.string()
+							.min(TR.merchant.breakup.list.name.MIN_LENGTH, {
+								message: TR.errors.merchant.breakup.list.name.MIN_LENGTH,
+							})
+							.max(TR.merchant.breakup.list.name.MAX_LENGTH, {
+								message: TR.errors.merchant.breakup.list.name.MAX_LENGTH,
+							}),
+
+						// Quantity
+						quantity: z.number().min(TR.merchant.breakup.list.quantity.MIN, {
+							message: TR.errors.merchant.breakup.list.quantity.MIN,
+						}),
+
+						// Unit
+						unit: z.enum(TR.merchant.breakup.list.unit.TYPES, {
+							invalid_type_error: TR.errors.merchant.breakup.list.unit,
+						}),
+
+						// Amount per unit
+						amountPerUnit: z
+							.number()
+							.min(TR.merchant.breakup.list.amountPerUnit.MIN, {
+								message: TR.errors.merchant.breakup.list.amountPerUnit.MIN,
+							})
+							.max(TR.merchant.breakup.list.amountPerUnit.MAX, {
+								message: TR.errors.merchant.breakup.list.amountPerUnit.MAX,
+							}),
+
+						// Discount
+						discount: z
+							.number()
+							.min(TR.merchant.breakup.list.discount.MIN, {
+								message: TR.errors.merchant.breakup.list.discount.MIN,
+							})
+							.max(TR.merchant.breakup.list.discount.MAX, {
+								message: TR.errors.merchant.breakup.list.discount.MAX,
+							}),
+					})
+				),
+
+				// Metadata like tax, service charge, discount, etc.
+				additionalCharges: z
+					.array(
+						z.object({
+							// Type
+							type: z.enum(TR.merchant.breakup.additionalCharges.TYPES, {
+								invalid_type_error:
+									TR.errors.merchant.breakup.additionalCharges.TYPE,
+							}),
+
+							// Name (Optional)
+							name: z
+								.string()
+								.min(TR.merchant.breakup.additionalCharges.name.MIN_LENGTH, {
+									message:
+										TR.errors.merchant.breakup.additionalCharges.name
+											.MIN_LENGTH,
+								})
+								.max(TR.merchant.breakup.additionalCharges.name.MAX_LENGTH, {
+									message:
+										TR.errors.merchant.breakup.additionalCharges.name
+											.MAX_LENGTH,
+								})
+								.optional(),
+
+							// Amount
+							amount: z
+								.number()
+								.min(TR.merchant.breakup.additionalCharges.amount.MIN, {
+									message:
+										TR.errors.merchant.breakup.additionalCharges.amount.MIN,
+								}),
+						})
+					)
+					.optional(),
+			})
+			.optional(),
+	}),
 
 	// recurring will be an optional object. If not present, it means the transaction is not recurring
 	recurring: z
