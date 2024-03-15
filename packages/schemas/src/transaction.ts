@@ -58,17 +58,17 @@ export const s2cTransactionSchemaRaw = z.object({
 
 	// Categories is an array of category IDs
 	// categories: z.array(categoryIdSchema),
-	category: categoryIdSchema,
+	categoryId: categoryIdSchema,
 
 	// `From` can be different based on the transaction type
 	// - For INCOME, it should be either a merchant ID or an person ID
 	// - For Expense and Transfer, it should be an account ID
-	from: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
+	fromId: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
 
 	// `To` can be different based on the transaction type
 	// - For INCOME and Transfer, it should be an account ID
 	// - For Expense, it should be either a merchant ID or an person ID
-	to: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
+	toId: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
 
 	// Start date of the transaction. This is different from createdAt. createdAt is the date when the transaction was created. startDate is the date when the transaction should be considered for accounting purposes. For example, if a transaction is created on 1st Jan, but the startDate is 31st Dec, it means the transaction should be considered for accounting purposes from 31st Dec.
 	startDate: zodDateSchema({
@@ -82,7 +82,7 @@ export const s2cTransactionSchemaRaw = z.object({
 			splits: z.array(
 				z.object({
 					// Person ID
-					person: personIdSchema,
+					personId: personIdSchema,
 					// Amount
 					amount: z
 						.number()
@@ -251,8 +251,8 @@ export const s2cTransactionSchema = s2cTransactionSchemaRaw.transform(
 
 		return {
 			...data,
-			senderType: resolveAccountType(data.from),
-			receiverType: resolveAccountType(data.to),
+			senderType: resolveAccountType(data.fromId),
+			receiverType: resolveAccountType(data.toId),
 			split:
 				split === undefined
 					? undefined
@@ -310,7 +310,7 @@ export const c2sTransactionSchema = s2cTransactionSchemaRaw
 	.refine(
 		(data) => {
 			if (data.type === 'TRANSFER') {
-				return data.from !== data.to;
+				return data.fromId !== data.toId;
 			}
 			return true;
 		},
