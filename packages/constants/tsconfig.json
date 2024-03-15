@@ -9,7 +9,9 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"removeComments": true
+		"moduleResolution": "node",
+		"removeComments": true,
+		"declarationDir": "./dist/types"
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "**/__tests__/*"]
