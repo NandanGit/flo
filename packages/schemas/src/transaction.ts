@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { z } from 'zod';
 // import { SchemaConstants } from './shared/constants';
 import { resolveAccountType } from './shared/utils/id';
@@ -74,6 +75,34 @@ export const s2cTransactionSchemaRaw = z.object({
 		allowFuture: true,
 	}),
 
+	// Split details (split amounts, debt status like paid | paid_in_cash | pending, persons involved in the split, etc.)
+	split: z
+		.object({
+			// Some meta data about the split
+
+			// Splits in detail
+			splits: z.array(
+				z.object({
+					// Person ID
+					person: personIdSchema,
+					// Amount
+					amount: z
+						.number()
+						.min(TR.amount.MIN, {
+							message: TR.errors.split.amount.MIN,
+						})
+						.max(TR.amount.MAX, {
+							message: TR.errors.split.amount.MAX,
+						}),
+					// Debt status
+					debtStatus: z.enum(TR.split.DEBT_STATUSES, {
+						invalid_type_error: TR.errors.split.debtStatus,
+					}),
+				})
+			),
+		})
+		.optional(),
+
 	// recurring will be an optional object. If not present, it means the transaction is not recurring
 	recurring: z
 		.object({
@@ -120,11 +149,57 @@ export const s2cTransactionSchema = s2cTransactionSchemaRaw
 			message: TR.errors.others.END_DATE_BEFORE_START_DATE,
 		}
 	)
+	.refine(
+		(data) => {
+			if (data.type !== 'EXPENSE') {
+				return !data.split; // If the transaction is not an expense, it should not have a split
+			}
+			return true;
+		},
+		{
+			message: TR.errors.split.validForTransfer,
+		}
+	)
+	.refine(
+		({ split, amount }) => {
+			if (!split) return true;
+			// The sum of all split amounts should be less than or equal to the transaction amount
+			// If the sum is less than the transaction amount, it means that the difference is the amount paid by the user. Rest of the amount is from the persons involved in the split
+			const sum = split.splits.reduce((acc, curr) => {
+				return acc + curr.amount;
+			}, 0);
+			return sum <= amount;
+		},
+		{ message: TR.errors.split.invalid }
+	)
+	.refine(
+		(data) => {
+			if (data.type === 'TRANSFER') {
+				return data.from !== data.to;
+			}
+			return true;
+		},
+		{
+			message: TR.errors.others.INVALID_TRANSFER,
+		}
+	)
 	.transform((data) => {
+		const { split } = data;
+		const isSettled = split?.splits.every(
+			(split) => split.debtStatus === 'PAID'
+		);
+
 		return {
 			...data,
 			senderType: resolveAccountType(data.from),
 			receiverType: resolveAccountType(data.to),
+			split:
+				split === undefined
+					? undefined
+					: {
+							...split,
+							isSettled,
+					  },
 		};
 	});
 

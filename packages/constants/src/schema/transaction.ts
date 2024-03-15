@@ -17,6 +17,10 @@ export class TransactionSchemaConstants {
 		'OTHERS',
 	] as const;
 
+	public static readonly split = {
+		DEBT_STATUSES: ['PAID', 'PAID_IN_CASH', 'PENDING'] as const,
+	} as const;
+
 	public static readonly recurring = {
 		FREQUENCIES: ['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY', 'EVERY'],
 		every: {
@@ -56,6 +60,17 @@ export class TransactionSchemaConstants {
 		type: `Transaction type should be one of ${this.TYPES.join(', ')}`,
 		status: `Transaction status should be one of ${this.STATUSES.join(', ')}`,
 		mode: `Transaction mode should be one of ${this.MODES.join(', ')}`,
+		split: {
+			amount: {
+				MIN: 'Split amount should be a positive number',
+				MAX: `Split amount should be at most ${this.amount.MAX}`,
+			},
+			debtStatus: `Debt status should be one of ${this.split.DEBT_STATUSES.join(
+				', '
+			)}`,
+			invalid: 'Split details are not valid',
+			validForTransfer: 'Only transactions of type TRANSFER can be split',
+		},
 		recurring: {
 			frequency: `Recurring frequency should be one of ${this.recurring.FREQUENCIES.join(
 				', '
@@ -67,6 +82,8 @@ export class TransactionSchemaConstants {
 		},
 		others: {
 			END_DATE_BEFORE_START_DATE: 'End date should be after start date',
+			INVALID_TRANSFER:
+				'From and to account should be different for a transfer',
 		},
 	} as const;
 }
