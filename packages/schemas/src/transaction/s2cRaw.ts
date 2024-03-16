@@ -246,6 +246,9 @@ const s2cTransactionSchemaRaw = z.object({
 					})
 				)
 				.optional(),
+
+			// recurring.shouldRemind will be a boolean. If true, the user will be reminded about the transaction before the transaction date. If false, the user will not be reminded about the transaction.
+			shouldRemind: z.boolean().optional(),
 		})
 		.optional(),
 });
