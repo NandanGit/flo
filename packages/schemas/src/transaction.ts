@@ -317,6 +317,25 @@ export const c2sTransactionSchema = s2cTransactionSchemaRaw
 		{
 			message: TR.errors.others.INVALID_TRANSFER,
 		}
-	);
+	)
+	.transform((data) => {
+		const { startDate, recurring } = data;
+		const { until, skipped } = recurring || {};
+
+		return {
+			...data,
+			startDate: startDate.toISOString(),
+			recurring:
+				recurring === undefined
+					? undefined
+					: {
+							...recurring,
+							until: until?.toISOString(),
+							skipped: skipped?.map((date) => date.toISOString()),
+					  },
+		};
+	});
 
 // export type OutTransaction = z.output<typeof c2sTransactionSchema>;
+
+// (data as OutTransaction).recurring?.skipped;
