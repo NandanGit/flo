@@ -96,6 +96,7 @@ export class TransactionSchemaConstants {
 					'CGST',
 					'SGST',
 					'IGST',
+					'VAT',
 					'CESS',
 					'TIP',
 					'SERVICE_CHARGE',
