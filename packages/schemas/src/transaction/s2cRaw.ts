@@ -206,6 +206,16 @@ const s2cTransactionSchemaRaw = z.object({
 			.optional(),
 	}),
 
+	// Spent for is an optional field. It is used to denote if the transaction was done for someone else. This is not used if the user is expecting the money back. For that, we use the split field. This is used when the user pays for someone else and the user wants to keep track of it. For example, if the user pays for their sister's school fees, they can use this field to denote that the money was spent for their sister.
+	spentFor: z
+		.object({
+			// Person ID
+			personId: personIdSchema,
+			// Additional people (For example, if the user buys a gift for their friends housewarming party, they can use this field to add their friend's spouse's ID denoting that the gift was for both of them)
+			additionalPeople: z.array(personIdSchema).optional(),
+		})
+		.optional(),
+
 	// recurring will be an optional object. If not present, it means the transaction is not recurring
 	recurring: z
 		.object({
