@@ -54,5 +54,7 @@ export class Constants {
 		'other',
 	] as const;
 
+	public static readonly CURRENCIES = SchemaConstants.shared.CURRENCIES;
+
 	public static readonly schema = SchemaConstants;
 }
