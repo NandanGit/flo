@@ -31,15 +31,19 @@ const s2cAccountSchemaRaw = z.object({
 		invalid_type_error: AC.errors.TYPE,
 	}),
 
-	currency: z.enum(AC.CURRENCIES, {
-		invalid_type_error: AC.errors.CURRENCY,
-	}),
-
 	// Initial Balance can be negative for only credit cards and wallets.
 	initialBalance: z
 		.number()
 		.min(-AC.initialBalance.MAX, { message: AC.errors.initialBalance.MIN })
 		.max(AC.initialBalance.MAX, { message: AC.errors.initialBalance.MAX }),
+
+	currency: z.enum(AC.CURRENCIES, {
+		invalid_type_error: AC.errors.CURRENCY,
+	}),
+
+	color: z.enum(AC.COLORS, {
+		invalid_type_error: AC.errors.COLOR,
+	}),
 
 	// // Account Status
 	// status: z.enum(AC.STATUSES, {
