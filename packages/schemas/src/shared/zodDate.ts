@@ -30,3 +30,5 @@ export const zodDateSchema = ({
 			}
 		);
 };
+
+// Create another schema which does exactly opposite of the above schema. It takes a date object and converts it to a string. Include the allowFuture option in this schema as well.
