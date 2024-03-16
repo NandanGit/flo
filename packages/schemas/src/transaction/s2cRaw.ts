@@ -1,20 +1,18 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { z } from 'zod';
-// import { SchemaConstants } from './shared/constants';
-import { resolveAccountType } from './shared/utils/id';
-import { zodDateSchema } from './shared/zodDate';
-import { FloConstants } from '@flo.app/constants';
+import { zodDateSchema } from '../shared/zodDate';
 import {
-	accountIdSchema,
+	transactionIdSchema,
 	categoryIdSchema,
+	accountIdSchema,
 	merchantIdSchema,
 	personIdSchema,
-	transactionIdSchema,
-} from './shared/zodId';
+} from '../shared/zodId';
+import { FloConstants } from '@flo.app/constants';
 
 const TR = FloConstants.schema.transaction;
 
-export const s2cTransactionSchemaRaw = z.object({
+const s2cTransactionSchemaRaw = z.object({
 	// Unique transaction ID
 	id: transactionIdSchema,
 	// Date of transaction creation and last update. Both of them are received as ISO strings and later converted to Date objects.
@@ -242,100 +240,4 @@ export const s2cTransactionSchemaRaw = z.object({
 		.optional(),
 });
 
-export const s2cTransactionSchema = s2cTransactionSchemaRaw.transform(
-	(data) => {
-		const { split } = data;
-		const isSettled = split?.splits.every(
-			(split) => split.debtStatus === 'PAID'
-		);
-
-		return {
-			...data,
-			senderType: resolveAccountType(data.fromId),
-			receiverType: resolveAccountType(data.toId),
-			split:
-				split === undefined
-					? undefined
-					: {
-							...split,
-							isSettled,
-					  },
-		};
-	}
-);
-
-// export type IncTransaction = z.input<typeof s2cTransactionSchema>;
-// export type Transaction = z.output<typeof s2cTransactionSchema>;
-
-export const c2sTransactionSchema = s2cTransactionSchemaRaw
-	.omit({
-		id: true,
-		createdAt: true,
-		updatedAt: true,
-	})
-	.refine(
-		(data) => {
-			// If recurring is present, the recurring.until should be greater than the startDate
-			if (data.recurring?.until) {
-				return data.startDate < data.recurring.until;
-			}
-		},
-		{
-			message: TR.errors.others.END_DATE_BEFORE_START_DATE,
-		}
-	)
-	.refine(
-		(data) => {
-			if (data.type !== 'EXPENSE') {
-				return !data.split; // If the transaction is not an expense, it should not have a split
-			}
-			return true;
-		},
-		{
-			message: TR.errors.split.validForTransfer,
-		}
-	)
-	.refine(
-		({ split, amount }) => {
-			if (!split) return true;
-			// The sum of all split amounts should be less than or equal to the transaction amount
-			// If the sum is less than the transaction amount, it means that the difference is the amount paid by the user. Rest of the amount is from the persons involved in the split
-			const sum = split.splits.reduce((acc, curr) => {
-				return acc + curr.amount;
-			}, 0);
-			return sum <= amount;
-		},
-		{ message: TR.errors.split.invalid }
-	)
-	.refine(
-		(data) => {
-			if (data.type === 'TRANSFER') {
-				return data.fromId !== data.toId;
-			}
-			return true;
-		},
-		{
-			message: TR.errors.others.INVALID_TRANSFER,
-		}
-	)
-	.transform((data) => {
-		const { startDate, recurring } = data;
-		const { until, skipped } = recurring || {};
-
-		return {
-			...data,
-			startDate: startDate.toISOString(),
-			recurring:
-				recurring === undefined
-					? undefined
-					: {
-							...recurring,
-							until: until?.toISOString(),
-							skipped: skipped?.map((date) => date.toISOString()),
-					  },
-		};
-	});
-
-// export type OutTransaction = z.output<typeof c2sTransactionSchema>;
-
-// (data as OutTransaction).recurring?.skipped;
+export default s2cTransactionSchemaRaw;
