@@ -1,3 +1,5 @@
+import { SharedSchemaConstants } from './shared';
+
 export class TransactionSchemaConstants {
 	// Limits
 	public static readonly title = {
@@ -15,7 +17,7 @@ export class TransactionSchemaConstants {
 	} as const;
 
 	// Types
-	public static readonly TYPES = ['INCOME', 'EXPENSE', 'TRANSFER'] as const;
+	public static readonly TYPES = SharedSchemaConstants.TRANSACTION_TYPES;
 
 	// public static readonly transactionRecipientTypes = [
 	// 	'merchant',
