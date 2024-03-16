@@ -35,6 +35,7 @@ export class AccountSchemaConstants {
 	] as const;
 
 	public static readonly CURRENCIES = SharedSchemaConstants.CURRENCIES;
+	public static readonly COLORS = SharedSchemaConstants.COLORS;
 
 	// public static readonly STATUSES = [
 	// 	'ACTIVE',
@@ -54,6 +55,7 @@ export class AccountSchemaConstants {
 		},
 		TYPE: `Account type should be one of ${this.TYPES.join(', ')}`,
 		CURRENCY: `Currency should be one of ${this.CURRENCIES.join(', ')}`,
+		COLOR: `Color should be one of ${this.COLORS.join(', ')}`,
 		initialBalance: {
 			MIN: `Initial balance can't be less than -${this.initialBalance.MAX}`,
 			MAX: `Initial balance can't be more than ${this.initialBalance.MAX}`,
