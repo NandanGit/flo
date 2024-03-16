@@ -99,6 +99,9 @@ const s2cTransactionSchemaRaw = z.object({
 		})
 		.optional(),
 
+	// Other transactions which are a result of this transaction. For example, if the user buys a mobile phone, and creates a transaction. Then the user can create another transaction for the phone case as a child transaction of the main transaction. This is useful to keep track of all the transactions related to the main transaction.
+	children: z.array(transactionIdSchema).optional(),
+
 	// Merchant Specific Fields
 	merchant: z.object({
 		// Benefits
