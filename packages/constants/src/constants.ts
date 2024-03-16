@@ -1,3 +1,5 @@
+import { SchemaConstants } from './schema/index';
+
 export class Constants {
 	// Details of the app
 	public static readonly appName = 'flo';
@@ -51,4 +53,8 @@ export class Constants {
 		'gifts',
 		'other',
 	] as const;
+
+	public static readonly CURRENCIES = SchemaConstants.shared.CURRENCIES;
+
+	public static readonly schema = SchemaConstants;
 }

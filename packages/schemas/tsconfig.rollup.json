@@ -1,9 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "ES5",
-		// "module": "commonjs", // Keeping this line is causing an error. When this line is uncommented, the main app is unable to import the constants package.
 		"declaration": true,
-		"outDir": "./dist",
+		"outDir": "./dist/tsc",
 		"rootDir": "./src",
 		"strict": true,
 		"esModuleInterop": true,
@@ -13,6 +12,5 @@
 		"removeComments": true,
 		"declarationDir": "./dist/types"
 	},
-	"include": ["src"],
-	"exclude": ["node_modules", "**/__tests__/*"]
+	"include": ["src"]
 }
