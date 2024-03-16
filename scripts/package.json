@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"gen-types": "nodemon src/gen-types.ts -i dist"
+		"gen-types:watch": "nodemon src/gen-types.ts -i dist",
+		"gen-types": "ts-node src/gen-types.ts"
 	},
 	"keywords": [],
 	"author": "Nandan Reddy",

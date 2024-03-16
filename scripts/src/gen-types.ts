@@ -13,6 +13,11 @@ const {
 	s2cAccountSchema,
 	c2sAccountSchemaRaw,
 	c2sAccountSchema,
+	// Category
+	s2cCategorySchemaRaw,
+	s2cCategorySchema,
+	c2sCategorySchemaRaw,
+	c2sCategorySchema,
 } = require('@flo.app/schemas');
 
 const map = {
@@ -25,6 +30,11 @@ const map = {
 		AccountIn: s2cAccountSchemaRaw,
 		Account: s2cAccountSchema,
 		AccountOut: c2sAccountSchemaRaw,
+	},
+	category: {
+		CategoryIn: s2cCategorySchemaRaw,
+		Category: s2cCategorySchema,
+		CategoryOut: c2sCategorySchemaRaw,
 	},
 	// And rest of the schemas. For each schema, you can generate types.
 };
