@@ -3,21 +3,28 @@ const fs = require('fs');
 const path = require('path');
 const { printNode, zodToTs, createTypeAlias } = require('zod-to-ts');
 const {
+	// Transaction
 	s2cTransactionSchemaRaw,
 	s2cTransactionSchema,
+	c2sTransactionSchemaRaw,
 	c2sTransactionSchema,
+	// Account
+	s2cAccountSchemaRaw,
+	s2cAccountSchema,
+	c2sAccountSchemaRaw,
+	c2sAccountSchema,
 } = require('@flo.app/schemas');
 
 const map = {
 	transaction: {
 		TransactionIn: s2cTransactionSchemaRaw,
 		Transaction: s2cTransactionSchema,
-		TransactionOut: c2sTransactionSchema,
+		TransactionOut: c2sTransactionSchemaRaw,
 	},
 	account: {
-		AccountIn: s2cTransactionSchemaRaw,
-		Account: s2cTransactionSchema,
-		AccountOut: c2sTransactionSchema,
+		AccountIn: s2cAccountSchemaRaw,
+		Account: s2cAccountSchema,
+		AccountOut: c2sAccountSchemaRaw,
 	},
 	// And rest of the schemas. For each schema, you can generate types.
 };
