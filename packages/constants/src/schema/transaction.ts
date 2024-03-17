@@ -40,7 +40,7 @@ export class TransactionSchemaConstants {
 			MIN: this.amount.MIN,
 			MAX: this.amount.MAX,
 		},
-		DEBT_STATUSES: ['PAID', 'PAID_IN_CASH', 'PENDING'] as const,
+		DEBT_STATUSES: ['SETTLED', 'SETTLED_IN_CASH', 'PENDING'] as const,
 	} as const;
 
 	public static readonly merchant = {
@@ -107,7 +107,7 @@ export class TransactionSchemaConstants {
 
 				name: {
 					MIN_LENGTH: 3,
-					MAX_LENGTH: 10,
+					MAX_LENGTH: 25,
 				},
 
 				amount: {
@@ -206,6 +206,8 @@ export class TransactionSchemaConstants {
 			every: {
 				MIN: `Recurring should be set to at least ${this.recurring.every.MIN}`,
 				MAX: `Recurring should be set to at most ${this.recurring.every.MAX}`,
+				REQUIRED_WHEN_FREQUENCY_IS_EVERY:
+					'`Every` should be set when frequency is EVERY',
 			},
 		},
 		others: {

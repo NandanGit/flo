@@ -88,4 +88,9 @@ export class SharedSchemaConstants {
 		'MEDIUM_SEA_GREEN', // '#3CB371',
 		'STEEL_BLUE', // '#4682B4',
 	] as const;
+
+	public static readonly LIMITS = {
+		MAX_STRING_LENGTH: 2000, // MAX length of any string by default
+		MAX_NUMBER: Number.MAX_SAFE_INTEGER,
+	};
 }
