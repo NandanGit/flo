@@ -19,8 +19,9 @@
 		"start": "rollup -c -w",
 		"build": "rollup -c",
 		"build:clean": "rm -rf dist/* && npm run build",
-		"test": "jest --watch",
-		"prepublishOnly": "npm run build"
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"prepublishOnly": "npm run build:clean"
 	},
 	"bugs": {
 		"url": "https://github.com/NandanGit/flo/issues"
