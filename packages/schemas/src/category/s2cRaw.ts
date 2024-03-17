@@ -8,7 +8,7 @@ const AC = FloConstants.schema.account;
 
 const s2cCategorySchemaRaw = z.object({
 	id: categoryIdSchema,
-	ownerId: userIdSchema,
+	createdBy: userIdSchema,
 
 	title: z
 		.string()
