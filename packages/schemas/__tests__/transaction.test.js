@@ -170,12 +170,12 @@ describe('s2cTransactionSchemaRaw', () => {
 						{
 							personId: 'P-1710698231-7F1B',
 							amount: 200,
-							debtStatus: 'PENDING',
+							status: 'PENDING',
 						},
 						{
 							personId: 'SELF',
 							amount: 259,
-							debtStatus: 'SETTLED',
+							status: 'SETTLED',
 						},
 					],
 				},
