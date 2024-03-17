@@ -81,7 +81,7 @@ const s2cTransactionSchemaRaw = z.object({
 						min: TR.split.amount.MIN,
 						max: TR.split.amount.MAX,
 					}),
-					debtStatus: zodEnumSchema(TR.split.DEBT_STATUSES, {
+					status: zodEnumSchema(TR.split.DEBT_STATUSES, {
 						fieldName: 'Debt status',
 					}),
 				})
@@ -232,3 +232,5 @@ const s2cTransactionSchemaRaw = z.object({
 });
 
 export default s2cTransactionSchemaRaw;
+// export type TransactionIN = z.input<typeof s2cTransactionSchemaRaw>;
+// export type TransactionOUT = z.output<typeof s2cTransactionSchemaRaw>;
