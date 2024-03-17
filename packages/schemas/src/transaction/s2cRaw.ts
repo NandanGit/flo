@@ -9,6 +9,9 @@ import {
 	personIdSchema,
 } from '../shared/zodId';
 import { FloConstants } from '@flo.app/constants';
+import { zodStringSchema } from '../shared/zodString';
+import { zodNumberSchema } from '../shared/zodNumber';
+import { zodEnumSchema } from '../shared/zodEnum';
 
 const TR = FloConstants.schema.transaction;
 
@@ -20,42 +23,35 @@ const s2cTransactionSchemaRaw = z.object({
 	updatedAt: zodDateSchema().optional(),
 
 	// Business Fields
-	title: z
-		.string()
-		.min(TR.title.MIN_LENGTH, {
-			message: TR.errors.title.MIN_LENGTH,
-		})
-		.max(TR.title.MAX_LENGTH, {
-			message: TR.errors.title.MAX_LENGTH,
-		}),
-	description: z
-		.string()
-		.max(TR.description.MAX_LENGTH, {
-			message: TR.errors.description.MAX_LENGTH,
-		})
-		.optional(),
-	amount: z
-		.number()
-		.min(TR.amount.MIN, {
-			message: TR.errors.amount.MIN,
-		})
-		.max(TR.amount.MAX, {
-			message: TR.errors.amount.MAX,
-		}),
-	type: z.enum(TR.TYPES, {
-		invalid_type_error: TR.errors.type,
-	}),
-	// Transaction Status
-	status: z.enum(TR.STATUSES, {
-		invalid_type_error: TR.errors.status,
+	title: zodStringSchema({
+		fieldName: 'Transaction title',
+		minLength: TR.title.MIN_LENGTH,
+		maxLength: TR.title.MAX_LENGTH,
 	}),
 
-	mode: z.enum(TR.MODES, {
-		invalid_type_error: TR.errors.mode,
+	description: zodStringSchema({
+		fieldName: 'Transaction description',
+		maxLength: TR.description.MAX_LENGTH,
+	}).optional(),
+
+	amount: zodNumberSchema({
+		fieldName: 'Transaction amount',
+		min: TR.amount.MIN,
+		max: TR.amount.MAX,
 	}),
 
-	// Categories is an array of category IDs
-	// categories: z.array(categoryIdSchema),
+	type: zodEnumSchema(TR.TYPES, {
+		fieldName: 'Transaction type',
+	}),
+
+	status: zodEnumSchema(TR.STATUSES, {
+		fieldName: 'Transaction status',
+	}),
+
+	mode: zodEnumSchema(TR.MODES, {
+		fieldName: 'Transaction mode',
+	}),
+
 	categoryId: categoryIdSchema,
 
 	// `From` can be different based on the transaction type
@@ -79,20 +75,14 @@ const s2cTransactionSchemaRaw = z.object({
 			// Splits in detail
 			splits: z.array(
 				z.object({
-					// Person ID
 					personId: personIdSchema,
-					// Amount
-					amount: z
-						.number()
-						.min(TR.split.amount.MIN, {
-							message: TR.errors.split.amount.MIN,
-						})
-						.max(TR.split.amount.MAX, {
-							message: TR.errors.split.amount.MAX,
-						}),
-					// Debt status
-					debtStatus: z.enum(TR.split.DEBT_STATUSES, {
-						invalid_type_error: TR.errors.split.debtStatus,
+					amount: zodNumberSchema({
+						fieldName: 'Split amount',
+						min: TR.split.amount.MIN,
+						max: TR.split.amount.MAX,
+					}),
+					debtStatus: zodEnumSchema(TR.split.DEBT_STATUSES, {
+						fieldName: 'Debt status',
 					}),
 				})
 			),
@@ -103,111 +93,88 @@ const s2cTransactionSchemaRaw = z.object({
 	children: z.array(transactionIdSchema).optional(),
 
 	// Merchant Specific Fields
-	merchant: z.object({
-		// Benefits
-		benefits: z
-			.array(
-				z.object({
-					type: z.enum(TR.merchant.benefits.TYPES, {
-						invalid_type_error: TR.errors.merchant.benefits.TYPE,
-					}),
-					amount: z
-						.number()
-						.min(TR.merchant.benefits.amount.MIN, {
-							message: TR.errors.merchant.benefits.amount.MIN,
-						})
-						.max(TR.merchant.benefits.amount.MAX, {
-							message: TR.errors.merchant.benefits.amount.MAX,
-						}),
-				})
-			)
-			.optional(),
-
-		// Breakup
-		breakup: z
-			.object({
-				list: z.array(
+	merchant: z
+		.object({
+			// Benefits
+			benefits: z
+				.array(
 					z.object({
-						// Name
-						name: z
-							.string()
-							.min(TR.merchant.breakup.list.name.MIN_LENGTH, {
-								message: TR.errors.merchant.breakup.list.name.MIN_LENGTH,
-							})
-							.max(TR.merchant.breakup.list.name.MAX_LENGTH, {
-								message: TR.errors.merchant.breakup.list.name.MAX_LENGTH,
-							}),
-
-						// Quantity
-						quantity: z.number().min(TR.merchant.breakup.list.quantity.MIN, {
-							message: TR.errors.merchant.breakup.list.quantity.MIN,
+						type: zodEnumSchema(TR.merchant.benefits.TYPES, {
+							fieldName: 'Benefit type',
 						}),
-
-						// Unit
-						unit: z.enum(TR.merchant.breakup.list.unit.TYPES, {
-							invalid_type_error: TR.errors.merchant.breakup.list.unit,
+						amount: zodNumberSchema({
+							fieldName: 'Benefit amount',
+							min: TR.merchant.benefits.amount.MIN,
+							max: TR.merchant.benefits.amount.MAX,
 						}),
-
-						// Amount per unit
-						amountPerUnit: z
-							.number()
-							.min(TR.merchant.breakup.list.amountPerUnit.MIN, {
-								message: TR.errors.merchant.breakup.list.amountPerUnit.MIN,
-							})
-							.max(TR.merchant.breakup.list.amountPerUnit.MAX, {
-								message: TR.errors.merchant.breakup.list.amountPerUnit.MAX,
-							}),
-
-						// Discount
-						discount: z
-							.number()
-							.min(TR.merchant.breakup.list.discount.MIN, {
-								message: TR.errors.merchant.breakup.list.discount.MIN,
-							})
-							.max(TR.merchant.breakup.list.discount.MAX, {
-								message: TR.errors.merchant.breakup.list.discount.MAX,
-							}),
 					})
-				),
+				)
+				.optional(),
 
-				// Metadata like tax, service charge, discount, etc.
-				additionalCharges: z
-					.array(
+			// Breakup
+			breakup: z
+				.object({
+					list: z.array(
 						z.object({
-							// Type
-							type: z.enum(TR.merchant.breakup.additionalCharges.TYPES, {
-								invalid_type_error:
-									TR.errors.merchant.breakup.additionalCharges.TYPE,
+							name: zodStringSchema({
+								fieldName: 'Breakup name',
+								minLength: TR.merchant.breakup.list.name.MIN_LENGTH,
+								maxLength: TR.merchant.breakup.list.name.MAX_LENGTH,
 							}),
 
-							// Name (Optional)
-							name: z
-								.string()
-								.min(TR.merchant.breakup.additionalCharges.name.MIN_LENGTH, {
-									message:
-										TR.errors.merchant.breakup.additionalCharges.name
-											.MIN_LENGTH,
-								})
-								.max(TR.merchant.breakup.additionalCharges.name.MAX_LENGTH, {
-									message:
-										TR.errors.merchant.breakup.additionalCharges.name
-											.MAX_LENGTH,
-								})
-								.optional(),
+							quantity: zodNumberSchema({
+								fieldName: 'Quantity',
+								min: TR.merchant.breakup.list.quantity.MIN,
+							}),
 
-							// Amount
-							amount: z
-								.number()
-								.min(TR.merchant.breakup.additionalCharges.amount.MIN, {
-									message:
-										TR.errors.merchant.breakup.additionalCharges.amount.MIN,
-								}),
+							unit: zodEnumSchema(TR.merchant.breakup.list.unit.TYPES, {
+								fieldName: 'Unit',
+							}),
+
+							amountPerUnit: zodNumberSchema({
+								fieldName: 'Amount per unit',
+								min: TR.merchant.breakup.list.amountPerUnit.MIN,
+								max: TR.merchant.breakup.list.amountPerUnit.MAX,
+							}),
+
+							discount: zodNumberSchema({
+								fieldName: 'Discount',
+								min: TR.merchant.breakup.list.discount.MIN,
+								max: TR.merchant.breakup.list.discount.MAX,
+							}).optional(),
 						})
-					)
-					.optional(),
-			})
-			.optional(),
-	}),
+					),
+
+					// Metadata like tax, service charge, discount, etc.
+					additionalCharges: z
+						.array(
+							z.object({
+								type: zodEnumSchema(
+									TR.merchant.breakup.additionalCharges.TYPES,
+									{
+										fieldName: 'Additional charge type',
+									}
+								),
+
+								name: zodStringSchema({
+									fieldName: 'Additional charge name',
+									minLength:
+										TR.merchant.breakup.additionalCharges.name.MIN_LENGTH,
+									maxLength:
+										TR.merchant.breakup.additionalCharges.name.MAX_LENGTH,
+								}).optional(),
+
+								amount: zodNumberSchema({
+									fieldName: 'Additional charge amount',
+									min: TR.merchant.breakup.additionalCharges.amount.MIN,
+								}),
+							})
+						)
+						.optional(),
+				})
+				.optional(),
+		})
+		.optional(),
 
 	// Spent for is an optional field. It is used to denote if the transaction was done for someone else. This is not used if the user is expecting the money back. For that, we use the split field. This is used when the user pays for someone else and the user wants to keep track of it. For example, if the user pays for their sister's school fees, they can use this field to denote that the money was spent for their sister.
 	spentFor: z
@@ -223,18 +190,15 @@ const s2cTransactionSchemaRaw = z.object({
 	recurring: z
 		.object({
 			// recurring.frequency can be either DAILY, WEEKLY, MONTHLY, YEARLY, "EVERY"
-			frequency: z.enum(TR.recurring.FREQUENCIES, {
-				invalid_type_error: TR.errors.recurring.frequency,
+			frequency: zodEnumSchema(TR.recurring.FREQUENCIES, {
+				fieldName: 'Recurring frequency',
 			}),
 			// recurring.every will be a number between 1 and 30. It will be used to calculate the next recurring date. For example, if the frequency is WEEKLY and every is 2, it means the transaction will recur every 2 weeks. This field will be ignored if the frequency is not "EVERY"
-			every: z
-				.number()
-				.min(TR.recurring.every.MIN, {
-					message: TR.errors.recurring.every.MIN,
-				})
-				.max(TR.recurring.every.MAX, {
-					message: TR.errors.recurring.every.MAX,
-				}),
+			every: zodNumberSchema({
+				fieldName: 'Recurring every',
+				min: TR.recurring.every.MIN,
+				max: TR.recurring.every.MAX,
+			}).optional(),
 
 			// recurring.until will be a date string. It will be used to calculate last recurring date. If this is not present, it means the transaction will recur indefinitely
 			until: zodDateSchema({
@@ -253,6 +217,17 @@ const s2cTransactionSchemaRaw = z.object({
 			// recurring.shouldRemind will be a boolean. If true, the user will be reminded about the transaction before the transaction date. If false, the user will not be reminded about the transaction.
 			shouldRemind: z.boolean().optional(),
 		})
+		.refine(
+			(val) => {
+				if (val.frequency === 'EVERY') {
+					return val.every !== undefined;
+				}
+				return true;
+			},
+			{
+				message: TR.errors.recurring.every.REQUIRED_WHEN_FREQUENCY_IS_EVERY,
+			}
+		)
 		.optional(),
 });
 
