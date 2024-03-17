@@ -35,7 +35,7 @@ export const zodIdSchema = ({
 export const userIdSchema = zodIdSchema({
 	prefix: 'U',
 	message: 'Invalid user ID',
-	whitelist: ['admin'],
+	whitelist: ['ADMIN'],
 });
 
 export const accountIdSchema = zodIdSchema({
@@ -46,6 +46,7 @@ export const accountIdSchema = zodIdSchema({
 export const personIdSchema = zodIdSchema({
 	prefix: 'P',
 	message: 'Invalid person ID',
+	whitelist: ['SELF'],
 });
 
 export const merchantIdSchema = zodIdSchema({
