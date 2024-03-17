@@ -1,7 +1,7 @@
 {
-	"name": "@flo.app/schemas",
+	"name": "@flo.app/icons",
 	"version": "0.1.0",
-	"description": "This package is used to distribute the schemas used in the flo app (finance tracker). This way, they can be reused in the backend if you decide to write the server in node.js (please don't)",
+	"description": "This package is just a wrapper around `hugeicons`. https://hugeicons.com/",
 	"author": "Nandan Reddy <nandan.reddy1133@gmail.com>",
 	"homepage": "https://github.com/NandanGit/flo#readme",
 	"license": "ISC",
@@ -26,16 +26,12 @@
 	"bugs": {
 		"url": "https://github.com/NandanGit/flo/issues"
 	},
-	"dependencies": {
-		"@flo.app/constants": "file:../constants"
-	},
 	"peerDependencies": {
-		"zod": "^3.22.4"
+		"react": ">= 16.0.0"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^25.0.7",
 		"@rollup/plugin-node-resolve": "^15.2.3",
-		"jest": "^29.7.0",
 		"rollup": "^2.79.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"rollup-plugin-terser": "^7.0.2",

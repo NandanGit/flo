@@ -8,7 +8,7 @@ const AC = FloConstants.schema.account;
 
 const s2cAccountSchemaRaw = z.object({
 	id: accountIdSchema,
-	ownerId: userIdSchema,
+	createdBy: userIdSchema,
 	createdAt: zodDateSchema(),
 	updatedAt: zodDateSchema().optional(),
 

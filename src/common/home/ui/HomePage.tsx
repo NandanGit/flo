@@ -3,8 +3,9 @@
 import React from 'react';
 import { AppPage } from '../../../shared/pages/AppPage';
 import { FloConstants } from '@flo.app/constants';
-import { Card, List, ListItemButton } from '@mui/material';
+import { Card, List, ListItemButton, Typography } from '@mui/material';
 import { AppIcon, AppIcons } from '../../../shared/Icon';
+import { CreditCardIcon } from '@flo.app/icons';
 
 const HomePage: React.FC = () => {
 	// Your homepage logic here
@@ -12,6 +13,7 @@ const HomePage: React.FC = () => {
 	// const colorMap = FloConstants.schema.shared.COLOR_MAP;
 	return (
 		<AppPage>
+			{/* <CreditCardIcon color='cream' /> */}
 			<List
 				style={{
 					display: 'grid',
@@ -53,8 +55,19 @@ const HomePage: React.FC = () => {
 										color: colorMap[colorName as keyof typeof colorMap],
 									},
 								})}
+								<CreditCardIcon
+									color='cream'
+									width='1.5rem'
+									height='1.5rem'
+									style={{
+										marginLeft: '0.15rem',
+										color: colorMap[colorName as keyof typeof colorMap],
+									}}
+								/>
 								{/* </Card> */}
-								<span
+								<Typography
+									variant='body1'
+									component='div'
 									style={{
 										// Title case
 										textTransform: 'capitalize',
@@ -66,7 +79,7 @@ const HomePage: React.FC = () => {
 								>
 									{colorName.split('_').join(' ').toLowerCase()}
 									{/* {`R: ${color.r}, G: ${color.g}, B: ${color.b}`} */}
-								</span>
+								</Typography>
 							</ListItemButton>
 						</Card>
 					);

@@ -27,3 +27,4 @@ dist-ssr
 playground/
 fake_data/**/generated/*
 !fake_data/**/generated/.keep
+coverage
