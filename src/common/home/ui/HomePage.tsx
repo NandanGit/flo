@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
 
 								{/* </Card> */}
 								<Card
-									variant='outlined'
+									// variant='outlined'
 									style={{
 										position: 'absolute',
 										bottom: 0,
@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
 											textTransform: 'capitalize',
 											fontSize: '0.5rem',
 											// marginBottom: '0.15rem',
-											color: 'gray',
+											color: '#ccc',
 											// marginLeft: '0.75rem',
 										}}
 									>
