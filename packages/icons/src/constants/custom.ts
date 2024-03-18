@@ -1,0 +1,15 @@
+export const CUSTOM_ICONS = [
+	'ACCOUNT',
+	'AMAZON_PAY',
+	'BHIM',
+	'GOOGLE_PAY',
+	'OTHERS',
+	'PAYTM',
+	'PHONEPE',
+	'PERSON',
+	'TRANSACTION',
+	'USER',
+	'MERCHANT',
+	'CATEGORY',
+	'PAYMENT_PROCESSOR',
+] as const;
