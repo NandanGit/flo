@@ -27,13 +27,7 @@ export class TransactionSchemaConstants {
 
 	public static readonly STATUSES = ['PENDING', 'COMPLETED', 'FAILED'] as const;
 
-	public static readonly MODES = [
-		'CASH',
-		'CARD',
-		'UPI',
-		'NET_BANKING',
-		'OTHERS',
-	] as const;
+	public static readonly MODES = SharedSchemaConstants.PAYMENT_MODES;
 
 	public static readonly split = {
 		amount: {

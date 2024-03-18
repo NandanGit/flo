@@ -1,4 +1,13 @@
 export class SharedSchemaConstants {
+	public static readonly PAYMENT_MODES = [
+		'CASH',
+		'CARD',
+		'UPI',
+		'NET_BANKING',
+		'WALLET',
+		'OTHERS',
+	] as const;
+
 	public static readonly TRANSACTION_TYPES = [
 		'INCOME',
 		'EXPENSE',
