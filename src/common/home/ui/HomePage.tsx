@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
 				style={{
 					display: 'grid',
 					gridTemplateColumns: 'repeat(4, 1fr)',
-					gap: '10px',
+					gap: '1rem',
 				}}
 			>
 				{Object.keys(colorMap).map((colorName) => {
@@ -30,6 +30,7 @@ const HomePage: React.FC = () => {
 							style={{
 								// backgroundColor: colorMap[colorName as keyof typeof colorMap],
 								padding: 0,
+								overflow: 'visible',
 							}}
 						>
 							<ListItemButton
@@ -45,6 +46,15 @@ const HomePage: React.FC = () => {
 									margin: 0,
 								}}
 							>
+								<CreditCardIcon
+									color='cream'
+									width='1.5rem'
+									height='1.5rem'
+									style={{
+										// marginLeft: '0.15rem',
+										color: colorMap[colorName as keyof typeof colorMap],
+									}}
+								/>
 								{/* <Card variant='outlined'> */}
 								{AppIcon(AppIcons.store, {
 									style: {
@@ -60,26 +70,46 @@ const HomePage: React.FC = () => {
 									width='1.5rem'
 									height='1.5rem'
 									style={{
-										marginLeft: '0.15rem',
+										// marginLeft: '0.15rem',
 										color: colorMap[colorName as keyof typeof colorMap],
 									}}
 								/>
+
 								{/* </Card> */}
-								<Typography
-									variant='body1'
-									component='div'
+								<Card
+									variant='outlined'
 									style={{
-										// Title case
-										textTransform: 'capitalize',
-										// fontSize: '0.9rem',
-										// marginBottom: '0.15rem',
-										color: 'gray',
-										marginLeft: '0.75rem',
+										position: 'absolute',
+										bottom: 0,
+										left: '50%',
+										transform: 'translate(-50%, 50%)',
+
+										//
+										borderRadius: '5rem',
+										// borderRadius: '0.25rem',
+										padding: '0.15rem 0.3rem 0.1rem',
+										// width: '5rem',
+										width: 'fit-content',
 									}}
 								>
-									{colorName.split('_').join(' ').toLowerCase()}
-									{/* {`R: ${color.r}, G: ${color.g}, B: ${color.b}`} */}
-								</Typography>
+									<Typography
+										variant='body1'
+										component='div'
+										style={{
+											// Title case
+											textTransform: 'capitalize',
+											fontSize: '0.5rem',
+											// marginBottom: '0.15rem',
+											color: 'gray',
+											// marginLeft: '0.75rem',
+										}}
+									>
+										{colorName.split('_').join(' ').toLowerCase()}
+										{
+											// `R: ${color.r}, G: ${color.g}, B: ${color.b}`
+										}
+									</Typography>
+								</Card>
 							</ListItemButton>
 						</Card>
 					);
