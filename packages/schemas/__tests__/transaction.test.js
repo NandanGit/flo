@@ -11,7 +11,7 @@ const TR = FloConstants.schema.transaction;
 describe('s2cTransactionSchemaRaw', () => {
 	it('should validate a valid transaction', () => {
 		const validTransaction = {
-			id: 'T-1710698125-3B824EB875A9',
+			id: 'TR-1710698125-3B824EB875A9',
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString(),
 			title: 'Test Transaction',
@@ -20,9 +20,9 @@ describe('s2cTransactionSchemaRaw', () => {
 			type: TR.TYPES[0], // INCOME
 			status: TR.STATUSES[0], // PENDING
 			mode: TR.MODES[0], // CASH
-			categoryId: 'C-1710698125-0410',
-			fromId: 'A-1710698231-7F1B',
-			toId: 'M-1710698231-F4DC1740',
+			categoryId: 'CA-1710698125-0410',
+			fromId: 'AC-1710698231-7F1B',
+			toId: 'MR-1710698231-F4DC1740',
 			startDate: new Date().toISOString(),
 			// split: {
 			// 	splits: [
@@ -82,7 +82,7 @@ describe('s2cTransactionSchemaRaw', () => {
 
 	it("shouldn't validate an invalid transaction", () => {
 		const invalidTransaction = {
-			id: 'T-1710698125-3B824EB875A9',
+			id: 'TR-1710698125-3B824EB875A9',
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString(),
 			title: 'Test Transaction',
@@ -91,9 +91,9 @@ describe('s2cTransactionSchemaRaw', () => {
 			type: TR.TYPES[0], // INCOME
 			status: TR.STATUSES[0], // PENDING
 			mode: TR.MODES[0], // CASH
-			categoryId: 'C-1710698125-0410',
-			fromId: 'A-1710698231-7F1B',
-			toId: 'M-1710698231-F4DC1740',
+			categoryId: 'CA-1710698125-0410',
+			fromId: 'AC-1710698231-7F1B',
+			toId: 'MR-1710698231-F4DC1740',
 			startDate: new Date().toISOString(),
 			// split: {
 			// 	splits: [
@@ -136,7 +136,7 @@ describe('s2cTransactionSchemaRaw', () => {
 			// 	additionalPeople: ['123'],
 			// },
 			recurring: {
-				frequency: TR.recurring.FREQUENCIES[4], // DAILY
+				frequency: TR.recurring.FREQUENCIES[4], // Every
 				// every: 1,
 			},
 		};
@@ -152,7 +152,7 @@ describe('s2cTransactionSchemaRaw', () => {
 	describe('Transactions', () => {
 		const transactions = [
 			{
-				id: 'T-1710696125-3B8656B875A9',
+				id: 'TR-1710696125-3B8656B875A9',
 				// created 4 hrs ago
 				createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
 				title: 'Burger',
@@ -161,14 +161,14 @@ describe('s2cTransactionSchemaRaw', () => {
 				type: 'EXPENSE',
 				status: 'COMPLETED',
 				mode: 'UPI',
-				categoryId: 'C-1710698125-0410',
-				fromId: 'A-1710698231-7F1B',
-				toId: 'M-1710698231-F4DC1740',
+				categoryId: 'CA-1710698125-0410',
+				fromId: 'AC-1710698231-7F1B',
+				toId: 'MR-1710698231-F4DC1740',
 				startDate: new Date().toISOString(),
 				split: {
 					splits: [
 						{
-							personId: 'P-1710698231-7F1B',
+							personId: 'PR-1710698231-7F1B',
 							amount: 200,
 							status: 'PENDING',
 						},
@@ -210,8 +210,8 @@ describe('s2cTransactionSchemaRaw', () => {
 					},
 				},
 				spentFor: {
-					personId: 'P-1710698231-7F1B',
-					additionalPeople: ['P-1710698231-7F1B'],
+					personId: 'PR-1710698231-7F1B',
+					additionalPeople: ['PR-1710698231-7F1B'],
 				},
 
 				recurring: {
@@ -220,7 +220,7 @@ describe('s2cTransactionSchemaRaw', () => {
 				},
 			},
 			{
-				id: 'T-1710698125-3B824EB875A9',
+				id: 'TR-1710698125-3B824EB875A9',
 				createdAt: new Date().toISOString(),
 				title: 'Uber Ride',
 				description: 'To Home',
@@ -228,9 +228,9 @@ describe('s2cTransactionSchemaRaw', () => {
 				type: 'EXPENSE',
 				status: 'COMPLETED',
 				mode: 'UPI',
-				categoryId: 'C-1710698125-0410',
-				fromId: 'A-1710698231-7F1B',
-				toId: 'M-1710698231-F4DC1740',
+				categoryId: 'CA-1710698125-0410',
+				fromId: 'AC-1710698231-7F1B',
+				toId: 'MR-1710698231-F4DC1740',
 				startDate: new Date().toISOString(),
 			},
 		];

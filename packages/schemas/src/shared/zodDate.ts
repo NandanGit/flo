@@ -3,11 +3,13 @@ import { CustomZodSchemaOptionsBase } from './types';
 
 interface ZodDateSchemaOptions extends CustomZodSchemaOptionsBase {
 	allowFuture?: boolean;
+	fieldName?: string;
 }
 
 export const zodDateSchema = ({
 	message = 'Invalid date',
 	allowFuture = false,
+	fieldName,
 }: ZodDateSchemaOptions = {}) => {
 	return z
 		.string()
@@ -16,7 +18,7 @@ export const zodDateSchema = ({
 				return !isNaN(new Date(val).getTime());
 			},
 			{
-				message,
+				message: fieldName ? `${fieldName} is not a valid date` : message,
 			}
 		)
 		.transform((val) => new Date(val))
@@ -26,7 +28,7 @@ export const zodDateSchema = ({
 				return val <= new Date();
 			},
 			{
-				message: 'Date should not be in the future',
+				message: `${fieldName || 'Date'} should not be in the future`,
 			}
 		);
 };
