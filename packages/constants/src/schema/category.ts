@@ -25,13 +25,5 @@ export class CategorySchemaConstants {
 	public static readonly COLORS = SharedSchemaConstants.COLORS;
 
 	// Errors
-	public static readonly errors = {
-		title: {
-			MIN_LENGTH: `Title should be at least ${this.title.MIN_LENGTH} characters long`,
-			MAX_LENGTH: `Title should be at most ${this.title.MAX_LENGTH} characters long`,
-		},
-		TYPE: `Category type should be one of ${this.TYPES.join(', ')}`,
-		ICON: 'Invalid icon',
-		COLOR: 'Invalid color',
-	};
+	public static readonly errors = {};
 }
