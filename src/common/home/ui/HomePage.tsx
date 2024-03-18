@@ -6,11 +6,13 @@ import { FloConstants } from '@flo.app/constants';
 import { Card, List, ListItemButton, Typography } from '@mui/material';
 import { AppIcon, AppIcons } from '../../../shared/Icon';
 import { CreditCardIcon } from '@flo.app/icons';
+import { RGBA } from '../../../utils/color/RGBA';
 
 const HomePage: React.FC = () => {
 	// Your homepage logic here
 	const colorMap = sortColorsByHex(FloConstants.schema.shared.COLOR_MAP);
 	// const colorMap = FloConstants.schema.shared.COLOR_MAP;
+
 	return (
 		<AppPage>
 			{/* <CreditCardIcon color='cream' /> */}
@@ -23,6 +25,7 @@ const HomePage: React.FC = () => {
 			>
 				{Object.keys(colorMap).map((colorName) => {
 					// const color = hexToRgb(colorMap[colorName as keyof typeof colorMap])!;
+					const color = new RGBA(colorMap[colorName as keyof typeof colorMap]);
 					return (
 						<Card
 							variant='outlined'
@@ -31,6 +34,7 @@ const HomePage: React.FC = () => {
 								// backgroundColor: colorMap[colorName as keyof typeof colorMap],
 								padding: 0,
 								overflow: 'visible',
+								backgroundColor: color.withOpacity(0.1),
 							}}
 						>
 							<ListItemButton
@@ -90,6 +94,7 @@ const HomePage: React.FC = () => {
 										padding: '0.15rem 0.3rem 0.1rem',
 										// width: '5rem',
 										width: 'fit-content',
+										backgroundColor: color.withOpacity(0.1),
 									}}
 								>
 									<Typography
@@ -100,7 +105,8 @@ const HomePage: React.FC = () => {
 											textTransform: 'capitalize',
 											fontSize: '0.5rem',
 											// marginBottom: '0.15rem',
-											color: '#aaa',
+											// color: '#aaa',
+											color: color.withOpacity(0.9),
 											// marginLeft: '0.75rem',
 										}}
 									>
