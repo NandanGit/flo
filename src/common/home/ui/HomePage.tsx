@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
 											textTransform: 'capitalize',
 											fontSize: '0.5rem',
 											// marginBottom: '0.15rem',
-											color: '#ccc',
+											color: '#aaa',
 											// marginLeft: '0.75rem',
 										}}
 									>
