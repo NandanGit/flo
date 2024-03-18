@@ -4,14 +4,69 @@ import React from 'react';
 import { AppPage } from '../../../shared/pages/AppPage';
 import { FloConstants } from '@flo.app/constants';
 import { Card, List, ListItemButton, Typography } from '@mui/material';
-import { AppIcon, AppIcons } from '../../../shared/Icon';
-import { CreditCardIcon } from '@flo.app/icons';
+import {
+	BankIcon,
+	BeachIcon,
+	BowlingPinsIcon,
+	Bus01Icon,
+	CarrotIcon,
+	Cash01Icon,
+	ChickenThighsIcon,
+	Coupon01Icon,
+	CreditCardIcon,
+	DrinkIcon,
+	EggsIcon,
+	EnergyIcon,
+	FishFoodIcon,
+	FuelStationIcon,
+	GiftIcon,
+	HairDryerIcon,
+	Hamburger01Icon,
+	HandSanitizerIcon,
+	Home06Icon,
+	House04Icon,
+	InjectionIcon,
+	KettleIcon,
+	LabsIcon,
+	Lamp03Icon,
+	LibraryIcon,
+	MasterCardIcon,
+	MetroIcon,
+	Money02Icon,
+	Motorbike02Icon,
+	NoteIcon,
+	PerfumeIcon,
+	PiggyBankIcon,
+	Pizza01Icon,
+	PuzzleIcon,
+	SchoolIcon,
+	ServiceIcon,
+	ShampooIcon,
+	Shirt01Icon,
+	SmartPhone01Icon,
+	Sofa01Icon,
+	SoftDrink01Icon,
+	SpeakerIcon,
+	StarIcon,
+	Store04Icon,
+	SwimmingIcon,
+	Tag01Icon,
+	TaxiIcon,
+	Ticket03Icon,
+	TractorIcon,
+	UniversityIcon,
+	VolleyballIcon,
+	Wallet01Icon,
+	WaterPumpIcon,
+	WellnessIcon,
+	Yoga01Icon,
+} from '@flo.app/icons';
 import { RGBA } from '../../../utils/color/RGBA';
 
 const HomePage: React.FC = () => {
 	// Your homepage logic here
-	const colorMap = sortColorsByHex(FloConstants.schema.shared.COLOR_MAP);
-	// const colorMap = FloConstants.schema.shared.COLOR_MAP;
+	// const colorMap = sortColorsByHex(FloConstants.schema.shared.COLOR_MAP);
+	const colorMap = FloConstants.schema.shared.COLOR_MAP;
 
 	return (
 		<AppPage>
@@ -26,6 +81,70 @@ const HomePage: React.FC = () => {
 				{Object.keys(colorMap).map((colorName) => {
 					// const color = hexToRgb(colorMap[colorName as keyof typeof colorMap])!;
 					const color = new RGBA(colorMap[colorName as keyof typeof colorMap]);
+					const iconProps = {
+						width: '32px',
+						height: '32px',
+						style: {
+							color: colorMap[colorName as keyof typeof colorMap],
+						},
+					};
+					const icons = [
+						<CreditCardIcon {...iconProps} />,
+						<BankIcon {...iconProps} />,
+						<BeachIcon {...iconProps} />,
+						<BowlingPinsIcon {...iconProps} />,
+						<Bus01Icon {...iconProps} />,
+						<CarrotIcon {...iconProps} />,
+						<Cash01Icon {...iconProps} />,
+						<EnergyIcon {...iconProps} />,
+						<ChickenThighsIcon {...iconProps} />,
+						<Coupon01Icon {...iconProps} />,
+						<DrinkIcon {...iconProps} />,
+						<EggsIcon {...iconProps} />,
+						<FishFoodIcon {...iconProps} />,
+						<FuelStationIcon {...iconProps} />,
+						<GiftIcon {...iconProps} />,
+						<HairDryerIcon {...iconProps} />,
+						<Hamburger01Icon {...iconProps} />,
+						<HandSanitizerIcon {...iconProps} />,
+						<Home06Icon {...iconProps} />,
+						<House04Icon {...iconProps} />,
+						<InjectionIcon {...iconProps} />,
+						<LabsIcon {...iconProps} />,
+						<KettleIcon {...iconProps} />,
+						<Lamp03Icon {...iconProps} />,
+						<LibraryIcon {...iconProps} />,
+						<MasterCardIcon {...iconProps} />,
+						<MetroIcon {...iconProps} />,
+						<Money02Icon {...iconProps} />,
+						<Motorbike02Icon {...iconProps} />,
+						<NoteIcon {...iconProps} />,
+						<PerfumeIcon {...iconProps} />,
+						<PiggyBankIcon {...iconProps} />,
+						<Pizza01Icon {...iconProps} />,
+						<PuzzleIcon {...iconProps} />,
+						<SchoolIcon {...iconProps} />,
+						<ServiceIcon {...iconProps} />,
+						<ShampooIcon {...iconProps} />,
+						<Shirt01Icon {...iconProps} />,
+						<SmartPhone01Icon {...iconProps} />,
+						<Sofa01Icon {...iconProps} />,
+						<SoftDrink01Icon {...iconProps} />,
+						<SpeakerIcon {...iconProps} />,
+						<StarIcon {...iconProps} />,
+						<Store04Icon {...iconProps} />,
+						<SwimmingIcon {...iconProps} />,
+						<Tag01Icon {...iconProps} />,
+						<TaxiIcon {...iconProps} />,
+						<Ticket03Icon {...iconProps} />,
+						<TractorIcon {...iconProps} />,
+						<UniversityIcon {...iconProps} />,
+						<Wallet01Icon {...iconProps} />,
+						<VolleyballIcon {...iconProps} />,
+						<WaterPumpIcon {...iconProps} />,
+						<WellnessIcon {...iconProps} />,
+						<Yoga01Icon {...iconProps} />,
+					];
 					return (
 						<Card
 							variant='outlined'
@@ -42,44 +161,21 @@ const HomePage: React.FC = () => {
 									// border: '1px solid teal',
 									minHeight: '2.5rem',
 									// width: '5rem',
-									display: 'flex',
-									justifyContent: 'start',
-									// alignItems: 'end',
-									alignItems: 'center',
+
+									// display: 'flex',
+									// justifyContent: 'start',
+									// // alignItems: 'end',
+									// alignItems: 'center',
+									display: 'grid',
+									gridTemplateColumns: 'repeat(5, 1fr)',
+									gridTemplateRows: 'repeat(3, 1fr)',
+
 									padding: '0.5rem',
 									margin: 0,
+									gap: '0.75rem',
 								}}
 							>
-								<CreditCardIcon
-									color='cream'
-									width='1.5rem'
-									height='1.5rem'
-									style={{
-										// marginLeft: '0.15rem',
-										color: colorMap[colorName as keyof typeof colorMap],
-									}}
-								/>
-								{/* <Card variant='outlined'> */}
-								{AppIcon(AppIcons.store, {
-									style: {
-										fontSize: '2rem',
-										// marginRight: '0.5rem',
-										// border: '1px solid teal',
-										// marginBottom: -2,
-										color: colorMap[colorName as keyof typeof colorMap],
-									},
-								})}
-								<CreditCardIcon
-									color='cream'
-									width='1.5rem'
-									height='1.5rem'
-									style={{
-										// marginLeft: '0.15rem',
-										color: colorMap[colorName as keyof typeof colorMap],
-									}}
-								/>
-
-								{/* </Card> */}
+								{getRandomElements(icons, 15)}
 								<Card
 									// variant='outlined'
 									style={{
@@ -141,19 +237,26 @@ const HomePage: React.FC = () => {
 
 export default HomePage;
 
-//
+function getRandomElements<T>(arr: T[], n: number) {
+	const shuffled = arr.sort(() => 0.5 - Math.random());
+	return shuffled.slice(0, n);
+}
 
+//
+sortColorsByHex;
 function sortColorsByHex(colors: { [key: string]: string }) {
 	const keys = Object.keys(colors);
 
 	keys.sort((a, b) => {
 		const { r: aR, g: aG, b: aB } = hexToRgb(colors[a])!;
 		const { r: bR, g: bG, b: bB } = hexToRgb(colors[b])!;
-		// const { h: aH, s: aS, l: aL } = rgbToHsl(aR, aG, aB)!;
-		// const { h: bH, s: bS, l: bL } = rgbToHsl(bR, bG, bB)!;
+		const { h: aH, s: aS, l: aL } = rgbToHsl(aR, aG, aB)!;
+		const { h: bH, s: bS, l: bL } = rgbToHsl(bR, bG, bB)!;
 
 		// Sort based on Red then Green then Blue
-		return aR - bR || aG - bG || aB - bB;
+		// return aR - bR || aG - bG || aB - bB;
+		// Sort based on hue then saturation then lightness
+		return aH - bH || aS - bS || aL - bL;
 
 		// Sort based on hue
 		// return aH - bH;
