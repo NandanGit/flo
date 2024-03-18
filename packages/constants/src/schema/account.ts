@@ -46,19 +46,7 @@ export class AccountSchemaConstants {
 
 	// Errors
 	public static readonly errors = {
-		title: {
-			MIN_LENGTH: `Title should be at least ${this.title.MIN_LENGTH} characters long`,
-			MAX_LENGTH: `Title should be at most ${this.title.MAX_LENGTH} characters long`,
-		},
-		description: {
-			MAX_LENGTH: `Description should be at most ${this.description.MAX_LENGTH} characters long`,
-		},
-		TYPE: `Account type should be one of ${this.TYPES.join(', ')}`,
-		CURRENCY: `Currency should be one of ${this.CURRENCIES.join(', ')}`,
-		COLOR: `Color should be one of ${this.COLORS.join(', ')}`,
 		initialBalance: {
-			MIN: `Initial balance can't be less than -${this.initialBalance.MAX}`,
-			MAX: `Initial balance can't be more than ${this.initialBalance.MAX}`,
 			INVALID_FOR_ACCOUNT_TYPE: `Initial balance can only be negative for credit cards, wallets and other accounts.`,
 		},
 	} as const;
