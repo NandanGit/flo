@@ -1,10 +1,8 @@
 import { z } from 'zod';
-import { zodDateSchema } from '../shared/zodDate';
 import { categoryIdSchema, userIdSchema } from '../shared/zodId';
 import { FloConstants } from '@flo.app/constants';
 
 const CT = FloConstants.schema.category;
-const AC = FloConstants.schema.account;
 
 const s2cCategorySchemaRaw = z.object({
 	id: categoryIdSchema,

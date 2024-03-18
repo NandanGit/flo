@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { CustomZodSchemaOptionsBase } from './types';
+import { EntityIdPrefix } from './enums/entity';
 
 interface ZodIdSchemaOptions extends CustomZodSchemaOptionsBase {
 	prefix: string;
@@ -33,33 +34,38 @@ export const zodIdSchema = ({
 };
 
 export const userIdSchema = zodIdSchema({
-	prefix: 'U',
+	prefix: EntityIdPrefix.user,
 	message: 'Invalid user ID',
 	whitelist: ['ADMIN'],
 });
 
 export const accountIdSchema = zodIdSchema({
-	prefix: 'A',
+	prefix: EntityIdPrefix.account,
 	message: 'Invalid account ID',
 });
 
 export const personIdSchema = zodIdSchema({
-	prefix: 'P',
+	prefix: EntityIdPrefix.person,
 	message: 'Invalid person ID',
 	whitelist: ['SELF'],
 });
 
 export const merchantIdSchema = zodIdSchema({
-	prefix: 'M',
+	prefix: EntityIdPrefix.merchant,
 	message: 'Invalid merchant ID',
 });
 
 export const transactionIdSchema = zodIdSchema({
-	prefix: 'T',
+	prefix: EntityIdPrefix.transaction,
 	message: 'Invalid transaction ID',
 });
 
 export const categoryIdSchema = zodIdSchema({
-	prefix: 'C',
+	prefix: EntityIdPrefix.category,
 	message: 'Invalid category ID',
+});
+
+export const paymentProcessorIdSchema = zodIdSchema({
+	prefix: EntityIdPrefix.paymentProcessor,
+	message: 'Invalid payment processor ID',
 });

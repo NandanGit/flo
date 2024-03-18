@@ -7,6 +7,7 @@ import {
 	accountIdSchema,
 	merchantIdSchema,
 	personIdSchema,
+	paymentProcessorIdSchema,
 } from '../shared/zodId';
 import { FloConstants } from '@flo.app/constants';
 import { zodStringSchema } from '../shared/zodString';
@@ -52,6 +53,8 @@ const s2cTransactionSchemaRaw = z.object({
 		fieldName: 'Transaction mode',
 	}),
 
+	processorId: paymentProcessorIdSchema.optional(),
+
 	categoryId: categoryIdSchema,
 
 	// `From` can be different based on the transaction type
@@ -67,6 +70,7 @@ const s2cTransactionSchemaRaw = z.object({
 	// Start date of the transaction. This is different from createdAt. createdAt is the date when the transaction was created. startDate is the date when the transaction should be considered for accounting purposes. For example, if a transaction is created on 1st Jan, but the startDate is 31st Dec, it means the transaction should be considered for accounting purposes from 31st Dec.
 	startDate: zodDateSchema({
 		allowFuture: true,
+		fieldName: 'Start date',
 	}),
 
 	// Split details (split amounts, debt status like paid | paid_in_cash | pending, persons involved in the split, etc.)
@@ -203,6 +207,7 @@ const s2cTransactionSchemaRaw = z.object({
 			// recurring.until will be a date string. It will be used to calculate last recurring date. If this is not present, it means the transaction will recur indefinitely
 			until: zodDateSchema({
 				allowFuture: true,
+				fieldName: 'Ending date',
 			}).optional(),
 
 			// recurring.skipped will be an array of date strings. It will be used to store the dates on which the transaction was skipped. This can be used to facilitate one time variations in the recurring transactions. If the user wants to edit the recurring transaction but only for a specific date, we can use this field to store the skipped dates and then create a new transaction for the specific date.
@@ -210,6 +215,7 @@ const s2cTransactionSchemaRaw = z.object({
 				.array(
 					zodDateSchema({
 						allowFuture: true,
+						fieldName: 'Skipped date',
 					})
 				)
 				.optional(),
