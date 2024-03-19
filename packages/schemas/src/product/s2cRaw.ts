@@ -1,5 +1,9 @@
 import { z } from 'zod';
-import { merchantIdSchema, productIdSchema } from '../shared/zodId';
+import {
+	merchantIdSchema,
+	productIdSchema,
+	userIdSchema,
+} from '../shared/zodId';
 import { zodStringSchema } from '../shared/zodString';
 import { zodNumberSchema } from '../shared/zodNumber';
 import { FloConstants } from '@flo.app/constants';
@@ -9,6 +13,7 @@ const PD = FloConstants.schema.product;
 
 const s2cProductSchemaRaw = z.object({
 	id: productIdSchema,
+	createdBy: userIdSchema,
 
 	title: zodStringSchema({
 		fieldName: 'Product title',
