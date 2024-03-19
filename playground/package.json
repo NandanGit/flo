@@ -1,0 +1,27 @@
+{
+	"name": "playground",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"start:both": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
+		"start": "nodemon src/index.ts"
+	},
+	"keywords": [],
+	"author": "Nandan Reddy",
+	"license": "ISC",
+	"dependencies": {
+		"@svgdotjs/svg.js": "^3.2.0",
+		"@types/node": "^20.11.24",
+		"@types/pngjs": "^6.0.4",
+		"canvas": "^2.11.2",
+		"concurrently": "^8.2.2",
+		"nodemon": "^3.1.0",
+		"pngjs": "^7.0.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3",
+		"@flo.app/schemas": "file:../../../packages/schemas"
+	},
+	"devDependencies": {
+		"zod-to-ts": "^1.2.0"
+	}
+}

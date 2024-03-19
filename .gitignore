@@ -24,10 +24,10 @@ dist-ssr
 *.sw?
 
 # Custom
-playground/
+# playground/
 fake_data/**/generated/*
 !fake_data/**/generated/.keep
 coverage
-
+/**/resources/*
 # End
 !.gitkeep
