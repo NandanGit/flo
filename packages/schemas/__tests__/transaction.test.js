@@ -21,8 +21,8 @@ describe('s2cTransactionSchemaRaw', () => {
 			status: TR.STATUSES[0], // PENDING
 			mode: TR.MODES[0], // CASH
 			categoryId: 'CA-1710698125-0410',
-			fromId: 'AC-1710698231-7F1B',
-			toId: 'MR-1710698231-F4DC1740',
+			from: 'AC-1710698231-7F1B',
+			to: 'MR-1710698231-F4DC1740',
 			startDate: new Date().toISOString(),
 			// split: {
 			// 	splits: [
@@ -162,8 +162,17 @@ describe('s2cTransactionSchemaRaw', () => {
 				status: 'COMPLETED',
 				mode: 'UPI',
 				categoryId: 'CA-1710698125-0410',
-				fromId: 'AC-1710698231-7F1B',
-				toId: 'MR-1710698231-F4DC1740',
+				from: {
+					primary: {
+						accountId: 'AC-1710698231-7F1B',
+						amount: 259,
+					},
+					secondary: {
+						accountId: 'AC-1710698231-7F1B',
+						amount: 200,
+					},
+				},
+				to: 'MR-1710698231-F4DC1740',
 				startDate: new Date().toISOString(),
 				split: {
 					splits: [
@@ -229,8 +238,8 @@ describe('s2cTransactionSchemaRaw', () => {
 				status: 'COMPLETED',
 				mode: 'UPI',
 				categoryId: 'CA-1710698125-0410',
-				fromId: 'AC-1710698231-7F1B',
-				toId: 'MR-1710698231-F4DC1740',
+				from: 'AC-1710698231-7F1B',
+				to: 'MR-1710698231-F4DC1740',
 				startDate: new Date().toISOString(),
 			},
 		];

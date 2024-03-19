@@ -46,12 +46,24 @@ const c2sTransactionSchemaRaw = s2cTransactionSchemaRaw
 	.refine(
 		(data) => {
 			if (data.type === 'TRANSFER') {
-				return data.fromId !== data.toId;
+				return data.from !== data.to;
 			}
 			return true;
 		},
 		{
 			message: TR.errors.others.INVALID_TRANSFER,
+		}
+	)
+	.refine(
+		(data) => {
+			// If from is not a string, sum of all the amounts in the split should be equal to the transaction amount
+			if (typeof data.from !== 'string') {
+				const sum = data.from.primary.amount + data.from.secondary.amount;
+				return sum === data.amount;
+			}
+		},
+		{
+			message: TR.errors.from.INVALID_BREAKUP,
 		}
 	)
 	.transform((data) => {

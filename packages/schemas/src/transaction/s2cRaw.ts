@@ -30,7 +30,7 @@ const s2cTransactionSchemaRaw = z.object({
 		maxLength: TR.title.MAX_LENGTH,
 	}),
 
-	description: zodStringSchema({
+	note: zodStringSchema({
 		fieldName: 'Transaction description',
 		maxLength: TR.description.MAX_LENGTH,
 	}).optional(),
@@ -60,12 +60,33 @@ const s2cTransactionSchemaRaw = z.object({
 	// `From` can be different based on the transaction type
 	// - For INCOME, it should be either a merchant ID or an person ID
 	// - For Expense and Transfer, it should be an account ID
-	fromId: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
-
+	from: z
+		.object({
+			// This is used in a very specific case where the user wants to use money from another account to partially pay for the transaction. For example, lets say that the bill is 550rs and the user wants to pay through PhonePe. The user notices that they have 70rs in their PhonePe wallet. They can use this field to denote that the 70rs was used from the PhonePe wallet and the rest (480rs) was used from the account linked to the PhonePe.
+			primary: z.object({
+				accountId: accountIdSchema,
+				amount: zodNumberSchema({
+					fieldName: 'Primary amount',
+					min: TR.amount.MIN,
+					max: TR.amount.MAX,
+				}),
+			}),
+			secondary: z.object({
+				accountId: accountIdSchema,
+				amount: zodNumberSchema({
+					fieldName: 'Secondary amount',
+					min: TR.amount.MIN,
+					max: TR.amount.MAX,
+				}),
+			}),
+		})
+		.or(merchantIdSchema)
+		.or(personIdSchema)
+		.or(accountIdSchema),
 	// `To` can be different based on the transaction type
 	// - For INCOME and Transfer, it should be an account ID
 	// - For Expense, it should be either a merchant ID or an person ID
-	toId: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
+	to: accountIdSchema.or(merchantIdSchema).or(personIdSchema),
 
 	// Start date of the transaction. This is different from createdAt. createdAt is the date when the transaction was created. startDate is the date when the transaction should be considered for accounting purposes. For example, if a transaction is created on 1st Jan, but the startDate is 31st Dec, it means the transaction should be considered for accounting purposes from 31st Dec.
 	startDate: zodDateSchema({
@@ -239,4 +260,4 @@ const s2cTransactionSchemaRaw = z.object({
 
 export default s2cTransactionSchemaRaw;
 // export type TransactionIN = z.input<typeof s2cTransactionSchemaRaw>;
-// export type TransactionOUT = z.output<typeof s2cTransactionSchemaRaw>;
+export type TransactionOUT = z.output<typeof s2cTransactionSchemaRaw>['from'];
