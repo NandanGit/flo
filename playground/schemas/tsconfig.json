@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true
-  },
-  "include": ["src/**/*.ts"]
+	"compilerOptions": {
+		"target": "ES2015",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx"] // Add the file or directory path here
 }
