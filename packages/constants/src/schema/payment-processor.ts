@@ -1,5 +1,4 @@
 import { SharedSchemaConstants } from './shared';
-import { FLO_ICONS } from '@flo.app/icons';
 
 export class PaymentProcessorSchemaConstants {
 	// Limits
@@ -9,7 +8,7 @@ export class PaymentProcessorSchemaConstants {
 	} as const;
 
 	// Types
-	public static readonly ICONS = FLO_ICONS;
+	public static readonly ICONS = SharedSchemaConstants.ICONS;
 
 	public static readonly SUPPORTED_MODES = SharedSchemaConstants.PAYMENT_MODES;
 
