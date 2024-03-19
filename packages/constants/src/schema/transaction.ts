@@ -122,6 +122,10 @@ export class TransactionSchemaConstants {
 
 	// Errors
 	public static readonly errors = {
+		from: {
+			INVALID_BREAKUP:
+				'Sum of primary and secondary amount should be equal to the transaction amount',
+		},
 		split: {
 			invalid: 'Split details are not valid',
 			validForTransfer: 'Only expenses can be split',
