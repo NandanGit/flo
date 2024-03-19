@@ -2,13 +2,13 @@ import { SharedSchemaConstants } from './shared';
 
 export class TransactionSchemaConstants {
 	// Limits
-	public static readonly title = {
-		MIN_LENGTH: 3,
-		MAX_LENGTH: 50,
-	} as const;
+	// public static readonly title = {
+	// 	MIN_LENGTH: 3,
+	// 	MAX_LENGTH: 50,
+	// } as const;
 
 	public static readonly description = {
-		MAX_LENGTH: 500,
+		MAX_LENGTH: 200,
 	} as const;
 
 	public static readonly amount = {
@@ -48,8 +48,10 @@ export class TransactionSchemaConstants {
 		breakup: {
 			list: {
 				name: {
-					MIN_LENGTH: this.title.MIN_LENGTH,
-					MAX_LENGTH: this.title.MAX_LENGTH,
+					// MIN_LENGTH: this.title.MIN_LENGTH,
+					// MAX_LENGTH: this.title.MAX_LENGTH,
+					MIN_LENGTH: 3,
+					MAX_LENGTH: 50,
 				},
 				quantity: {
 					MIN: 0,

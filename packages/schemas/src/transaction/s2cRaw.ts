@@ -23,12 +23,12 @@ const s2cTransactionSchemaRaw = z.object({
 	createdAt: zodDateSchema(),
 	updatedAt: zodDateSchema().optional(),
 
-	// Business Fields
-	title: zodStringSchema({
-		fieldName: 'Transaction title',
-		minLength: TR.title.MIN_LENGTH,
-		maxLength: TR.title.MAX_LENGTH,
-	}),
+	// // Business Fields
+	// title: zodStringSchema({
+	// 	fieldName: 'Transaction title',
+	// 	minLength: TR.title.MIN_LENGTH,
+	// 	maxLength: TR.title.MAX_LENGTH,
+	// }),
 
 	note: zodStringSchema({
 		fieldName: 'Transaction description',
