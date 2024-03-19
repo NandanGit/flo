@@ -79,13 +79,17 @@ export class TransactionSchemaConstants {
 					] as const,
 					DEFAULT: 'unit',
 				},
-				amountPerUnit: {
+				// amountPerUnit: {
+				// 	MIN: this.amount.MIN,
+				// 	MAX: this.amount.MAX / 9_999,
+				// },
+				subTotal: {
 					MIN: this.amount.MIN,
-					MAX: this.amount.MAX / 9_999,
+					MAX: this.amount.MAX,
 				},
 				discount: {
-					MIN: 0,
-					MAX: 100,
+					MIN: this.amount.MIN,
+					MAX: this.amount.MAX,
 				},
 			},
 			additionalCharges: {
@@ -127,6 +131,13 @@ export class TransactionSchemaConstants {
 		from: {
 			INVALID_BREAKUP:
 				'Sum of primary and secondary amount should be equal to the transaction amount',
+		},
+		merchant: {
+			breakup: {
+				list: {
+					NAME_OR_PRODUCT_REQUIRED: 'Name or product is required',
+				},
+			},
 		},
 		split: {
 			invalid: 'Split details are not valid',
