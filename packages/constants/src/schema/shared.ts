@@ -1,3 +1,5 @@
+import { FLO_ICONS } from '@flo.app/icons';
+
 export class SharedSchemaConstants {
 	public static readonly PAYMENT_MODES = [
 		'CASH',
@@ -67,6 +69,8 @@ export class SharedSchemaConstants {
 		keyof typeof this.COLOR_MAP,
 		...(keyof typeof this.COLOR_MAP)[]
 	];
+
+	public static readonly ICONS = FLO_ICONS;
 
 	public static readonly LIMITS = {
 		MAX_STRING_LENGTH: 2000, // MAX length of any string by default
