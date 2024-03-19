@@ -1,7 +1,11 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { z } from 'zod';
 import { zodDateSchema } from '../shared/zodDate';
-import { accountIdSchema, userIdSchema } from '../shared/zodId';
+import {
+	accountIdSchema,
+	paymentProcessorIdSchema,
+	userIdSchema,
+} from '../shared/zodId';
 import { FloConstants } from '@flo.app/constants';
 import { zodStringSchema } from '../shared/zodString';
 import { zodEnumSchema } from '../shared/zodEnum';
@@ -41,6 +45,9 @@ const s2cAccountSchemaRaw = z.object({
 	currency: zodEnumSchema(AC.CURRENCIES, {
 		fieldName: 'Account currency',
 	}),
+
+	// Mandatory for "SAVINGS", "CREDIT_CARD", "WALLET", "SALARY", "CURRENT"
+	defaultPaymentProcessor: paymentProcessorIdSchema.optional(),
 
 	color: zodEnumSchema(AC.COLORS, {
 		fieldName: 'Account color',

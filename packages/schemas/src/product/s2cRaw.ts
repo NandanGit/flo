@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+	categoryIdSchema,
 	merchantIdSchema,
 	productIdSchema,
 	userIdSchema,
@@ -21,9 +22,11 @@ const s2cProductSchemaRaw = z.object({
 		maxLength: PD.title.MAX_LENGTH,
 	}),
 
+	categoryId: categoryIdSchema,
+
 	icon: zodEnumSchema(PD.ICONS, {
 		fieldName: 'Product icon',
-	}),
+	}).optional(),
 
 	description: zodStringSchema({
 		fieldName: 'Product description',
