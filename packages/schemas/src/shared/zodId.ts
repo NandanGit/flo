@@ -65,6 +65,11 @@ export const categoryIdSchema = zodIdSchema({
 	message: 'Invalid category ID',
 });
 
+export const productIdSchema = zodIdSchema({
+	prefix: EntityIdPrefix.product,
+	message: 'Invalid product ID',
+});
+
 export const paymentProcessorIdSchema = zodIdSchema({
 	prefix: EntityIdPrefix.paymentProcessor,
 	message: 'Invalid payment processor ID',
