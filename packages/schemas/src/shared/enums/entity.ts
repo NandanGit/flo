@@ -6,6 +6,8 @@ export enum EntityType {
 	transaction = 'TRANSACTION',
 	category = 'CATEGORY',
 	paymentProcessor = 'PAYMENT_PROCESSOR',
+
+	unknown = 'UNKNOWN',
 }
 
 export enum EntityIdPrefix {
