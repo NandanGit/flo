@@ -321,4 +321,4 @@ const s2cTransactionSchemaRaw = z.object({
 
 export default s2cTransactionSchemaRaw;
 // export type TransactionIN = z.input<typeof s2cTransactionSchemaRaw>;
-export type TransactionOUT = z.output<typeof s2cTransactionSchemaRaw>['from'];
+// export type TransactionOUT = z.output<typeof s2cTransactionSchemaRaw>;
